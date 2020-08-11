@@ -7,7 +7,8 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.service_account"
-                   ng-options="p.name for p in presets"> <!-- config.service_account {name, usable} -->      
+                   ng-options="p.name for p in presets"
+                   ng-change="getViews()"> <!-- config.service_account {name, usable} -->      
            </select>
            
            <button ng-click="getViews()" class="btn btn--primary link-like">List Views</button>
