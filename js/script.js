@@ -94,12 +94,14 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.metricsReady=true;
         $scope.dummyMetricsReady=false; 
         
+        
+        /*
         $scope.dimensionsReady=true;
         $scope.dummyDimensionsReady=false;
         
         $scope.segmentsReady=true;
         $scope.dummySegmentsReady=false;
-        
+        */
         /* TODO: remove
         $scope.colsReady = false;
         $scope.showTableList = false; 
