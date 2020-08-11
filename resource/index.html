@@ -29,7 +29,13 @@
     
    <div class="control-group">
        <label class="control-label">Start Date</label>
-   </div> 
+       <input ng-switch-when="DATE"
+                    type="date"
+                    ng-model="model[paramDesc.name]"
+                    input-date-conversion="date"
+                    ng-disabled="disabled">
+       </input>
+    </div> 
     
    <div class="control-group">
        <label class="control-label">End Date</label>
