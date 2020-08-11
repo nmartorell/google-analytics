@@ -22,6 +22,12 @@ def do(payload, config, plugin_config, inputs):
     if payload["method"] == "get_metrics_and_goals":
         return get_metrics_and_goals(config)
     
+    if payload["method"] == "get_dimensions":
+        return get_dimensions(config)
+    
+    if payload["method"] == "get_segments":
+        return get_segments(config)
+    
     
 # Calls Google Analytics API to obtain all views associated to the authenticated account
 def get_views(config):
