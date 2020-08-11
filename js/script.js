@@ -13,6 +13,19 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         $scope.segmentsReady=false;
         $scope.dummySegmentsReady=true;
+        
+        $scope.metricsList = [];
+        $scope.dimensionsList = [];
+        $scope.segmentsList = [];
+        
+        $scope.metricsReady=true;
+        $scope.dummyMetricsReady=false; 
+
+        $scope.dimensionsReady=true;
+        $scope.dummyDimensionsReady=false;
+        
+        $scope.segmentsReady=true;
+        $scope.dummySegmentsReady=false;
     };
     
     
