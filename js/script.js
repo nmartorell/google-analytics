@@ -36,7 +36,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.disableListPropertiesButton=false;
     };
     
-    $scope.getProperties = function(){
+    $scope.getViewProperties = function(){
         $scope.callPythonDo({method: "get_metrics_and_goals"}).then(function(data){
         $scope.metricsList = data['metrics_and_goals']
         }); 
