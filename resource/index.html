@@ -34,8 +34,15 @@
                  ng-model="config.metrics_and_goals" 
                  multiselect-field options="metricsList">
             </div>
+            <div type="text" 
+                 ng-if= "dummyMetricsReady"
+                 multiselect-field>
+            </div>
         </div>
     </div>
+    
+    
+    
     
     <div class="control-group">
         <label class="control-label">Dimensions</label>
