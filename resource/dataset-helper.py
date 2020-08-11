@@ -65,9 +65,9 @@ def get_metrics_and_goals(config):
     metrics, dimensions = ga_json.parse_columnsMetadata(response)
         
     # Construct choices dict
-    choices = [ {"value" : metric, "label" : metric[0]} for metric in metrics ]
+    metrics_and_goals = [ {"value" : metric, "label" : metric[0]} for metric in metrics ]
     
-    return None
+    return {"metrics_and_goals" : metrics_and_goals}
             
 ### CUSTOM UI HELPER FUNCTIONS (might move these to a common plugin_utils.py module)##
 
