@@ -37,10 +37,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     $scope.getViewProperties = function(){
-        $scope.metricsReady=false;
         $scope.callPythonDo({method: "get_metrics_and_goals"}).then(function(data){
-        
-        
         $scope.metricsList = data['metrics_and_goals'];
         
         $scope.metricsReady=true;
@@ -70,10 +67,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* UI features to be disabled at start */
         $scope.disableListPropertiesButton=true;
 
-        $scope.metricsReady=true;
+        $scope.metricsReady=false;
         $scope.dummyMetricsReady=true; 
-        
-        $scope.metricsList=[{"label":123, "value":12343}]
         
         /* TODO: remove
         $scope.colsReady = false;
