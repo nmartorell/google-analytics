@@ -75,6 +75,15 @@ def get_metrics_and_goals(config):
     
     return {"metrics_and_goals" : metrics_and_goals}
             
+    
+def get_dimensions(config):
+    
+    return {"dimensions" : None}
+
+def get_segments(config):
+    return {"segments": None}
+    
+    
 ### CUSTOM UI HELPER FUNCTIONS (might move these to a common plugin_utils.py module)##
 
 def get_service_account_credentials_from_name(name):
