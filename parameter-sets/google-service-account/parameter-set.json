@@ -1,7 +1,7 @@
 /* This file is the descriptor for the parameter set google-service-account */
 {
     "meta" : {
-        "label": "Google Service Accounts",
+        "label": "Google Service Account",
         "description": "Add one or more Google Service Accounts which have been authorized to access Google Analytics data.",
         "icon": "icon-file-alt"
     },
