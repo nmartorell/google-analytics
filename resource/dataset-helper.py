@@ -19,14 +19,13 @@ def do(payload, config, plugin_config, inputs):
     if payload["method"] == "get_views":
         return get_views(config)
     
-    if payload["method"] == "get_metrics_and_goals":
-        return get_metrics_and_goals(config)
-    
-    if payload["method"] == "get_dimensions":
-        return get_dimensions(config)
-    
-    if payload["method"] == "get_segments":
-        return get_segments(config)
+    if payload["method"] == "get_view_properties":
+        
+        metrics_and_goals = get_metrics_and_goals(config)
+        dimensions = get_dimensions(config)
+        segments = get_segments(config)
+        
+        return {"metrics_and_goals" : metrics_and_goals, "dimensions" : dimensions, "segments" : segments}
     
     
 # Calls Google Analytics API to obtain all views associated to the authenticated account
@@ -73,14 +72,14 @@ def get_metrics_and_goals(config):
     # Construct choices dict
     metrics_and_goals = [ {"value" : metric, "label" : metric[0]} for metric in metrics ]
     
-    return {"metrics_and_goals" : metrics_and_goals}
+    return metrics_and_goals
             
     
 def get_dimensions(config):
-    return {"dimensions" : [{"label": 123, "value":1234}] } 
+    return [{"label": 123, "value":1234}]
 
 def get_segments(config):
-    return {"segments": [{"label": 123, "value":1234}]}
+    return [{"label": 123, "value":1234}]
     
     
 ### CUSTOM UI HELPER FUNCTIONS (might move these to a common plugin_utils.py module)##
