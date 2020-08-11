@@ -2,8 +2,7 @@ var app = angular.module('googleAnalytics.dataset', []);
 
 
 app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {
-    this.myDate = new Date();
-    this.isOpen = false;
+
     /*
     $scope.getColumns = function(){
        
