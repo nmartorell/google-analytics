@@ -32,7 +32,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     $scope.getViews = function(){
         /* Clear Views and View Properties */
         $scope.views=[]
-        
+        clearViewProperties()
         
         $scope.callPythonDo({method: "get_views"}).then(function(data){
         $scope.views = data['views']
