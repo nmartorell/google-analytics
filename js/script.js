@@ -61,13 +61,14 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.dimensionsReady=true;
             $scope.dummyDimensionsReady=false;
         }); 
-        
+        /*
         $scope.callPythonDo({method: "get_segments"}).then(function(data){
             $scope.segmentsList = data['segments'];
         
             $scope.segmentsReady=true;
             $scope.dummySegmentsReady=false;
-        }); 
+        });
+        */
     };
     
     var init = function(){
