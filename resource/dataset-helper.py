@@ -52,13 +52,13 @@ def get_service_account_credentials_from_name(name):
     """
     # Retrieve plugin settings
     client = dataiku.api_client()
-    plugin = client.get_plugin("novartis-google-analytics")
+    plugin = client.get_plugin("google-analytics")
     settings = plugin.get_settings()
     
     # Retrieve service account encrypted preset
     for parameter_set in settings.settings["presets"]:
         
-        if (parameter_set["type"] == "parameter-set-novartis-google-analytics-google-service-accounts") and (parameter_set["name"] == name):
+        if (parameter_set["type"] == "parameter-set-google-analytics-google-service-accounts") and (parameter_set["name"] == name):
             service_account_credentials_encrypted = parameter_set["config"]["service_account_credentials"]
     
     # Decrypt service account key    
