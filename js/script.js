@@ -34,8 +34,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         }); 
         
         $scope.disableListPropertiesButton=false;
-        $scope.$broadcast('clearMultiSelect');
-        $scope.metricsList = [{"value":"hello222", "label":"hello222"}, {"value":"goodbye333", "label":"goodbye333"}];
     };
     
     var init = function(){
