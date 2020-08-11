@@ -20,11 +20,9 @@ def do(payload, config, plugin_config, inputs):
         return get_views(config)
     
     if payload["method"] == "get_view_properties":
-        
         metrics_and_goals = get_metrics_and_goals(config)
         dimensions = get_dimensions(config)
         segments = get_segments(config)
-        
         return {"metrics_and_goals" : metrics_and_goals, "dimensions" : dimensions, "segments" : segments}
     
     
@@ -76,6 +74,26 @@ def get_metrics_and_goals(config):
             
     
 def get_dimensions(config):
+    
+    # Retrieve name of service account select in UI
+    service_account_name = config["service_account"]["name"]
+    
+    # Retrieve service account API key
+    service_account_credentials = get_service_account_credentials_from_name(service_account_name)
+    
+    # Retrieve an authenticated Google Analytics API service
+    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials)
+    
+    # Retrieve default Metrics and Dimensions from Metadata API
+    response = service.metadata().columns().list(reportType='ga').execute()
+        
+    # Parse response
+    metrics, dimensions = ga_json.parse_columnsMetadata(response)
+        
+    # Construct choices dict
+    choices = [ {"value" : str(dimension), "label" : dimension[0]} for dimension in dimensions ]
+    
+    
     return [{"label": 123333, "value":1234}]
 
 def get_segments(config):
