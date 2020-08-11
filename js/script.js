@@ -72,6 +72,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.metricsReady=false;
         $scope.dummyMetricsReady=true; 
         
+        $scope.metricsList=[{"label":123, "value":12343}]
+        
         /* TODO: remove
         $scope.colsReady = false;
         $scope.showTableList = false; 
