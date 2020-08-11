@@ -37,7 +37,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     $scope.getViewProperties = function(){
-        /* Start by refreshing all property fields */        
+        /* Enable dummy multiselect fields */        
         $scope.metricsReady=false;
         $scope.dummyMetricsReady=true; 
         
@@ -48,28 +48,21 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.dummySegmentsReady=true;
         
         /* Compute new property values */
-        $scope.callPythonDo({method: "get_metrics_and_goals"}).then(function(data){
+        $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
             $scope.metricsList = data['metrics_and_goals'];
-        
+            $scope.dimensionsList = data['dimensions'];
+            $scope.segmentsList = data['segments'];
+            
+            /* Disable dummy multiselect fields */  
             $scope.metricsReady=true;
             $scope.dummyMetricsReady=false; 
-        }); 
-        
-        $scope.callPythonDo({method: "get_dimensions"}).then(function(data){
             
-        
             $scope.dimensionsReady=true;
             $scope.dummyDimensionsReady=false;
-        }); 
-        
-        /*
-        $scope.callPythonDo({method: "get_segments"}).then(function(data){
-            $scope.segmentsList = data['segments'];
-        
+            
             $scope.segmentsReady=true;
             $scope.dummySegmentsReady=false;
-        });
-        */
+        }); 
     };
     
     var init = function(){
