@@ -25,17 +25,5 @@
         "url": "",
 
         "licenseInfo": "Apache Software License"
-    },
-    
-    /* PARAMS ARE TO BE DELETED ONCE CUSTOM UI IS SET UP !!!! USE CUSTOM PARAMETER SET INSTEAD!!!! */
-    
-    "params": [
-        {
-            "name": "service_account_credentials",
-            "label": "Service Account JSON Key",
-            "type": "PASSWORD",
-            "description": "Generated on Google for use in DSS, please refer to plugin documentation to set this up.",
-            "mandatory": true
-        }
-    ]
+    }
 }
