@@ -37,9 +37,10 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     $scope.getViewProperties = function(){
+        $scope.metricsReady=false;
         $scope.callPythonDo({method: "get_metrics_and_goals"}).then(function(data){
         
-        $scope.metricsReady=false;
+        
         $scope.metricsList = data['metrics_and_goals'];
         
         $scope.metricsReady=true;
