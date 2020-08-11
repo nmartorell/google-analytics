@@ -25,6 +25,17 @@
            <button ng-click="getViewProperties()" class="btn btn--primary link-like" ng-disabled="disableListPropertiesButton">List Properties</button>
        </div>    
    </div> 
+
+   <div class="control-group">
+       <label class="control-label">Start Date</label>
+       <div class="controls">
+           <div flex-gt-xs="">
+               <h4>Opening the calendar when the input is focused</h4>
+               <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-open-on-focus=""></md-datepicker>
+           </div>
+       </div>    
+   </div> 
+    
     
    <div class="control-group">
        <label class="control-label">Metrics and Goals</label>
