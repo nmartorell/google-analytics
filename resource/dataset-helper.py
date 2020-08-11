@@ -76,7 +76,7 @@ def get_metrics_and_goals(config):
             
     
 def get_dimensions(config):
-    return [{"label": 123, "value":1234}]
+    return [{"label": 123333, "value":1234}]
 
 def get_segments(config):
     return [{"label": 123, "value":1234}]
