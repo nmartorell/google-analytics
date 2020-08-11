@@ -39,7 +39,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     var init = function(){
         
         /* Populate the Google Service Account dropdown */
-        let pluginId = "novartis-google-analytics";
+        let pluginId = "google-analytics";
         let parameterSetId = "google-service-accounts";
         
         let projectKey = ""
