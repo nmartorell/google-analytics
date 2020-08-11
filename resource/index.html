@@ -30,6 +30,7 @@
         <label class="control-label">Metrics and Goals</label>
         <div id='control' class="controls" >
             <div type="text" 
+                 ng-if= "colsReady"
                  ng-model="config.metrics_and_goals" 
                  multiselect-field options="metricsList">
             </div>
