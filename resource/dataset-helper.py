@@ -91,10 +91,9 @@ def get_dimensions(config):
     metrics, dimensions = ga_json.parse_columnsMetadata(response)
         
     # Construct choices dict
-    choices = [ {"value" : str(dimension), "label" : dimension[0]} for dimension in dimensions ]
-    
-    
-    return [{"label": 123333, "value":1234}]
+    dimensions = [ {"value" : str(dimension), "label" : dimension[0]} for dimension in dimensions ]
+
+    return dimensions
 
 def get_segments(config):
     return [{"label": 123, "value":1234}]
