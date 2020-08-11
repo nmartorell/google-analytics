@@ -5,6 +5,11 @@ import ast
 from googleanalytics import ga_api
 from googleanalytics import ga_json
 
+# Google Analytics API definition
+API_NAME = 'analytics'
+API_VERSION = 'v3'
+SCOPE = ['https://www.googleapis.com/auth/analytics.readonly']
+
 
 def do(payload, config, plugin_config, inputs):
     
@@ -25,11 +30,7 @@ def get_views(config):
     service_account_credentials = get_service_account_credentials_from_name(service_account_name)
     
     # Retrieve an authenticated Google Analytics API service
-    scope = ['https://www.googleapis.com/auth/analytics.readonly']
-    api_name = 'analytics'
-    api_version = 'v3'
-    
-    service = ga_api.get_service(api_name, api_version, scope, service_account_credentials) 
+    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials) 
     
     # Retrieve AccountSummaries from Management API
     response = service.management().accountSummaries().list().execute()
