@@ -26,17 +26,16 @@
        </div>    
    </div> 
     
-    
     <div class="control-group">
         <label class="control-label">Metrics and Goals</label>
-        <div class="controls" >
-            <select multiple dku-bs-select
+        <div id='control' class="controls" >
+            <div type="text" 
                  ng-model="config.metrics_and_goals" 
-                 ng-options="m.label for m in metricsList">
-            </select>
+                 multiselect-field options="metricsList">
+            </div>
         </div>
     </div>
-   
+    
     <div class="control-group">
         <label class="control-label">Dimensions</label>
         <div id='control' class="controls" >
