@@ -69,7 +69,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* UI features to be disabled at start */
         $scope.disableListPropertiesButton=true;
 
-        $scope.metricsReady=false;
+        $scope.metricsReady=true;
         $scope.dummyMetricsReady=true; 
         
         $scope.metricsList=[{"label":123, "value":12343}]
