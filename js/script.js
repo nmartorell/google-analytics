@@ -59,8 +59,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.callPythonDo({method: "get_dimensions"}).then(function(data){
         $scope.metricsList = data['dimensions'];
         
-        $scope.metricsReady=true;
-        $scope.dummyMetricsReady=false; 
+        $scope.dimensionsReady=true;
+        $scope.dummyDimensionsReady=false;
         }); 
         
 
@@ -85,14 +85,14 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* UI features to be disabled at start */
         $scope.disableListPropertiesButton=true;
 
-        $scope.metricsReady=false;
-        $scope.dummyMetricsReady=true; 
+        $scope.metricsReady=true;
+        $scope.dummyMetricsReady=false; 
         
-        $scope.dimensionsReady=false;
-        $scope.dummyDimensionsReady=true;
+        $scope.dimensionsReady=true;
+        $scope.dummyDimensionsReady=false;
         
-        $scope.segmentsReady=false;
-        $scope.dummySegmentsReady=true;
+        $scope.segmentsReady=true;
+        $scope.dummySegmentsReady=false;
         
         /* TODO: remove
         $scope.colsReady = false;
