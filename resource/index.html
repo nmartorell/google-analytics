@@ -19,7 +19,8 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.view"
-                   ng-options="o.label for o in views"> <!-- config.view {value: [view, wp, account, view id], label: "..."} -->
+                   ng-options="o.label for o in views"
+                   ng-change="getViewProperties()"> <!-- config.view {value: [view, wp, account, view id], label: "..."} -->
            </select>
            
            <button ng-click="getViewProperties()" class="btn btn--primary link-like" ng-disabled="disableListPropertiesButton">List Properties</button>
