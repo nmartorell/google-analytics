@@ -56,7 +56,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         }); 
         
         $scope.callPythonDo({method: "get_dimensions"}).then(function(data){
-            $scope.dimensionsList = data['dimensions'];
+            
         
             $scope.dimensionsReady=true;
             $scope.dummyDimensionsReady=false;
