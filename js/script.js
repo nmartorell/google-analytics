@@ -49,22 +49,25 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Compute new property values */
         $scope.callPythonDo({method: "get_metrics_and_goals"}).then(function(data){
-        $scope.metricsList = data['metrics_and_goals'];
+            $scope.metricsList = data['metrics_and_goals'];
         
-        $scope.metricsReady=true;
-        $scope.dummyMetricsReady=false; 
+            $scope.metricsReady=true;
+            $scope.dummyMetricsReady=false; 
         }); 
         
-        /* Compute new property values */
         $scope.callPythonDo({method: "get_dimensions"}).then(function(data){
-        $scope.metricsList = data['dimensions'];
+            $scope.dimensionsList = data['dimensions'];
         
-        $scope.dimensionsReady=true;
-        $scope.dummyDimensionsReady=false;
+            $scope.dimensionsReady=true;
+            $scope.dummyDimensionsReady=false;
         }); 
         
-
-        /* TODO: add python calls for segments and dimensions */
+        $scope.callPythonDo({method: "get_segments"}).then(function(data){
+            $scope.segmentsList = data['segments'];
+        
+            $scope.segmentsReady=true;
+            $scope.dummySegmentsReady=false;
+        }); 
     };
     
     var init = function(){
