@@ -20,5 +20,5 @@
     /* Custom UI params definition */
     "paramsTemplate" : "index.html",
     "paramsModule" : "googleAnalytics.dataset",
-    "paramsPythonSetup" : "dataset-helper-custom.py"
+    "paramsPythonSetup" : "dataset-helper.py"
 }
