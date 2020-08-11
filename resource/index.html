@@ -10,8 +10,6 @@
                    ng-options="p.name for p in presets"
                    ng-change="getViews()"> <!-- config.service_account {name, usable} -->      
            </select>
-           
-           <button ng-click="getViews()" class="btn btn--primary link-like">List Views</button>
        </div>    
    </div> 
 
@@ -23,8 +21,6 @@
                    ng-options="o.label for o in views"
                    ng-change="getViewProperties()"> <!-- config.view {value: [view, wp, account, view id], label: "..."} -->
            </select>
-           
-           <button ng-click="getViewProperties()" class="btn btn--primary link-like" ng-disabled="disableListPropertiesButton">List Properties</button>
        </div>    
    </div> 
 
