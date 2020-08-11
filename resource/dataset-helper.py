@@ -19,6 +19,9 @@ def do(payload, config, plugin_config, inputs):
     if payload["method"] == "get_views":
         return get_views(config)
     
+    if payload["method"] == "get_metrics_and_goals":
+        return get_metrics_and_goals(config)
+    
     
 # Calls Google Analytics API to obtain all views associated to the authenticated account
 def get_views(config):
@@ -41,7 +44,15 @@ def get_views(config):
     # Returns list of views
     views_formatted = [ {"value" : view, "label" : view[2] + " -> " + view[1] + " -> " + view[0] + " (" + str(view[3]) + ")"} for view in views]
     return {"views" : views_formatted}
+ 
+
+# Calls Google Analytics API to obtain all metrics and goals associated with the selected View
+def get_metrics_and_goals(config):
     
+    print(config["view"])
+    asdf
+    
+    return None
             
 ### CUSTOM UI HELPER FUNCTIONS (might move these to a common plugin_utils.py module)##
 
