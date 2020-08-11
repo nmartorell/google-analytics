@@ -7,7 +7,7 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.service_account"
-                   ng-options="p.name for p in presets"> <!-- config.service_account {name, usable, $$hashKey} -->      
+                   ng-options="p.name for p in presets"> <!-- config.service_account {name, usable} -->      
            </select>
            
            <button ng-click="getViews()" class="btn btn--primary link-like">List Views</button>
@@ -19,7 +19,7 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.view"
-                   ng-options="o.label for o in views"> <!-- config.view {view, wp, account, view id} ??? -->
+                   ng-options="o.label for o in views"> <!-- config.view {value: [view, wp, account, view id], label: "..."} ??? -->
            </select>
            
            <button ng-click="getViewProperties()" class="btn btn--primary link-like" ng-disabled="disableListPropertiesButton">List Properties</button>
