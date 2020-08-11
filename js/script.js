@@ -3,30 +3,7 @@ var app = angular.module('googleAnalytics.dataset', []);
 
 app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {
 
-    /*
-    $scope.getColumns = function(){
-       
-        $scope.callPythonDo({method:"get_columns"}).then(function(data){
-            console.log(data);
-            var columns=data['columns'];
-            
-            $scope.showColumnList = true;
-            $scope.colList = columns;
-            $scope.colsReady = true;
-            $scope.showTableList=false;
-        })
-    };
-    
-    $scope.getTables = function(){
-        $scope.callPythonDo({method: "get_tables"}).then(function(data){
-        $scope.tableOptions = data['tables']
-        }); 
-        
-        $scope.showTableList=true;
-        $scope.showDbList=false;
 
-    };
-    */
     
     $scope.getViews = function(){
         $scope.callPythonDo({method: "get_views"}).then(function(data){
@@ -93,13 +70,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         $scope.segmentsReady=true;
         $scope.dummySegmentsReady=false;
-
-        /* TODO: remove
-        $scope.colsReady = false;
-        $scope.showTableList = false; 
-        $scope.showDbList=true;
-        $scope.config.url = window.location.href;
-        */
     };
         
     init();
