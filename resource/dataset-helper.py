@@ -96,7 +96,26 @@ def get_dimensions(config):
     return dimensions
 
 def get_segments(config):
-    return [{"label": 123, "value":1234}]
+    
+    # Retrieve name of service account select in UI
+    service_account_name = config["service_account"]["name"]
+    
+    # Retrieve service account API key
+    service_account_credentials = get_service_account_credentials_from_name(service_account_name)
+    
+    # Retrieve an authenticated Google Analytics API service
+    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials)
+    
+    # Retrieve all available Segments from the Management API
+    response = service.management().segments().list().execute()
+    
+    # Parse response
+    segments = ga_json.parse_segments(response)
+        
+    # Construct choices dict
+    segments = [ {"value" : str(segment), "label" : segment[0]} for segment in segments ]
+    
+    return segments
     
     
 ### CUSTOM UI HELPER FUNCTIONS (might move these to a common plugin_utils.py module)##
