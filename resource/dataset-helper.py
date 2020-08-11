@@ -78,10 +78,10 @@ def get_metrics_and_goals(config):
     
 def get_dimensions(config):
     
-    return {"dimensions" : None}
+    return {"dimensions" : [{"label": 123, "value":1234}]}
 
 def get_segments(config):
-    return {"segments": None}
+    return {"segments": [{"label": 123, "value":1234}]}
     
     
 ### CUSTOM UI HELPER FUNCTIONS (might move these to a common plugin_utils.py module)##
