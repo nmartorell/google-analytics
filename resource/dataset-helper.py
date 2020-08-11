@@ -49,8 +49,23 @@ def get_views(config):
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
 def get_metrics_and_goals(config):
     
-    print(config["view"])
-    asdf
+    # Retrieve name of service account select in UI
+    service_account_name = config["service_account"]["name"]
+    
+    # Retrieve service account API key
+    service_account_credentials = get_service_account_credentials_from_name(service_account_name)
+    
+    # Retrieve an authenticated Google Analytics API service
+    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials)
+    
+    # Retrieve default Metrics and Dimensions from Metadata API
+    response = service.metadata().columns().list(reportType='ga').execute()
+    
+    # Parse response
+    metrics, dimensions = ga_json.parse_columnsMetadata(response)
+        
+    # Construct choices dict
+    choices = [ {"value" : metric, "label" : metric[0]} for metric in metrics ]
     
     return None
             
