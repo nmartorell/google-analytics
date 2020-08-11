@@ -37,9 +37,17 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     $scope.getViewProperties = function(){
+        /* Start by refreshing all property fields */        
         $scope.metricsReady=false;
         $scope.dummyMetricsReady=true; 
         
+        $scope.dimensionsReady=false;
+        $scope.dummyDimensionsReady=true;
+        
+        $scope.segmentsReady=false;
+        $scope.dummySegmentsReady=true;
+        
+        /* Compute new property values */
         $scope.callPythonDo({method: "get_metrics_and_goals"}).then(function(data){
         $scope.metricsList = data['metrics_and_goals'];
         
@@ -47,8 +55,15 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.dummyMetricsReady=false; 
         }); 
         
+        /* Compute new property values */
+        $scope.callPythonDo({method: "get_dimensions"}).then(function(data){
+        $scope.metricsList = data['dimensions'];
         
+        $scope.metricsReady=true;
+        $scope.dummyMetricsReady=false; 
+        }); 
         
+
         /* TODO: add python calls for segments and dimensions */
     };
     
@@ -72,6 +87,12 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
 
         $scope.metricsReady=false;
         $scope.dummyMetricsReady=true; 
+        
+        $scope.dimensionsReady=false;
+        $scope.dummyDimensionsReady=true;
+        
+        $scope.segmentsReady=false;
+        $scope.dummySegmentsReady=true;
         
         /* TODO: remove
         $scope.colsReady = false;
