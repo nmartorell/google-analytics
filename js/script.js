@@ -41,6 +41,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.metricsList = data['metrics_and_goals']
         }); 
         
+        $scope.colsReady=true;
+        
         /* TODO: add python calls for segments and dimensions */
     };
     
