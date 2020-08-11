@@ -36,6 +36,14 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.disableListPropertiesButton=false;
     };
     
+    $scope.getProperties = function(){
+        $scope.callPythonDo({method: "get_metrics_and_goals"}).then(function(data){
+        $scope.metricsList = data['metrics_and_goals']
+        }); 
+        
+        /* TODO: add python calls for segments and dimensions */
+    };
+    
     var init = function(){
         
         /* Populate the Google Service Account dropdown */
