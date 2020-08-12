@@ -43,7 +43,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     /* Function to extract the Views associated to the selected Web Property */
-    $scope.listWebProperties = function(){
+    $scope.listViews = function(){
         $scope.views = $scope.config.web_property.views;
         
         /* TODO: deal with elements that need to be removed !!! */
