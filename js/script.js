@@ -35,8 +35,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.metrics_and_goals = null;
             $scope.config.dimensions = null;
             $scope.config.segments = null;
-        )
-        enableDummyViewProperties()
+        );
+        enableDummyViewProperties();
     };
     
 
