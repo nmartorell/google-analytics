@@ -40,8 +40,10 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     $scope.getViewProperties = function(){
-        /* Enable dummy multiselect fields   
-        enableDummyViewProperties();    */     
+        /* Enable dummy multiselect fields */  
+        $scope.metricsReady=false;
+        $scope.dimensionsReady=false;
+        $scope.segmentsReady=false;    
         
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
