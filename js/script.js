@@ -25,8 +25,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.segmentsReady=false;
         $scope.dummySegmentsReady=true;
     };
-    
-    
+
+    /* Function to fetch Views */
     $scope.getViews = function(){
         /* Clear Views and View Properties */
         $scope.metricsList = [];
@@ -42,8 +42,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         }); 
     };
     
+    /* Function to fetch View Properties */
     $scope.getViewProperties = function(){
-        console.log(data)        
+        console.log($scope.config.view)        
         
         /* Enable dummy multiselect fields */  
         enableDummyViewProperties();  
@@ -60,6 +61,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         }); 
     };
     
+    /* Initialization */
     var init = function(){
         
         /* Populate the Google Service Account dropdown */
