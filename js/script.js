@@ -27,7 +27,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
 
     /* Function to Account Summaries dict */
-    $scope.getAccountSummaries() = function(){
+    $scope.getAccountSummaries = function(){
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
             $scope.account_summaries = data['account_summaries'];  
         });
@@ -36,7 +36,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     /* Function to extract the Web Properties for the chosen account */
-    $scope.listWebProperties() = function(){
+    $scope.listWebProperties = function(){
         $scope.web_properties = $scope.config.account.web_properties;
     };
     
