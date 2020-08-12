@@ -32,7 +32,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         enableDummyViewProperties();
         enableViewProperties();
         
-        /* Get Views associated to Service Account (also removes current View selection in UI) */
+        /* Get Views associated to Service Account */
         $scope.callPythonDo({method: "get_views"}).then(function(data){
         $scope.views = data['views']
         }); 
