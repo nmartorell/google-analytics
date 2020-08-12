@@ -61,7 +61,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         });
         
         /* TODO: deal with View Properties to be removed !!! */
-        clearViewProperties();
     };
 
     
