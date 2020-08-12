@@ -35,9 +35,18 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* TODO: deal with elements that need to be removed !!! */
     };
     
-    /* Function to extract the Web Properties for the chosen account */
+    /* Function to extract the Web Properties associated to the selected Account */
     $scope.listWebProperties = function(){
         $scope.web_properties = $scope.config.account.web_properties;
+        
+        /* TODO: deal with elements that need to be removed !!! */
+    };
+    
+    /* Function to extract the Views associated to the selected Web Property */
+    $scope.listWebProperties = function(){
+        $scope.views = $scope.config.web_property.views;
+        
+        /* TODO: deal with elements that need to be removed !!! */
     };
     
     /* Function to fetch Views */
