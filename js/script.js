@@ -26,9 +26,15 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.dummySegmentsReady=true;
     };
 
+    
     /* Function to Account Summaries dict */
     $scope.getAccountSummaries = function(){
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
+            
+            /* Prevent from running when $scope.config.service_account is null */
+            if ($scope.config.service_account == null) {
+                return;
+            };
             
             /* Update Accounts dropdown */
             $scope.account_summaries = data['account_summaries'];
@@ -36,14 +42,22 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             /* Clear Web Property and Views dropdowns */
             $scope.web_properties = null;
             $scope.views = null;
+            
         });
         
         console.log( $scope.config.account.name);
         /* TODO: deal with View Properties to be removed !!! */
     };
+
     
     /* Function to extract the Web Properties associated to the selected Account */
     $scope.listWebProperties = function(){
+        
+        /* Prevent from running when $scope.config.account is null */
+        if ($scope.config.account == null) {
+            return;
+        };
+        
         $scope.web_properties = $scope.config.account.web_properties;
         
         /* Clear Views dropdown */
