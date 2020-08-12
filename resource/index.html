@@ -29,7 +29,8 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.web_property"
-                   ng-options="web_property.name for web_property in web_properties"> 
+                   ng-options="web_property.name for web_property in web_properties"
+                   ng-change="listViews()"> 
            </select>
        </div>    
    </div> 
