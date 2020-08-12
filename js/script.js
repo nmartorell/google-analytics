@@ -61,7 +61,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.metricsList = data['metrics_and_goals'];
             $scope.dimensionsList = data['dimensions'];
             $scope.segmentsList = data['segments'];
-            
+            $scope.$apply();
             /* Refresh view properties fields */
             enableViewProperties();             
         }); 
