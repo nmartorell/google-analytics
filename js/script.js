@@ -53,7 +53,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.segmentsList = data['segments'];
             
             /* Disable dummy multiselect fields */
-            enableViewProperties();            
+            $scope.metricsReady=true;
+            $scope.dimensionsReady=true;
+            $scope.segmentsReady=true;              
         }); 
     };
     
