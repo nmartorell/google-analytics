@@ -46,6 +46,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Function to Account Summaries dict */
     $scope.getAccountSummaries = function(){
         
+        clearViewProperties()
+        
         /* Prevent from running when $scope.config.service_account is null */
         if ($scope.config.service_account == null) {
             return;
