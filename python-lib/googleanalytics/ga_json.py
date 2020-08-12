@@ -53,6 +53,9 @@ def parse_accountSummariesList(response):
             account["web_properties"].append(web_property)
         account_summaries.append(account)
 
+    print(account_summaries)
+    asdf
+        
     return account_summaries
 
 def parse_accountSummaries(response):
