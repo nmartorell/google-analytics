@@ -26,21 +26,20 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.dummySegmentsReady=true;
     };
 
-    var removeStuff = function(){
-            $scope.metricsList = null;
-            $scope.dimensionsList = null;
-            $scope.segmentsList = null;
+    var clearViewPropertyVars = function(){
+        $scope.metricsList = null;
+        $scope.dimensionsList = null;
+        $scope.segmentsList = null;
             
-            $scope.config.metrics_and_goals = null;
-            $scope.config.dimensions = null;
-            $scope.config.segments = null;
-        
-        enableDummyViewProperties();
+        $scope.config.metrics_and_goals = null;
+        $scope.config.dimensions = null;
+        $scope.config.segments = null;
     };
     
     var clearViewProperties = function(){
         enableDummyViewProperties();
-        removeStuff();
+        clearViewPropertyVars();
+        enableDummyViewProperties()
     };
     
 
