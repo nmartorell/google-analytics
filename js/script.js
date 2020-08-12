@@ -51,11 +51,12 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
 
-        /* Enable dummy multiselect fields */  
-        enableDummyViewProperties();  
+         
         
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
+            /* Enable dummy multiselect fields */  
+            enableDummyViewProperties(); 
             
             $scope.metricsList = data['metrics_and_goals'];
             $scope.dimensionsList = data['dimensions'];
