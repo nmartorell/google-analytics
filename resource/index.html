@@ -42,23 +42,7 @@
                    ng-change="getViewProperties()"> <!-- config.view {value: [view, wp, account, view id], label: "..."} -->
            </select>
        </div>    
-   </div> 
-
-    
-   <div class="control-group">
-       <label class="control-label">Start Date</label>
-       <input type="date"
-              ng-model="config.start_date">
-       </input>
-    </div> 
-    
-   <div class="control-group">
-       <label class="control-label">End Date</label>
-       <input type="date"
-              ng-model="config.end_date">
-       </input>
-   </div> 
-    
+   </div>     
     
    <div class="control-group">
        <label class="control-label">Metrics and Goals</label>
@@ -105,6 +89,20 @@
         </div>
     </div>
 
+    <div class="control-group">
+       <label class="control-label">Start Date</label>
+       <input type="date"
+              ng-model="config.start_date">
+       </input>
+    </div> 
+    
+   <div class="control-group">
+       <label class="control-label">End Date</label>
+       <input type="date"
+              ng-model="config.end_date">
+       </input>
+   </div> 
+    
 </form>
 </div>
 
