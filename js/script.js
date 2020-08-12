@@ -35,6 +35,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* TODO: deal with elements that need to be removed !!! */
     };
     
+    /* Function to extract the Web Properties for the chosen account */
+    $scope.listWebProperties() = function(){
+        $scope.web_properties = $scope.config.account.web_properties
+    };
+    
     /* Function to fetch Views */
     $scope.getViews = function(){
         /* Enable dummy multiselect fields */  
