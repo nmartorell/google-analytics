@@ -47,6 +47,7 @@ def get_account_summaries(config):
     
     return {"account_summaries" : account_summaries}
 
+
 # Calls Google Analytics API to obtain all views associated to the authenticated account
 def get_views(config):
     
