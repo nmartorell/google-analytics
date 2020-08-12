@@ -70,15 +70,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.presets = data.presets.filter(p => p.usable);
         });
         
-        /* UI features to be disabled at start */
-        $scope.metricsReady=true;
-        $scope.dummyMetricsReady=false; 
-
-        $scope.dimensionsReady=true;
-        $scope.dummyDimensionsReady=false;
-        
-        $scope.segmentsReady=true;
-        $scope.dummySegmentsReady=false;
+        /* UI features enable/disable at start */
+        enableViewProperties();
     };
         
     init();
