@@ -1,5 +1,60 @@
 ## FUNCTIONS FOR MANAGEMENT API ##
 
+def parse_accountSummariesList(response):
+    
+    """
+    Parses the response of the Account Summaries "list" API call:
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/accountSummaries/list
+    
+    Returns:
+    A list of account summary dicts. 
+    
+    account_summary --> {"name":acct_name, "id":acct_id, "web_properties":[...]}
+    web_property    --> {"name":wp_name, "id":wp_id, "views":[...]}
+    view            --> {"name":view_name, "id":view_id}
+    """
+    
+    # Initialize return variable
+    account_summaries = list()
+    
+    # Parse json
+    for account_response in response["items"]:
+        
+        # Initialize dict for current account
+        account = dict()
+        
+        # Add name and id of account
+        account["name"] = account_response["name"]
+        account["id"] = account_response["id"]
+        
+        # Generate web_properties list for account
+        account["web_properties"] = list()
+        for web_property_response in account_response["webProperties"]:
+            
+            # Initialize dict for current web property
+            web_property = dict()
+            
+            # Add name and id of web property
+            web_property["name"] = web_property_response["name"]
+            web_property["id"] = web_property_response["id"]
+
+            # Generate views list for web property
+            web_property["views"] = list()
+            for view_response in web_property_response["profiles"]:
+                
+                # Initialize dict for current view
+                view = dict()
+                
+                # Add name and id of view
+                view["name"] = view_response["name"]
+                view["id"] = view_response["id"]
+                
+                web_property["views"].append(view)
+            account["web_properties"].append(web_property)
+        account_summaries.append(account)
+
+    return account_summaries
+
 def parse_accountSummaries(response):
     
     """
