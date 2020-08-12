@@ -44,6 +44,24 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         }); 
     };
     
+    /* Function to fetch Views */
+    $scope.getViews = function(){
+        /* Enable dummy multiselect fields */  
+        enableDummyViewProperties();
+        
+        /* Get Views associated to Service Account */
+        $scope.callPythonDo({method: "get_views"}).then(function(data){
+            $scope.views = data['views'];  
+            
+            /* Refresh view properties fields */
+            $scope.metricsList = null;
+            $scope.dimensionsList = null;
+            $scope.segmentsList = null;
+            
+            enableViewProperties();
+        }); 
+    };
+    
     /* Function to fetch View Properties */
     $scope.getViewProperties = function(){
         /* Prevent from running when $scope.config.view is null */
