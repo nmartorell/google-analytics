@@ -14,10 +14,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.segmentsReady=false;
         $scope.dummySegmentsReady=true;
         
-        $scope.metricsList = [];
-        $scope.dimensionsList = [];
-        $scope.segmentsList = [];
-        
         $scope.metricsReady=true;
         $scope.dummyMetricsReady=false; 
 
@@ -31,6 +27,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     $scope.getViews = function(){
         /* Clear Views and View Properties */
+        clearViewProperties();
         
         /* Get Views associated to Service Account (also removes current View selection in UI) */
         $scope.callPythonDo({method: "get_views"}).then(function(data){
