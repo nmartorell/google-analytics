@@ -17,7 +17,8 @@ def do(payload, config, plugin_config, inputs):
         return {"project_key" : dataiku.default_project_key()}
     
     if payload["method"] == "get_account_summaries":
-        return {"account_summaries" : [{"name" : "abc"}, {"name" : "def"}]}
+        return get_account_summaries(config)
+        #return {"account_summaries" : [{"name" : "abc"}, {"name" : "def"}]}
     
     if payload["method"] == "get_views":
         return get_views(config)
@@ -28,7 +29,24 @@ def do(payload, config, plugin_config, inputs):
         segments = get_segments(config)
         return {"metrics_and_goals" : metrics_and_goals, "dimensions" : dimensions, "segments" : segments}
     
+def get_account_summaries(config):
+    # Retrieve name of service account select in UI
+    service_account_name = config["service_account"]["name"]
     
+    # Retrieve service account API key
+    service_account_credentials = get_service_account_credentials_from_name(service_account_name)
+    
+    # Retrieve an authenticated Google Analytics API service
+    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials) 
+    
+    # Retrieve AccountSummaries from Management API
+    response = service.management().accountSummaries().list().execute()
+    
+    # Parse response
+    account_summaries = ga_json.parse_accountSummariesList(response)
+    
+    return {"account_summaries" : account_summaries}
+
 # Calls Google Analytics API to obtain all views associated to the authenticated account
 def get_views(config):
     
