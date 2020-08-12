@@ -17,7 +17,7 @@ def parse_accountSummariesList(response):
     # Initialize return variable
     account_summaries = list()
     
-    # Parse json
+    # Parse json into desired format
     for account_response in response["items"]:
         
         # Initialize dict for current account
