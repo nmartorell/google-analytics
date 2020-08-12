@@ -31,15 +31,15 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* Clear Views and View Properties */
         enableDummyViewProperties();
         
-        $scope.metricsList = [];
-        $scope.dimensionsList = [];
-        $scope.segmentsList = [];
-        
-        enableViewProperties();
-        
         /* Get Views associated to Service Account */
         $scope.callPythonDo({method: "get_views"}).then(function(data){
-        $scope.views = data['views']
+            $scope.views = data['views']
+            
+            $scope.metricsList = [];
+            $scope.dimensionsList = [];
+            $scope.segmentsList = [];
+        
+            enableViewProperties();
         }); 
     };
     
