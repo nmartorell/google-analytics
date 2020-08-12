@@ -31,9 +31,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* Clear Views and View Properties */
         enableDummyViewProperties();
         
-        $scope.metricsList = [];
-        $scope.dimensionsList = [];
-        $scope.segmentsList = [];
+        $scope.metricsList = null;
+        $scope.dimensionsList = null;
+        $scope.segmentsList = null;
         
         enableViewProperties();
         
