@@ -31,9 +31,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
             $scope.account_summaries = data['account_summaries'];
             
-            /* Clear Web Property and Views dropdowns */
+            /* Clear Web Property and Views dropdowns 
             $scope.web_properties = null;
-            $scope.views = null;
+            $scope.views = null; */
         });
         
         /* TODO: deal with elements that need to be removed !!! */
