@@ -18,7 +18,8 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.account"
-                   ng-options="account.name for account in account_summaries"> 
+                   ng-options="account.name for account in account_summaries"
+                   ng-change="listWebProperties()"> 
            </select>
        </div>    
    </div>
