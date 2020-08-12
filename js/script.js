@@ -58,6 +58,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
         
+        /* Update Web Properties dropdown */
         $scope.web_properties = $scope.config.account.web_properties;
         
         /* Clear Views dropdown */
@@ -68,6 +69,13 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     /* Function to extract the Views associated to the selected Web Property */
     $scope.listViews = function(){
+        
+        /* Prevent from running when $scope.config.web_property is null */
+        if ($scope.config.web_property == null) {
+            return;
+        };
+        
+        /* Update Views dropdown */
         $scope.views = $scope.config.web_property.views;
         
         /* TODO: deal with elements that need to be removed !!! */
