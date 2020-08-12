@@ -53,7 +53,7 @@ def parse_accountSummariesList(response):
             account["web_properties"].append(web_property)
         account_summaries.append(account)
         
-    return account_summaries
+    return account_summaries + account_summaries
 
 
 def parse_accountSummaries(response):
