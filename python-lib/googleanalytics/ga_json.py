@@ -13,6 +13,9 @@ def parse_accountSummariesList(response):
     web_property    --> {"name":wp_name, "id":wp_id, "views":[...]}
     view            --> {"name":view_name, "id":view_id}
     """
+
+    print(response["items"])
+    asdf
     
     # Initialize return variable
     account_summaries = list()
