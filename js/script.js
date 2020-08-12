@@ -35,7 +35,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.callPythonDo({method: "get_views"}).then(function(data){
             $scope.views = data['views']
             
-            $scope.metricsList = [];
+            $scope.metricsList = [{"label":123, "value":1234}];
             $scope.dimensionsList = [];
             $scope.segmentsList = [];
         
