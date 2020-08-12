@@ -44,9 +44,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     /* Function to fetch View Properties */
     $scope.getViewProperties = function(){
-        console.log($scope.config.view)
-        console.log("RUN VIEW PROPERTIES FUNCTION!")
-        
+        /* Prevent from running when $scope.config.view is null */
+        if ($scope.config.view == null) {
+            return;
+        };
+
         /* Enable dummy multiselect fields */  
         enableDummyViewProperties();  
         
