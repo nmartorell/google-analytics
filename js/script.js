@@ -26,7 +26,18 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.dummySegmentsReady=true;
     };
 
-
+    var clearViewProperties = function(){
+        enableDummyViewProperties().then(){
+            $scope.metricsList = null;
+            $scope.dimensionsList = null;
+            $scope.segmentsList = null;
+            
+            $scope.config.metrics_and_goals = null;
+            $scope.config.dimensions = null;
+            $scope.config.segments = null;
+        };
+        enableDummyViewProperties();
+    };
     
 
     /* Function to Account Summaries dict */
@@ -123,7 +134,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             let projectKey = data.project_key;
         });
         
-        DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function (data) {
+        DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
             $scope.presets = data.presets.filter(p => p.usable);
         });
         
