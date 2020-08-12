@@ -26,7 +26,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.dummySegmentsReady=true;
     };
 
-    /* Function to fetch Views */
+    /* Function to Account Summaries dict */
     $scope.getAccountSummaries = function(){
          
     };
