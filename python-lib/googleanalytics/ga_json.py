@@ -13,9 +13,6 @@ def parse_accountSummariesList(response):
     web_property    --> {"name":wp_name, "id":wp_id, "views":[...]}
     view            --> {"name":view_name, "id":view_id}
     """
-
-    print(response["items"])
-    asdf
     
     # Initialize return variable
     account_summaries = list()
@@ -55,11 +52,9 @@ def parse_accountSummariesList(response):
                 web_property["views"].append(view)
             account["web_properties"].append(web_property)
         account_summaries.append(account)
-
-    print(account_summaries)
-    asdf
         
     return account_summaries
+
 
 def parse_accountSummaries(response):
     
