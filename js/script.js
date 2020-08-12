@@ -26,8 +26,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.dummySegmentsReady=true;
     };
 
-    var clearViewProperties = function(){
-        enableDummyViewProperties().then(){
+    var removeStuff = function(){
             $scope.metricsList = null;
             $scope.dimensionsList = null;
             $scope.segmentsList = null;
@@ -35,7 +34,10 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.metrics_and_goals = null;
             $scope.config.dimensions = null;
             $scope.config.segments = null;
-        };
+    };
+    
+    var clearViewProperties = function(){
+        enableDummyViewProperties().then(removeStuff()){};
         enableDummyViewProperties();
     };
     
