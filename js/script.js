@@ -29,11 +29,12 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Function to fetch Views */
     $scope.getViews = function(){
         /* Clear Views and View Properties */
+        enableDummyViewProperties();
+        
         $scope.metricsList = [];
         $scope.dimensionsList = [];
         $scope.segmentsList = [];
         
-        enableDummyViewProperties();
         enableViewProperties();
         
         /* Get Views associated to Service Account */
