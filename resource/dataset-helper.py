@@ -16,6 +16,9 @@ def do(payload, config, plugin_config, inputs):
     if payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
     
+    if payload["method"] == "get_account_summaries":
+        return {"account_summaries" : {"account1" : 123, "account2" : 1234}}
+    
     if payload["method"] == "get_views":
         return get_views(config)
     
