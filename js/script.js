@@ -81,23 +81,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* TODO: deal with elements that need to be removed !!! */
     };
     
-    /* Function to fetch Views (TODO: DELETE!!!) */
-    $scope.getViews = function(){
-        /* Enable dummy multiselect fields */  
-        enableDummyViewProperties();
-        
-        /* Get Views associated to Service Account */
-        $scope.callPythonDo({method: "get_views"}).then(function(data){
-            $scope.views = data['views'];  
-            
-            /* Refresh view properties fields */
-            $scope.metricsList = null;
-            $scope.dimensionsList = null;
-            $scope.segmentsList = null;
-            
-            enableViewProperties();
-        }); 
-    };
     
     /* Function to fetch View Properties */
     $scope.getViewProperties = function(){
@@ -146,5 +129,26 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
         
     init();
+    
+    
+    
+    
+    /* Function to fetch Views (TODO: DELETE!!!) */
+    $scope.getViews = function(){
+        /* Enable dummy multiselect fields */  
+        enableDummyViewProperties();
+        
+        /* Get Views associated to Service Account */
+        $scope.callPythonDo({method: "get_views"}).then(function(data){
+            $scope.views = data['views'];  
+            
+            /* Refresh view properties fields */
+            $scope.metricsList = null;
+            $scope.dimensionsList = null;
+            $scope.segmentsList = null;
+            
+            enableViewProperties();
+        }); 
+    };
     
 });
