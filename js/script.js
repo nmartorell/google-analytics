@@ -46,6 +46,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     $scope.listWebProperties = function(){
         $scope.web_properties = $scope.config.account.web_properties;
         
+        /* Clear Views dropdown */
+        $scope.views = null;
+        
         /* TODO: deal with View Properties to be removed !!! */
     };
     
