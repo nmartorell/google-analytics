@@ -4,16 +4,7 @@ var app = angular.module('googleAnalytics.dataset', []);
 app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {
     
     /* Helper function to clear View Properties */
-    var clearViewProperties = function(){
-        $scope.metricsReady=false;
-        $scope.dummyMetricsReady=true; 
-        
-        $scope.dimensionsReady=false;
-        $scope.dummyDimensionsReady=true;
-        
-        $scope.segmentsReady=false;
-        $scope.dummySegmentsReady=true;
-        
+    var enableViewProperties = function(){
         $scope.metricsReady=true;
         $scope.dummyMetricsReady=false; 
 
@@ -22,6 +13,17 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         $scope.segmentsReady=true;
         $scope.dummySegmentsReady=false;
+    };
+    
+    var enableDummyViewProperties = function(){
+        $scope.metricsReady=false;
+        $scope.dummyMetricsReady=true; 
+        
+        $scope.dimensionsReady=false;
+        $scope.dummyDimensionsReady=true;
+        
+        $scope.segmentsReady=false;
+        $scope.dummySegmentsReady=true;
     };
     
     
