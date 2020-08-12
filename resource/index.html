@@ -39,7 +39,7 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.view"
-                   ng-options="o.label for o in views"
+                   ng-options="view.name for view in views"
                    ng-change="getViewProperties()"> <!-- config.view {value: [view, wp, account, view id], label: "..."} -->
            </select>
        </div>    
