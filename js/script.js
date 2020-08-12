@@ -28,7 +28,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
 
     /* Function to Account Summaries dict */
     $scope.getAccountSummaries = function(){
-         
+        $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
+            $scope.account_summaries = data['account_summaries'];  
+        });
     };
     
     /* Function to fetch Views */
