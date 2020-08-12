@@ -29,21 +29,25 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Function to Account Summaries dict */
     $scope.getAccountSummaries = function(){
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
+            
+            /* Update Accounts dropdown */
             $scope.account_summaries = data['account_summaries'];
             
-            /* Clear Web Property and Views dropdowns 
+            /* Clear Web Property and Views dropdowns */
             $scope.web_properties = null;
-            $scope.views = null; */
+            $scope.views = null;
+            
+            console.log($scope.config.account.name);
         });
         
-        /* TODO: deal with elements that need to be removed !!! */
+        /* TODO: deal with View Properties to be removed !!! */
     };
     
     /* Function to extract the Web Properties associated to the selected Account */
     $scope.listWebProperties = function(){
         $scope.web_properties = $scope.config.account.web_properties;
         
-        /* TODO: deal with elements that need to be removed !!! */
+        /* TODO: deal with View Properties to be removed !!! */
     };
     
     /* Function to extract the Views associated to the selected Web Property */
@@ -53,7 +57,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* TODO: deal with elements that need to be removed !!! */
     };
     
-    /* Function to fetch Views */
+    /* Function to fetch Views (TODO: DELETE!!!) */
     $scope.getViews = function(){
         /* Enable dummy multiselect fields */  
         enableDummyViewProperties();
