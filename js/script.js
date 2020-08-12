@@ -26,15 +26,30 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.dummySegmentsReady=true;
     };
 
+    var clearViewProperties = function(){
+        enableDummyViewProperties().then(
+            $scope.metricsList = null;
+            $scope.dimensionsList = null;
+            $scope.segmentsList = null;
+            
+            $scope.config.metrics_and_goals = null;
+            $scope.config.dimensions = null;
+            $scope.config.segments = null;
+        )
+        enableDummyViewProperties()
+    };
     
+
     /* Function to Account Summaries dict */
     $scope.getAccountSummaries = function(){
+        
+        /* Prevent from running when $scope.config.service_account is null */
+        if ($scope.config.service_account == null) {
+            return;
+        };
+        
+        /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
-            
-            /* Prevent from running when $scope.config.service_account is null */
-            if ($scope.config.service_account == null) {
-                return;
-            };
             
             /* Update Accounts dropdown */
             $scope.account_summaries = data['account_summaries'];
@@ -46,6 +61,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         });
         
         /* TODO: deal with View Properties to be removed !!! */
+        clearViewProperties();
     };
 
     
