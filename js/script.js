@@ -3,6 +3,29 @@ var app = angular.module('googleAnalytics.dataset', []);
 
 app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {
     
+    /* Helper functions to clear View Properties */
+    var enableViewProperties = function(){
+        $scope.metricsReady=true;
+        $scope.dummyMetricsReady=false; 
+
+        $scope.dimensionsReady=true;
+        $scope.dummyDimensionsReady=false;
+        
+        $scope.segmentsReady=true;
+        $scope.dummySegmentsReady=false;
+    };
+    
+    var enableDummyViewProperties = function(){
+        $scope.metricsReady=false;
+        $scope.dummyMetricsReady=true; 
+        
+        $scope.dimensionsReady=false;
+        $scope.dummyDimensionsReady=true;
+        
+        $scope.segmentsReady=false;
+        $scope.dummySegmentsReady=true;
+    };
+
     /* Function to fetch Views */
     $scope.getViews = function(){
         /* Enable dummy multiselect fields */  
@@ -68,28 +91,5 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
         
     init();
-    
-    /* Helper functions to clear View Properties */
-    var enableViewProperties = function(){
-        $scope.metricsReady=true;
-        $scope.dummyMetricsReady=false; 
-
-        $scope.dimensionsReady=true;
-        $scope.dummyDimensionsReady=false;
-        
-        $scope.segmentsReady=true;
-        $scope.dummySegmentsReady=false;
-    };
-    
-    var enableDummyViewProperties = function(){
-        $scope.metricsReady=false;
-        $scope.dummyMetricsReady=true; 
-        
-        $scope.dimensionsReady=false;
-        $scope.dummyDimensionsReady=true;
-        
-        $scope.segmentsReady=false;
-        $scope.dummySegmentsReady=true;
-    };
     
 });
