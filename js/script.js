@@ -29,7 +29,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     $scope.getViews = function(){
         /* Clear Views and View Properties */
-        clearViewProperties();
+        enableDummyViewProperties();
+        enableViewProperties();
         
         /* Get Views associated to Service Account (also removes current View selection in UI) */
         $scope.callPythonDo({method: "get_views"}).then(function(data){
