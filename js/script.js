@@ -31,6 +31,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
             $scope.account_summaries = data['account_summaries'];  
         });
+        
+        /* TODO: deal with elements that need to be removed !!! */
     };
     
     /* Function to fetch Views */
