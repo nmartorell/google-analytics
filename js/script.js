@@ -36,7 +36,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.views = data['views'];  
             
             /* Refresh view properties fields */
-            $scope.metricsList = null;
+            $scope.metricsList = [];
             $scope.dimensionsList = null;
             $scope.segmentsList = null;
         
