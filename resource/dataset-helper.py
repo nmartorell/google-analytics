@@ -17,9 +17,15 @@ def do(payload, config, plugin_config, inputs):
         return {"project_key" : dataiku.default_project_key()}
     
     if payload["method"] == "get_account_summaries":
-        return get_account_summaries(config)
+        
+        # Unpack plugin config
+        service_account_name = config["service_account"]["name"]
+        
+        return get_account_summaries(service_account_name)
     
     if payload["method"] == "get_view_properties":
+        
+        # Unpack plugin config
         
         metrics, dimensions = get_metrics_and_dimensions(config)
         segments = get_segments(config)
@@ -27,9 +33,8 @@ def do(payload, config, plugin_config, inputs):
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
     
     
-def get_account_summaries(config):
+def get_account_summaries(service_account_name):
     # Get authenticated Google Analytics API service using selected service account
-    service_account_name = config["service_account"]["name"]
     service = get_authenticated_google_analytics_service(service_account_name)
     
     # Retrieve AccountSummaries from Management API
