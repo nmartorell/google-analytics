@@ -69,7 +69,6 @@ def get_metrics_and_goals(config):
                                                          webPropertyId=web_property_id,).execute()
     
     print(response)
-    asdf
     #custom_metrics = ga_json.parse_customMetrics(response)
     
 
