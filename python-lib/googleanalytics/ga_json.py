@@ -1,6 +1,6 @@
 ## FUNCTIONS FOR MANAGEMENT API ##
 
-def parse_accountSummariesList(response):
+def parse_accountSummaries(response):
     
     """
     Parses the response of the Account Summaries "list" API call:
@@ -55,33 +55,6 @@ def parse_accountSummariesList(response):
         
     return account_summaries + account_summaries
 
-
-def parse_accountSummaries(response):
-    
-    """
-    Parses the response of the Account Summaries "list" API call:
-    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/accountSummaries/list
-    
-    Returns:
-    Three lists of tuples (name, id) for all Accounts, webProperties and Views available to the authenticated user.
-    """
-    
-    # Initialize return variables
-    accounts = list()
-    web_properties = list()
-    views = list()
-    
-    # Parse json
-    for account_summary in response["items"]:
-        accounts.append((account_summary["name"], account_summary["id"])) # (account name, account id) tuple
-        
-        for web_property in account_summary["webProperties"]:
-            web_properties.append((web_property["name"], account_summary["name"], web_property["id"])) # (web_property name, account_name, web property id) tuple
-            
-            for view in web_property["profiles"]:
-                views.append((view["name"], web_property["name"], account_summary["name"], view["id"])) # (view name, web_property name, account_name, view id) tuple
-    
-    return accounts, web_properties, views
 
 def parse_segments(response):
     
