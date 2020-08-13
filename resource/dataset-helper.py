@@ -21,7 +21,7 @@ def do(payload, config, plugin_config, inputs):
     
     if payload["method"] == "get_view_properties":
         
-        metrics, dimensions = get_metrics_and_goals(config)
+        metrics, dimensions = get_metrics_and_dimensions(config)
         #dimensions = get_dimensions(config)
         segments = get_segments(config)
         
@@ -42,7 +42,7 @@ def get_account_summaries(config):
  
 
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
-def get_metrics_and_goals(config):
+def get_metrics_and_dimensions(config):
     
     # Unpack config parameters
     account_id = config["account"]["id"]
