@@ -30,14 +30,8 @@ def do(payload, config, plugin_config, inputs):
         return {"metrics_and_goals" : metrics_and_goals, "dimensions" : dimensions, "segments" : segments}
     
 def get_account_summaries(config):
-    # Retrieve name of service account select in UI
-    service_account_name = config["service_account"]["name"]
-    
-    # Retrieve service account API key
-    service_account_credentials = get_service_account_credentials_from_name(service_account_name)
-    
-    # Retrieve an authenticated Google Analytics API service
-    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials) 
+    # Get authenticated google analytics API service using selected service account
+    service = get_authenticated_google_analytics_service(config)
     
     # Retrieve AccountSummaries from Management API
     response = service.management().accountSummaries().list().execute()
@@ -50,15 +44,8 @@ def get_account_summaries(config):
 
 # Calls Google Analytics API to obtain all views associated to the authenticated account
 def get_views(config):
-    
-    # Retrieve name of service account select in UI
-    service_account_name = config["service_account"]["name"]
-    
-    # Retrieve service account API key
-    service_account_credentials = get_service_account_credentials_from_name(service_account_name)
-    
-    # Retrieve an authenticated Google Analytics API service
-    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials) 
+    # Get authenticated google analytics API service using selected service account
+    service = get_authenticated_google_analytics_service(config) 
     
     # Retrieve AccountSummaries from Management API
     response = service.management().accountSummaries().list().execute()
@@ -73,15 +60,8 @@ def get_views(config):
 
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
 def get_metrics_and_goals(config):
-    
-    # Retrieve name of service account select in UI
-    service_account_name = config["service_account"]["name"]
-    
-    # Retrieve service account API key
-    service_account_credentials = get_service_account_credentials_from_name(service_account_name)
-    
-    # Retrieve an authenticated Google Analytics API service
-    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials)
+    # Get authenticated google analytics API service using selected service account
+    service = get_authenticated_google_analytics_service(config)
     
     # Retrieve default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
@@ -96,15 +76,8 @@ def get_metrics_and_goals(config):
             
     
 def get_dimensions(config):
-    
-    # Retrieve name of service account select in UI
-    service_account_name = config["service_account"]["name"]
-    
-    # Retrieve service account API key
-    service_account_credentials = get_service_account_credentials_from_name(service_account_name)
-    
-    # Retrieve an authenticated Google Analytics API service
-    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials)
+    # Get authenticated google analytics API service using selected service account
+    service = get_authenticated_google_analytics_service(config)
     
     # Retrieve default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
@@ -117,16 +90,10 @@ def get_dimensions(config):
 
     return dimensions
 
+
 def get_segments(config):
-    
-    # Retrieve name of service account select in UI
-    service_account_name = config["service_account"]["name"]
-    
-    # Retrieve service account API key
-    service_account_credentials = get_service_account_credentials_from_name(service_account_name)
-    
-    # Retrieve an authenticated Google Analytics API service
-    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials)
+    # Get authenticated google analytics API service using selected service account
+    service = get_authenticated_google_analytics_service(config)
     
     # Retrieve all available Segments from the Management API
     response = service.management().segments().list().execute()
