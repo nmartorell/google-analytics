@@ -71,10 +71,12 @@ def get_metrics_and_dimensions(service_account_name, account_id, web_property_id
     custom_dimensions = ga_json.parse_customDimensions(response)
     
     # Retrieve Goals from Management API
-    # TODO
+    
+    
+    goals = list()
 
-    # Construct choices dicts
-    metrics = default_metrics + custom_metrics
+    # Construct return dicts
+    metrics = default_metrics + custom_metrics + goals
     metrics = [ {"value" : metric, "label" : metric["name"]} for metric in metrics ]
 
     dimensions = default_dimensions + custom_dimensions
