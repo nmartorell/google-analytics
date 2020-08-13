@@ -142,12 +142,15 @@ def get_segments(config):
     
 ### CUSTOM UI HELPER FUNCTIONS (might move these to a common plugin_utils.py module)##
 
-def get_service_account_credentials_from_name(name):
+def get_authenticated_google_analytics_service(config):
     """
     Returns a list service account JSON API key from a preset name
     
     TODO: add some error checking when getting the service account from the JSON.
     """
+    # Retrieve name of service account selected in UI
+    service_account_name = config["service_account"]["name"]
+    
     # Retrieve plugin settings
     client = dataiku.api_client()
     plugin = client.get_plugin("google-analytics")
@@ -156,7 +159,7 @@ def get_service_account_credentials_from_name(name):
     # Retrieve service account encrypted preset
     for parameter_set in settings.settings["presets"]:
         
-        if (parameter_set["type"] == "parameter-set-google-analytics-google-service-accounts") and (parameter_set["name"] == name):
+        if (parameter_set["type"] == "parameter-set-google-analytics-google-service-accounts") and (parameter_set["name"] == service_account_name):
             service_account_credentials_encrypted = parameter_set["config"]["service_account_credentials"]
     
     # Decrypt service account key    
@@ -165,4 +168,7 @@ def get_service_account_credentials_from_name(name):
     
     service_account_credentials = ast.literal_eval(service_account_credentials_str)
     
-    return service_account_credentials
+    # Retrieve an authenticated Google Analytics API service
+    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials) 
+    
+    return service
