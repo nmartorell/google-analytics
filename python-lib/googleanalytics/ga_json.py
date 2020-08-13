@@ -69,6 +69,7 @@ def parse_segments(response):
     # Initialize return variable
     segments = list()
     
+    # Parse response
     for segment in response["items"]:
         
         identifier = segment["segmentId"]
@@ -78,6 +79,30 @@ def parse_segments(response):
         
     return segments
 
+
+def parse_customMetrics(response):
+    
+    """
+    Parses the response of the Custom Metrics "list" API call:
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customMetrics/list
+    
+    Returns:
+    A list of dicts {name, id} for all Custom Metrics available at the Web Property level requested.
+    """
+    
+    # Initialize return variable
+    custom_metrics = list()
+    
+    # Parse response
+    for custom_metric in response["items"]:
+        
+        identifier = custom_metric["id"]
+        name = custom_metric["name"]
+        
+        custom_metrics.append({"name":name, "id":identifier})
+    
+    return custom_metrics
+    
 
 ## FUNCTIONS FOR METADATA API ##
 
