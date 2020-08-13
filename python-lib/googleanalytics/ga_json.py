@@ -121,7 +121,9 @@ def parse_columnsMetadata(response):
             dimensions.append({"name":name, "id":identifier})
         else:
             raise ValueError("The Metadata API has returned something that's not a METRIC or a DIMENSION.") 
-            
+    
+
+    
     # Parse templated_columns (NOTE: IGNORED FOR NOW)
     for column in templated_columns:
 
