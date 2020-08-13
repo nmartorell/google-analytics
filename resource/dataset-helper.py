@@ -28,7 +28,7 @@ def do(payload, config, plugin_config, inputs):
     
     
 def get_account_summaries(config):
-    # Get authenticated google analytics API service using selected service account
+    # Get authenticated Google Analytics API service using selected service account
     service = get_authenticated_google_analytics_service(config)
     
     # Retrieve AccountSummaries from Management API
@@ -42,14 +42,33 @@ def get_account_summaries(config):
 
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
 def get_metrics_and_goals(config):
-    # Get authenticated google analytics API service using selected service account
+    
+    # (1) Unpack configuration parameters and get API Service
+    
+    # (1.1) Unpack configuration parameters
+    
+    
+    # (1.2) Get authenticated Google Analytics API service using selected service account
     service = get_authenticated_google_analytics_service(config)
     
-    # Retrieve default Metrics and Dimensions from Metadata API
+    
+    # (1) Default Metrics and Dimensions from Metadata API
+    
+    # (1.1) Retrieve default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
     
-    # Parse response
+    # (1.2) Parse response (templated columns excluded)
     metrics, dimensions = ga_json.parse_columnsMetadata(response)
+    
+    
+    # (2) Retrieve Custom Metrics from Management API
+    
+    
+    # (3) Retrieve Goals from Management API
+    
+    
+    # (4) Retrieve Custom Dimensions from Management API
+    
     
     # Construct choices dict
     metrics_and_goals = [ {"value" : metric, "label" : metric["name"]} for metric in metrics ]
@@ -58,7 +77,7 @@ def get_metrics_and_goals(config):
             
     
 def get_dimensions(config):
-    # Get authenticated google analytics API service using selected service account
+    # Get authenticated Google Analytics API service using selected service account
     service = get_authenticated_google_analytics_service(config)
     
     # Retrieve default Metrics and Dimensions from Metadata API
@@ -74,7 +93,7 @@ def get_dimensions(config):
 
 
 def get_segments(config):
-    # Get authenticated google analytics API service using selected service account
+    # Get authenticated Google Analytics API service using selected service account
     service = get_authenticated_google_analytics_service(config)
     
     # Retrieve all available Segments from the Management API
