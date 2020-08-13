@@ -21,11 +21,11 @@ def do(payload, config, plugin_config, inputs):
     
     if payload["method"] == "get_view_properties":
         
-        metrics_and_goals = get_metrics_and_goals(config)
-        dimensions = get_dimensions(config)
+        metrics, dimensions = get_metrics_and_goals(config)
+        #dimensions = get_dimensions(config)
         segments = get_segments(config)
         
-        return {"metrics_and_goals" : metrics_and_goals, "dimensions" : dimensions, "segments" : segments}
+        return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
     
     
 def get_account_summaries(config):
@@ -44,45 +44,40 @@ def get_account_summaries(config):
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
 def get_metrics_and_goals(config):
     
-    # (1) Unpack configuration parameters and get API Service
-    
-    # (1.1) Unpack configuration parameters
+    # Unpack config parameters
     account_id = config["account"]["id"]
     web_property_id = config["web_property"]["id"]
     view_id = config["view"]["id"]
     
-    # (1.2) Get authenticated Google Analytics API service using selected service account
+    # Get authenticated Google Analytics API service using selected service account
     service = get_authenticated_google_analytics_service(config)
     
-    
-    # (2) Default Metrics and Dimensions from Metadata API
-    
-    # (2.1) Retrieve default Metrics and Dimensions from Metadata API
+    # Default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
     
-    # (2.2) Parse response (note: templated columns excluded)
-    metrics, dimensions = ga_json.parse_columnsMetadata(response)
+    default_metrics, default_dimensions = ga_json.parse_columnsMetadata(response)
     
+    # Retrieve Custom Metrics from Management API
+    response = service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
     
-    # (3) Retrieve Custom Metrics from Management API
-    response = service.management().customMetrics().list(accountId=account_id, 
-                                                         webPropertyId=web_property_id,).execute()
+    custom_metrics = ga_json.parse_customMetrics(response)
     
-    print(response)
-    #custom_metrics = ga_json.parse_customMetrics(response)
+    # Retrieve Custom Dimensions from Management API
+    custom_dimensions = service.management().customDimensions().list(accountId=accountId, webPropertyId=webPropertyId,).execute()
     
+    custom_dimensions = ga_json.parse_customDimensions(response)
+    
+    # Retrieve Goals from Management API
+    # TODO
 
-    # (4) Retrieve Goals from Management API
-    
-    
-    
-    # (5) Retrieve Custom Dimensions from Management API
-    
-    
-    # Construct choices dict
-    metrics_and_goals = [ {"value" : metric, "label" : metric["name"]} for metric in metrics ]
+    # Construct choices dicts
+    metrics = default_metrics + custom_metrics
+    metrics = [ {"value" : metric, "label" : metric["name"]} for metric in metrics ]
 
-    return metrics_and_goals
+    dimensions = default_dimensions + custom_dimensions
+    dimensions = [ {"value" : dimension, "label" : dimension["name"]} for dimension in dimensions ]
+    
+    return metrics, dimensions
             
     
 def get_dimensions(config):
