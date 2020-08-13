@@ -30,7 +30,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.metricsList = null;
         $scope.dimensionsList = null;
         $scope.segmentsList = null;
-            
+        
+        /* */
         $scope.config.metrics_and_goals = null;
         $scope.config.dimensions = null;
         $scope.config.segments = null;
