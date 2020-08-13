@@ -63,14 +63,11 @@ def get_metrics_and_dimensions(service_account_name, account_id, web_property_id
     default_metrics, default_dimensions = ga_json.parse_columnsMetadata(response)
     
     # Retrieve Custom Metrics from Management API
-    
-    
     response = service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
     custom_metrics = ga_json.parse_customMetrics(response)
     
     # Retrieve Custom Dimensions from Management API
     response = service.management().customDimensions().list(accountId=account_id, webPropertyId=web_property_id,).execute()
-    
     custom_dimensions = ga_json.parse_customDimensions(response)
     
     # Retrieve Goals from Management API
