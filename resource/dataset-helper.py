@@ -52,22 +52,22 @@ def get_metrics_and_goals(config):
     service = get_authenticated_google_analytics_service(config)
     
     
-    # (1) Default Metrics and Dimensions from Metadata API
+    # (2) Default Metrics and Dimensions from Metadata API
     
-    # (1.1) Retrieve default Metrics and Dimensions from Metadata API
+    # (2.1) Retrieve default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
     
-    # (1.2) Parse response (templated columns excluded)
+    # (2.2) Parse response (note: templated columns excluded)
     metrics, dimensions = ga_json.parse_columnsMetadata(response)
     
     
-    # (2) Retrieve Custom Metrics from Management API
+    # (3) Retrieve Custom Metrics from Management API
     
     
-    # (3) Retrieve Goals from Management API
+    # (4) Retrieve Goals from Management API
     
     
-    # (4) Retrieve Custom Dimensions from Management API
+    # (5) Retrieve Custom Dimensions from Management API
     
     
     # Construct choices dict
