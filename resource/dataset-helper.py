@@ -38,22 +38,6 @@ def get_account_summaries(config):
     account_summaries = ga_json.parse_accountSummaries(response)
     
     return {"account_summaries" : account_summaries}
-
-
-# Calls Google Analytics API to obtain all views associated to the authenticated account
-def get_views(config):
-    # Get authenticated google analytics API service using selected service account
-    service = get_authenticated_google_analytics_service(config) 
-    
-    # Retrieve AccountSummaries from Management API
-    response = service.management().accountSummaries().list().execute()
-        
-    # Parse response 
-    accounts, web_properties, views = ga_json.parse_accountSummaries(response) # 'views' is a list of tuples (view name, web_property name, account_name, view id) tuple
-    
-    # Returns list of views
-    views_formatted = [ {"value" : view, "label" : view[2] + " -> " + view[1] + " -> " + view[0] + " (" + str(view[3]) + ")"} for view in views]
-    return {"views" : views_formatted}
  
 
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
