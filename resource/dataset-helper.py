@@ -67,6 +67,9 @@ def get_metrics_and_dimensions(config):
     
     custom_dimensions = ga_json.parse_customDimensions(response)
     
+    print(custom_dimensions)
+    asdfg
+    
     # Retrieve Goals from Management API
     # TODO
 
