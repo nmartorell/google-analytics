@@ -48,6 +48,8 @@ def get_metrics_and_goals(config):
     
     # (1.1) Unpack configuration parameters
     account_id = config["account"]["id"]
+    web_property_id = config["web_property"]["id"]
+    view_id = config["view"]["id"]
     
     # (1.2) Get authenticated Google Analytics API service using selected service account
     service = get_authenticated_google_analytics_service(config)
