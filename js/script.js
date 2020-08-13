@@ -104,8 +104,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     /* Function to fetch View Properties */
     $scope.getViewProperties = function(){
-        /* Prevent from running when $scope.config.view is null */
-        if ($scope.config.view == null) {
+        /* Prevent from running when $scope.config.view, 
+                                     $scope.config.web_property or 
+                                     $scope.config.service_account are null */
+        
+        if (($scope.config.view == null) || ($scope.config.web_property == null) || ($scope.config.service_account == null)) {
             return;
         };
 
