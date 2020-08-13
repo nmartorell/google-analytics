@@ -16,6 +16,7 @@ def do(payload, config, plugin_config, inputs):
     if payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
     
+    
     if payload["method"] == "get_account_summaries":
         
         # Unpack plugin config
@@ -23,14 +24,20 @@ def do(payload, config, plugin_config, inputs):
         
         return get_account_summaries(service_account_name)
     
+    
     if payload["method"] == "get_view_properties":
         
         # Unpack plugin config
+        service_account_name = config["service_account"]["name"]
+        account_id = config["account"]["id"]
+        web_property_id = config["web_property"]["id"]
+        view_id = config["view"]["id"]
         
-        metrics, dimensions = get_metrics_and_dimensions(config)
-        segments = get_segments(config)
+        metrics, dimensions = get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id)
+        segments = get_segments(service_account_name)
         
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
+    
     
     
 def get_account_summaries(service_account_name):
@@ -47,9 +54,8 @@ def get_account_summaries(service_account_name):
  
 
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
-def get_metrics_and_dimensions(config):   
+def get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id)):   
     # Get authenticated Google Analytics API service using selected service account
-    service_account_name = config["service_account"]["name"]
     service = get_authenticated_google_analytics_service(service_account_name)
     
     # Default Metrics and Dimensions from Metadata API
@@ -57,9 +63,7 @@ def get_metrics_and_dimensions(config):
     default_metrics, default_dimensions = ga_json.parse_columnsMetadata(response)
     
     # Retrieve Custom Metrics from Management API
-    account_id = config["account"]["id"]
-    web_property_id = config["web_property"]["id"]
-    view_id = config["view"]["id"]
+    
     
     response = service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
     custom_metrics = ga_json.parse_customMetrics(response)
@@ -80,28 +84,10 @@ def get_metrics_and_dimensions(config):
     dimensions = [ {"value" : dimension, "label" : dimension["name"]} for dimension in dimensions ]
     
     return metrics, dimensions
-            
-    
-def get_dimensions(config):
+
+
+def get_segments(service_account_name):
     # Get authenticated Google Analytics API service using selected service account
-    service_account_name = config["service_account"]["name"]
-    service = get_authenticated_google_analytics_service(service_account_name)
-    
-    # Retrieve default Metrics and Dimensions from Metadata API
-    response = service.metadata().columns().list(reportType='ga').execute()
-        
-    # Parse response
-    metrics, dimensions = ga_json.parse_columnsMetadata(response)
-    
-    # Construct choices dict
-    dimensions = [ {"value" : dimension, "label" : dimension["name"]} for dimension in dimensions ]
-
-    return dimensions
-
-
-def get_segments(config):
-    # Get authenticated Google Analytics API service using selected service account
-    service_account_name = config["service_account"]["name"]
     service = get_authenticated_google_analytics_service(service_account_name)
     
     # Retrieve all available Segments from the Management API
