@@ -20,6 +20,7 @@ def do(payload, config, plugin_config, inputs):
         return get_account_summaries(config)
     
     if payload["method"] == "get_view_properties":
+        
         metrics_and_goals = get_metrics_and_goals(config)
         dimensions = get_dimensions(config)
         segments = get_segments(config)
