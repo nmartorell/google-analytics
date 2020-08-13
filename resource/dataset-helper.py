@@ -65,8 +65,8 @@ def get_metrics_and_goals(config):
     
     
     # (3) Retrieve Custom Metrics from Management API
-    response = management_service.management().customMetrics().list(accountId=account_id, 
-                                                                    webPropertyId=web_property_id,).execute()
+    response = service.management().customMetrics().list(accountId=account_id, 
+                                                         webPropertyId=web_property_id,).execute()
     
     print(response)
     asdf
