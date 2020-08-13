@@ -130,7 +130,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Initialization */
     var init = function(){
         
-        /* Populate the Google Service Account dropdown */
+        /* Populate the Google Service Account dropdown (TODO: add validation for failure) */
         let pluginId = "google-analytics";
         let parameterSetId = "google-service-accounts";
         
@@ -139,6 +139,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             let projectKey = data.project_key;
         });
         
+        /* TODO: add validation for failure */
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
             $scope.presets = data.presets.filter(p => p.usable);
         });
