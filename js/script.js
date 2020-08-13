@@ -31,7 +31,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.dimensionsList = null;
         $scope.segmentsList = null;
         
-        /* */
+        /* Assigned config variables not cleared automatically */
         $scope.config.metrics_and_goals = null;
         $scope.config.dimensions = null;
         $scope.config.segments = null;
@@ -47,12 +47,13 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Function to Account Summaries dict */
     $scope.getAccountSummaries = function(){
         
-        clearViewProperties()
-        
         /* Prevent from running when $scope.config.service_account is null */
         if ($scope.config.service_account == null) {
             return;
         };
+        
+        /* Clear View Property multiselect fields */
+        clearViewProperties();
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
@@ -78,6 +79,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
         
+        /* Clear View Property multiselect fields */
+        clearViewProperties();
+        
         /* Update Web Properties dropdown */
         $scope.web_properties = $scope.config.account.web_properties;
         
@@ -94,6 +98,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         if ($scope.config.web_property == null) {
             return;
         };
+        
+        /* Clear View Property multiselect fields */
+        clearViewProperties();
         
         /* Update Views dropdown */
         $scope.views = $scope.config.web_property.views;
