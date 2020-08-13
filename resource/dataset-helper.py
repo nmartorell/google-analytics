@@ -22,7 +22,7 @@ def do(payload, config, plugin_config, inputs):
     if payload["method"] == "get_view_properties":
         
         metrics_and_goals = get_metrics_and_goals(config)
-        #dimensions = get_dimensions(config)
+        dimensions = get_dimensions(config)
         segments = get_segments(config)
         
         return {"metrics_and_goals" : metrics_and_goals, "dimensions" : dimensions, "segments" : segments}
@@ -30,7 +30,8 @@ def do(payload, config, plugin_config, inputs):
     
 def get_account_summaries(config):
     # Get authenticated Google Analytics API service using selected service account
-    service = get_authenticated_google_analytics_service(config)
+    service_account_name = config["service_account"]["name"]
+    service = get_authenticated_google_analytics_service(service_account_name)
     
     # Retrieve AccountSummaries from Management API
     response = service.management().accountSummaries().list().execute()
@@ -50,7 +51,8 @@ def get_metrics_and_dimensions(config):
     view_id = config["view"]["id"]
     
     # Get authenticated Google Analytics API service using selected service account
-    service = get_authenticated_google_analytics_service(config)
+    service_account_name = config["service_account"]["name"]
+    service = get_authenticated_google_analytics_service(service_account_name)
     
     # Default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
@@ -82,7 +84,8 @@ def get_metrics_and_dimensions(config):
     
 def get_dimensions(config):
     # Get authenticated Google Analytics API service using selected service account
-    service = get_authenticated_google_analytics_service(config)
+    service_account_name = config["service_account"]["name"]
+    service = get_authenticated_google_analytics_service(service_account_name)
     
     # Retrieve default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
@@ -98,7 +101,8 @@ def get_dimensions(config):
 
 def get_segments(config):
     # Get authenticated Google Analytics API service using selected service account
-    service = get_authenticated_google_analytics_service(config)
+    service_account_name = config["service_account"]["name"]
+    service = get_authenticated_google_analytics_service(service_account_name)
     
     # Retrieve all available Segments from the Management API
     response = service.management().segments().list().execute()
@@ -114,14 +118,12 @@ def get_segments(config):
     
 ### CUSTOM UI HELPER FUNCTIONS ##
 
-def get_authenticated_google_analytics_service(config):
+def get_authenticated_google_analytics_service(service_account_name):
     """
     Returns a list service account JSON API key from a preset name
     
     TODO: add some error checking when getting the service account from the JSON.
     """
-    # Retrieve name of service account selected in UI
-    service_account_name = config["service_account"]["name"]
     
     # Retrieve plugin settings
     client = dataiku.api_client()
