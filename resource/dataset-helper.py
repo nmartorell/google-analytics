@@ -47,7 +47,7 @@ def get_metrics_and_goals(config):
     # (1) Unpack configuration parameters and get API Service
     
     # (1.1) Unpack configuration parameters
-    
+    account_id = config["account"]["id"]
     
     # (1.2) Get authenticated Google Analytics API service using selected service account
     service = get_authenticated_google_analytics_service(config)
@@ -63,9 +63,14 @@ def get_metrics_and_goals(config):
     
     
     # (3) Retrieve Custom Metrics from Management API
+    response = management_service.management().customMetrics().list(accountId=account_id, 
+                                                                    webPropertyId=web_property_id,).execute()
     
+    custom_metrics = ga_json.parse_customMetrics(response)
     
+
     # (4) Retrieve Goals from Management API
+    
     
     
     # (5) Retrieve Custom Dimensions from Management API
