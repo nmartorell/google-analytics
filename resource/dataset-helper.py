@@ -68,7 +68,9 @@ def get_metrics_and_goals(config):
     response = management_service.management().customMetrics().list(accountId=account_id, 
                                                                     webPropertyId=web_property_id,).execute()
     
-    custom_metrics = ga_json.parse_customMetrics(response)
+    print(response)
+    asdf
+    #custom_metrics = ga_json.parse_customMetrics(response)
     
 
     # (4) Retrieve Goals from Management API
