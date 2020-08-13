@@ -126,7 +126,24 @@ def parse_customDimensions(response):
         custom_dimensions.append({"name":name, "id":identifier})
     
     return custom_dimensions
+
+
+def parse_goals(response):
     
+    """
+    Parses the response of the View Goals "list" API call:
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/goals/list
+    
+    Returns:
+    A list of dicts {name, id} for all Goals associated to the requested View.
+    """
+    
+    # Initialize return variable
+    goals = list()
+    
+    
+    return goals
+
 
 ## FUNCTIONS FOR METADATA API ##
 
