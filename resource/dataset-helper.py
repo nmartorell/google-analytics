@@ -21,8 +21,7 @@ def do(payload, config, plugin_config, inputs):
     
     if payload["method"] == "get_view_properties":
         
-        metrics_and_goals, dimensions = get_metrics_and_goals(config)
-        #dimensions = get_dimensions(config)
+        metrics, dimensions = get_metrics_and_dimensions(config)
         segments = get_segments(config)
         
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
