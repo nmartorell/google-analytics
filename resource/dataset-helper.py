@@ -38,7 +38,7 @@ def get_account_summaries(config):
     response = service.management().accountSummaries().list().execute()
     
     # Parse response
-    account_summaries = ga_json.parse_accountSummariesList(response)
+    account_summaries = ga_json.parse_accountSummaries(response)
     
     return {"account_summaries" : account_summaries}
 
