@@ -42,25 +42,21 @@ def get_account_summaries(config):
  
 
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
-def get_metrics_and_dimensions(config):
-    
-    # Unpack config parameters
-    account_id = config["account"]["id"]
-    web_property_id = config["web_property"]["id"]
-    view_id = config["view"]["id"]
-    
+def get_metrics_and_dimensions(config):   
     # Get authenticated Google Analytics API service using selected service account
     service_account_name = config["service_account"]["name"]
     service = get_authenticated_google_analytics_service(service_account_name)
     
     # Default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
-    
     default_metrics, default_dimensions = ga_json.parse_columnsMetadata(response)
     
     # Retrieve Custom Metrics from Management API
-    response = service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
+    account_id = config["account"]["id"]
+    web_property_id = config["web_property"]["id"]
+    view_id = config["view"]["id"]
     
+    response = service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
     custom_metrics = ga_json.parse_customMetrics(response)
     
     # Retrieve Custom Dimensions from Management API
