@@ -102,6 +102,30 @@ def parse_customMetrics(response):
         custom_metrics.append({"name":name, "id":identifier})
     
     return custom_metrics
+
+
+def parse_customDimensions(response):
+    
+    """
+    Parses the response of the Custom Dimensions "list" API call:
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customDimensions/list
+    
+    Returns:
+    A list of dicts {name, id} for all Custom Dimensions available at the Web Property level requested.
+    """
+    
+    # Initialize return variable
+    custom_dimensions = list()
+    
+    # Parse response
+    for custom_dimension in response["items"]:
+        
+        identifier = custom_dimension["id"]
+        name = custom_dimension["name"]
+        
+        custom_dimensions.append({"name":name, "id":identifier})
+    
+    return custom_dimensions
     
 
 ## FUNCTIONS FOR METADATA API ##
