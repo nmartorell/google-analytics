@@ -116,7 +116,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
             
-            $scope.metricsList = data['metrics_and_goals'];
+            $scope.metricsList = data['metrics'];
             $scope.dimensionsList = data['dimensions'];
             $scope.segmentsList = data['segments'];
             
