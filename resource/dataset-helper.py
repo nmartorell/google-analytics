@@ -50,7 +50,9 @@ def get_metrics_and_goals(config):
     
     # Parse response
     metrics, dimensions = ga_json.parse_columnsMetadata(response)
-        
+    
+    
+    
     # Construct choices dict
     metrics_and_goals = [ {"value" : metric, "label" : metric[0]} for metric in metrics ]
     

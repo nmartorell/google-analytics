@@ -108,20 +108,21 @@ def parse_columnsMetadata(response):
         column_type = column["attributes"]["type"]
         status = column["attributes"]["status"]
         
-        templated = column["attributes"].get("minTemplateIndex", None) # TODO
+        templated = column["attributes"].get("minTemplateIndex", None) 
 
         if status == "DEPRECATED":
             pass
         elif templated:
-            templated_columns.append(column)
+            pass # templated_columns are ignored for now
+            #templated_columns.append(column)
         elif column_type == "METRIC":
-            metrics.append((name, identifier))
+            metrics.append({"name":name, "id":identifier})
         elif column_type == "DIMENSION":
-            dimensions.append((name, identifier))
+            dimensions.append({"name":name, "id":identifier})
         else:
             raise ValueError("The Metadata API has returned something that's not a METRIC or a DIMENSION.") 
             
-    # Parse templated_columns (NOTE: the treatment of templated values will be changed in a future release of the plugin)
+    # Parse templated_columns (NOTE: IGNORED FOR NOW)
     for column in templated_columns:
 
         # Unpack column data
