@@ -63,7 +63,7 @@ def parse_segments(response):
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/segments/list
     
     Returns:
-    A list of tuples (name, id) for all Segments available to the authenticated user.
+    A list of dicts {name, id} for all Segments available to the authenticated user.
     """
     
     # Initialize return variable
@@ -74,7 +74,7 @@ def parse_segments(response):
         identifier = segment["segmentId"]
         name = segment["name"]
         
-        segments.append((name, identifier))
+        segments.append({"name":name, "id":identifier})
         
     return segments
 
@@ -92,7 +92,7 @@ def parse_columnsMetadata(response):
     TODO: change how I deal with templated colums (custom metrics, dimensions, goals, etc.)
     
     Returns:
-    Two lists of tuples (name, id) for all default Metrics and Dimensions available in Google Analytics.
+    Two lists of dicts {name, id} for all default Metrics and Dimensions available in Google Analytics.
     """
     
     # Initialize return variables 
