@@ -54,7 +54,7 @@ def get_account_summaries(service_account_name):
  
 
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
-def get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id)):   
+def get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id):   
     # Get authenticated Google Analytics API service using selected service account
     service = get_authenticated_google_analytics_service(service_account_name)
     
