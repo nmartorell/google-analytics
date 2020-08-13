@@ -53,8 +53,6 @@ def get_metrics_and_goals(config):
     
     
     
-    # Construct choices dict
-    metrics_and_goals = [ {"value" : metric, "label" : metric[0]} for metric in metrics ]
     
     return metrics_and_goals
             
@@ -69,8 +67,6 @@ def get_dimensions(config):
     # Parse response
     metrics, dimensions = ga_json.parse_columnsMetadata(response)
         
-    # Construct choices dict
-    dimensions = [ {"value" : str(dimension), "label" : dimension[0]} for dimension in dimensions ]
 
     return dimensions
 
@@ -85,8 +81,6 @@ def get_segments(config):
     # Parse response
     segments = ga_json.parse_segments(response)
         
-    # Construct choices dict
-    segments = [ {"value" : str(segment), "label" : segment[0]} for segment in segments ]
     
     return segments
     
