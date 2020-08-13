@@ -44,7 +44,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
 
-    /* Function to Account Summaries dict */
+    /* Function to retrieve Account Summaries dict */
     $scope.getAccountSummaries = function(){
         
         /* Prevent from running when $scope.config.service_account is null */
@@ -66,8 +66,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.views = null;
             
         });
-        
-        /* TODO: deal with View Properties to be removed !!! */
     };
 
     
@@ -87,8 +85,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Clear Views dropdown */
         $scope.views = null;
-        
-        /* TODO: deal with View Properties to be removed !!! */
     };
     
     /* Function to extract the Views associated to the selected Web Property */
@@ -104,8 +100,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Update Views dropdown */
         $scope.views = $scope.config.web_property.views;
-        
-        /* TODO: deal with elements that need to be removed !!! */
     };
     
     
