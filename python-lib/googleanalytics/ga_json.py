@@ -98,7 +98,7 @@ def parse_columnsMetadata(response):
     # Initialize return variables 
     metrics = list()
     dimensions = list()
-    templated_columns = list() # TODO
+    templated_columns = list()
     
     # Parse json
     for column in response["items"]:
