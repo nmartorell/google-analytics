@@ -10,7 +10,8 @@
                    ng-model="config.service_account"
                    ng-options="p.name for p in presets"
                    ng-change="getAccountSummaries()"
-                   class="ng-pristine ng-untouched ng-valid ng-scope"> <!-- config.service_account is {name, usable} -->      
+                   class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty"
+                   style="visibility:hidden;"> <!-- config.service_account is {name, usable} -->      
            </select>
        </div>    
    </div> 
