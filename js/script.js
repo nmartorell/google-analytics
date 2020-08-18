@@ -146,7 +146,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* UI features enable/disable at start */
         enableViewProperties();
         
-        $
+        /* Call functions to populate UI in case it ... */
+        $scope.getAccountSummaries();
+        
     };
         
     init();
