@@ -100,7 +100,7 @@ def get_segments(service_account_name):
     return segments
     
     
-### CUSTOM UI HELPER FUNCTIONS -- PUT IN OWN LIB!!! ##
+### CUSTOM UI HELPER FUNCTIONS --> PUT IN OWN LIB!!! ##
 
 def get_authenticated_google_analytics_service(service_account_name):
     """
