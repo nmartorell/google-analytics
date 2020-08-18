@@ -52,8 +52,8 @@ class MyConnector(Connector):
         assert len(self.config["segments"]) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
     
         # (4) Validate Query Dates
-        assert self.config.get("start_date", None),  
-        assert self.config.get("end_date", None), 
+        assert self.config.get("start_date", None), "No \"Start Date\" has been selected; please select one." 
+        assert self.config.get("end_date", None), "No \"End Date\" has been selected; please select one."
         
         # 
     
