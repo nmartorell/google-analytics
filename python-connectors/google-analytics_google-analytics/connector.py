@@ -28,7 +28,6 @@ class MyConnector(Connector):
         Connector.__init__(self, config, plugin_config)  # pass the parameters to the base class
 
         # (1) Validate Service Account and get Service Object
-        # Validate service account
         assert self.config.get("service_account", None), "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
         # API configuration
@@ -48,7 +47,13 @@ class MyConnector(Connector):
         # (3) Validate Query Parameters
         assert len(self.config["metrics"]) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
         assert len(self.config["metrics"]) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
+   
+        assert len(self.config["dimensions"]) <= 9, "More than 9 Google Analytics \"Dimensions\" have been selected; please select a maximum of 9."
+        assert len(self.config["segments"]) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
     
+        # (4) Validate Query Dates
+        
+        
         # 
     
     def get_read_schema(self):
