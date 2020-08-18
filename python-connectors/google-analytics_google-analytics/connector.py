@@ -61,14 +61,17 @@ class GoogleAnalyticsConnector(Connector):
         assert len(self.segments) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
     
         # (4) Query Dates
-        assert self.config.get("start_date", None), "No \"Start Date\" has been selected; please select one." 
-        assert self.config.get("end_date", None), "No \"End Date\" has been selected; please select one."
+        start_date = self.config.get("start_date", None)
+        end_date = self.config.get("end_date", None)
+        
+        assert start_date, "No \"Start Date\" has been selected; please select one." 
+        assert end_date, "No \"End Date\" has been selected; please select one."
         
         # Note: start and end times are coerced into UTC from the local system timezone by DSS.
         #       In order to retrieve the date entered by the user, the start and end dates need to be reverted to the system timezone.
         
-        start_date = pytz.utc.localize(datetime.strptime(self.config.get("start_date"), "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
-        end_date = pytz.utc.localize(datetime.strptime(self.config.get("end_date"), "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
+        start_date = pytz.utc.localize(datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
+        end_date = pytz.utc.localize(datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
         
         assert end_date >= start_date, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
 
