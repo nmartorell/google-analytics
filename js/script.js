@@ -129,6 +129,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Initialization */
     var init = function(){
         
+        $scope.getAccountSummaries();
+        $scope.listWebProperties();
+        $scope.listViews();
+        $scope.getViewProperties(); 
+        
         /* Populate the Google Service Account dropdown (TODO: add validation for failure) */
         let pluginId = "google-analytics";
         let parameterSetId = "google-service-accounts";
@@ -156,10 +161,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         console.log($scope.config.dimensions);
         console.log($scope.config.segments);
         
-        $scope.getAccountSummaries();
-        $scope.listWebProperties();
-        $scope.listViews();
-        $scope.getViewProperties(); 
+        
         
         console.log($scope.config.service_account);
         console.log($scope.config.account);
