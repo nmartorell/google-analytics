@@ -145,26 +145,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* UI features enable/disable at start */
         enableViewProperties();
-        
-        /* Call functions to populate UI in case it ... */
-       
-        console.log($scope.config.service_account);
-        console.log($scope.config.account);
-        console.log($scope.config.web_property);
-        console.log($scope.config.view);
-        console.log($scope.config.metrics);
-        console.log($scope.config.dimensions);
-        console.log($scope.config.segments);
-        
-        
-        
-        console.log($scope.config.service_account);
-        console.log($scope.config.account);
-        console.log($scope.config.web_property);
-        console.log($scope.config.view);
-        console.log($scope.config.metrics);
-        console.log($scope.config.dimensions);
-        console.log($scope.config.segments);
     };
         
     init();
