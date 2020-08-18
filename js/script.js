@@ -147,7 +147,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         enableViewProperties();
         
         /* Call functions to populate UI in case it ... */
-        /*
+       
         console.log($scope.config.service_account);
         console.log($scope.config.account);
         console.log($scope.config.web_property);
@@ -157,9 +157,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         console.log($scope.config.segments);
         
         $scope.getAccountSummaries();
-        $scope.listWebProperties(); */
+        /*$scope.listWebProperties();
         $scope.listViews();
-        $scope.getViewProperties(); 
+        $scope.getViewProperties(); */
     };
         
     init();
