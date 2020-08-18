@@ -4,6 +4,9 @@
 from six.moves import xrange
 from dataiku.connector import Connector
 
+from googleanalytics import ga_api
+from googleanalytics import ga_json
+
 """
 A custom Python dataset is a subclass of Connector.
 
@@ -38,6 +41,7 @@ class MyConnector(Connector):
             raise KeyError("No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator.") from e
     
         # (1.3) Get service object
+        
         self.service = ga_api.get_service(api_name, api_version, scope, service_account_credentials) 
 
     def get_read_schema(self):
