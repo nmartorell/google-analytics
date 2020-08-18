@@ -1,4 +1,4 @@
-# This file is the actual code for the custom Python dataset novartis-google-analytics_google-analytics-dataset-customui
+# This file is the actual code for the custom Python dataset google-analytics_google-analytics
 
 # import the base class for the custom dataset
 from six.moves import xrange
