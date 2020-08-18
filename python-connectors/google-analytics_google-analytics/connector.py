@@ -58,15 +58,19 @@ class MyConnector(Connector):
         assert self.config.get("start_date", None), "No \"Start Date\" has been selected; please select one." 
         assert self.config.get("end_date", None), "No \"End Date\" has been selected; please select one."
         
-        start_date_utc = pytz.utc.localize(datetime.strptime(self.config.get("start_date"), "%Y-%m-%dT%H:%M:%S.%fZ"))
-        end_date_utc = pytz.utc.localize(datetime.strptime(self.config.get("end_date"), "%Y-%m-%dT%H:%M:%S.%fZ"))
+        # Note: start and end times are coerced into UTC from the local system timezone by DSS.
+        #       In order to retrieve the date entered by the user, the start and end dates need to be reverted to the system timezone.
+        
+        start_date = pytz.utc.localize(datetime.strptime(self.config.get("start_date"), "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
+        end_date = pytz.utc.localize(datetime.strptime(self.config.get("end_date"), "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
         
         assert end_date_utc >= start_date_utc, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
         
-        # Retrieve day entered by user
-        # Note: start and end times have been coerced into UTC from the local system timezone by DSS.
-        #       In order to retrieve the date entered by the user, the start and end dates need to be reverted to the system timezone.
-        start_date_utc = self.config.get("start_date")
+        print(start_date)
+        print(end_date)
+        asdf
+        
+        # Format start and end dates as YYYY-MM-DD
         
         # 
     
