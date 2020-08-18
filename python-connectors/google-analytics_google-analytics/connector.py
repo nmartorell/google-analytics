@@ -31,7 +31,7 @@ class GoogleAnalyticsConnector(Connector):
         Connector.__init__(self, config, plugin_config)  # pass the parameters to the base class
 
         # (1) Service Account
-        service_account = self.config.get("service_account", None)
+        self.service_account = self.config.get("service_account", None)
         assert self.service_account, "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
         # Get service object
@@ -51,7 +51,7 @@ class GoogleAnalyticsConnector(Connector):
         assert self.view, "No Google Analytics \"View\" has been selected; please select one." 
         
         # (3) Query Parameters
-        self.metrics = self.config["metrics"]
+        self.metrics = self.config["metrics"] # multiselect parameters return an empty list if nothing is selected
         self.dimensions = self.config["dimensions"]
         self.segments = self.config["segments"]
         
