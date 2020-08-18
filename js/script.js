@@ -129,9 +129,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Initialization */
     var init = function(){
         
-        $scope.getAccountSummaries();
-        $scope.listWebProperties();
-        $scope.listViews();
+        
         $scope.getViewProperties(); 
         
         /* Populate the Google Service Account dropdown (TODO: add validation for failure) */
