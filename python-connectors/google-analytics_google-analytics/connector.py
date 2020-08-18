@@ -34,12 +34,10 @@ class MyConnector(Connector):
         api_version = 'v4'
     
         # Retrieve Service Account preset name
-        try:
-            service_account_name = self.config["service_account"]["name"]
-        except KeyError as e:
-            raise KeyError("No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator.") from e
+        assert self.config.get("service_account", None), "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
     
         # Get service object
+        service_account_name = self.config["service_account"]["name"]
         self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, service_account_name) 
 
         # (2) Validate Query Targets
@@ -50,7 +48,7 @@ class MyConnector(Connector):
         # (3) Validate Query Parameters
         assert len(self.config["metrics"]) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
         assert len(self.config["metrics"]) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
-        
+    
     def get_read_schema(self):
         """
         Returns the schema that this connector generates when returning rows.
