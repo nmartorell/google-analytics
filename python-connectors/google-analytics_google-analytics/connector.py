@@ -66,7 +66,7 @@ class MyConnector(Connector):
         
         assert end_date >= start_date, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
 
-        # Format start and end dates as "YYYY-MM-DD" strings
+        # Format start and end dates to string with "YYYY-MM-DD" format
         self.config["start_date"] = start_date.strftime("%Y-%m-%d")
         self.config["end_date"] = end_date.strftime("%Y-%m-%d")
         
