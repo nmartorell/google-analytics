@@ -64,7 +64,7 @@ class MyConnector(Connector):
         start_date = pytz.utc.localize(datetime.strptime(self.config.get("start_date"), "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
         end_date = pytz.utc.localize(datetime.strptime(self.config.get("end_date"), "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
         
-        assert end_date_utc >= start_date_utc, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
+        assert end_date >= start_date, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
         
         print(start_date)
         print(end_date)
