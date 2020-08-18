@@ -147,6 +147,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         enableViewProperties();
         
         /* Call functions to populate UI in case it ... */
+        
         $scope.getAccountSummaries();
         
     };
