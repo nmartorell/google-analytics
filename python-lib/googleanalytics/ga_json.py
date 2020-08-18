@@ -269,7 +269,7 @@ def parse_columnsMetadata(response):
 
 ## FUNCTIONS FOR REPORTING API ##
 
-def reporting_query_builder(view, start_date, end_date, metrics_and_goals, dimensions, segments, next_record_index):
+def reporting_query_builder(view, start_date, end_date, metrics, dimensions, segments, next_record_index):
     
     """
     Creates the query body for the "batchGet" API call:
@@ -282,27 +282,27 @@ def reporting_query_builder(view, start_date, end_date, metrics_and_goals, dimen
     """
 
     # Unpack query inputs
-    view_q = view[3]
-    metrics_q = [{"expression" : m[1]} for m in metrics_and_goals]
+    view_id = view["id"]
+    metrics_ids = [{"expression" : m["id"]} for m in metrics]
     
     # Note: dimensions and segments may be empty, so require special treatment
-    dimensions_q = list()
+    dimensions_ids = list()
     if dimensions:
-        dimensions_q = [{"name" : d[1]} for d in dimensions] 
+        dimensions_ids = [{"name" : d["id"]} for d in dimensions] 
     
-    segments_q = list()
+    segments_ids = list()
     if segments:    
-        segments_q = [{"segmentId" : s[1]} for s in segments]
+        segments_ids = [{"segmentId" : s["id"]} for s in segments]
     
     # Build query body   
     query_body = {
         'reportRequests': [
             {
-                'viewId': view_q,
+                'viewId': view_id,
                 'dateRanges': [{'startDate': start_date, 'endDate': end_date}],
-                'metrics': metrics_q,
-                'dimensions': dimensions_q,
-                'segments' : segments_q,
+                'metrics': metrics_ids,
+                'dimensions': dimensions_ids,
+                'segments' : segments_ids,
                 'pageToken' : next_record_index 
             }]
     }
