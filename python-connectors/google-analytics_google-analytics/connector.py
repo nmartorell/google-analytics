@@ -42,21 +42,23 @@ class GoogleAnalyticsConnector(Connector):
         self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, self.service_account["name"]) 
 
         # (2) Query Targets
-        assert self.config.get("account", None), "No Google Analytics \"Account\" has been selected; please select one." 
-        assert self.config.get("web_property", None), "No Google Analytics \"Web Property\" has been selected; please select one."
-        assert self.config.get("view", None), "No Google Analytics \"View\" has been selected; please select one." 
-        
+        self.account = self.config.get("account", None)
+        self.web_property = self.config.get("web_property", None)
         self.view = self.config["view"]
         
+        assert self.account, "No Google Analytics \"Account\" has been selected; please select one." 
+        assert self.web_property, "No Google Analytics \"Web Property\" has been selected; please select one."
+        assert self.view, "No Google Analytics \"View\" has been selected; please select one." 
+        
         # (3) Query Parameters
-        assert len(self.config["metrics"]) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
-        assert len(self.config["metrics"]) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
-        assert len(self.config["dimensions"]) <= 9, "More than 9 Google Analytics \"Dimensions\" have been selected; please select a maximum of 9."
-        assert len(self.config["segments"]) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
-    
         self.metrics = self.config["metrics"]
         self.dimensions = self.config["dimensions"]
         self.segments = self.config["segments"]
+        
+        assert len(self.metrics) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
+        assert len(self.metrics) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
+        assert len(self.dimensions) <= 9, "More than 9 Google Analytics \"Dimensions\" have been selected; please select a maximum of 9."
+        assert len(self.segments) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
     
         # (4) Query Dates
         assert self.config.get("start_date", None), "No \"Start Date\" has been selected; please select one." 
