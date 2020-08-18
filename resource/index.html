@@ -58,8 +58,15 @@
                 ng-if= "dummyMetricsReady"
                 multiselect-field>
            </div>
+           <div class="help-inline ng-binding ng-scope">
+               Some text
+           </div>
        </div>
    </div>
+    
+    <span class="help-inline ng-binding ng-scope" ng-if="paramDesc.description &amp;&amp; !['MAP', 'KEY_VALUE_LIST', 'DATASET', 'CREDENTIAL_REQUEST'].includes(paramDesc.type)">
+                max. 10 (mandatory)
+            </span>
     
    <div class="control-group">
        <label class="control-label">Dimensions</label>
