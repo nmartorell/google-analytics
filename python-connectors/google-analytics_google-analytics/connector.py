@@ -30,7 +30,7 @@ class GoogleAnalyticsConnector(Connector):
         """
         Connector.__init__(self, config, plugin_config)  # pass the parameters to the base class
 
-        # (1) Validate Service Account and get Service Object
+        # (1) Service Account
         assert self.config.get("service_account", None), "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
         # API configuration
@@ -42,19 +42,24 @@ class GoogleAnalyticsConnector(Connector):
         service_account_name = self.config["service_account"]["name"]
         self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, service_account_name) 
 
-        # (2) Validate Query Targets
+        # (2) Query Targets
         assert self.config.get("account", None), "No Google Analytics \"Account\" has been selected; please select one." 
         assert self.config.get("web_property", None), "No Google Analytics \"Web Property\" has been selected; please select one."
         assert self.config.get("view", None), "No Google Analytics \"View\" has been selected; please select one." 
         
-        # (3) Validate Query Parameters
+        self.view = self.config["view"]
+        
+        # (3) Query Parameters
         assert len(self.config["metrics"]) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
         assert len(self.config["metrics"]) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
-   
         assert len(self.config["dimensions"]) <= 9, "More than 9 Google Analytics \"Dimensions\" have been selected; please select a maximum of 9."
         assert len(self.config["segments"]) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
     
-        # (4) Validate Query Dates
+        self.metrics = self.config["metrics"]
+        self.dimensions = self.config["dimensions"]
+        self.segments = self.config["segments"]
+    
+        # (4) Query Dates
         assert self.config.get("start_date", None), "No \"Start Date\" has been selected; please select one." 
         assert self.config.get("end_date", None), "No \"End Date\" has been selected; please select one."
         
@@ -67,8 +72,8 @@ class GoogleAnalyticsConnector(Connector):
         assert end_date >= start_date, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
 
         # Format start and end dates to string with "YYYY-MM-DD" format
-        self.config["start_date"] = start_date.strftime("%Y-%m-%d")
-        self.config["end_date"] = end_date.strftime("%Y-%m-%d")
+        self.start_date = start_date.strftime("%Y-%m-%d")
+        self.end_date = end_date.strftime("%Y-%m-%d")
         
     
     def get_read_schema(self):
