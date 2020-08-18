@@ -9,7 +9,7 @@
                    ng-model="config.service_account"
                    ng-options="p.name for p in presets"
                    ng-change="getAccountSummaries()"> <!-- config.service_account is {name, usable} -->
-               <option selected="selected">{config.service_account.name}</option>
+               <option selected="selected">{{config.service_account.name}}</option>
            </select>
        </div>    
    </div> 
