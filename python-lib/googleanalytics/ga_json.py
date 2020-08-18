@@ -258,9 +258,9 @@ def parse_columnsMetadata(response):
             
             # Add the column to metrics or dimensions
             if column_type == "METRIC":
-                metrics.append((name_i, identifier_i))
+                metrics.append({"name":name_i, "id":identifier_i})
             elif column_type == "DIMENSION":
-                dimensions.append((name_i, identifier_i))
+                dimensions.append({"name":name_i, "id":identifier_i})
             else:
                 raise ValueError("The Metadata API has returned something that's not a METRIC or a DIMENSION.")
             
