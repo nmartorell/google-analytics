@@ -70,8 +70,9 @@ def get_metrics_and_dimensions(service_account_name, account_id, web_property_id
     response = service.management().customDimensions().list(accountId=account_id, webPropertyId=web_property_id,).execute()
     custom_dimensions = ga_json.parse_customDimensions(response)
     
-    # Retrieve Goals from Management API
-    
+    # Retrieve Goals from Management API (Goals are a type of Metric)
+    response = service.management().goals().list(accountId=account_id, webPropertyId=web_property_id, profileId=view_id).execute()
+    goals = ga_json.parse_goals(response)
     
     goals = list()
 
