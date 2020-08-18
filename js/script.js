@@ -162,7 +162,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* TODO: add validation for failure */
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
-            $scope.presets = angular.toJson(data.presets.filter(p => p.usable));
+            $scope.presets = data.presets.filter(p => p.usable);
         });
         
         /* UI features enable/disable at start */
