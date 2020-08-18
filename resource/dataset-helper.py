@@ -21,7 +21,6 @@ def do(payload, config, plugin_config, inputs):
         service_account_name = config["service_account"]["name"]
         
         account_summaries = get_account_summaries(service_account_name)
-        
         return {"account_summaries" : account_summaries}
     
     if payload["method"] == "get_view_properties":
@@ -34,7 +33,6 @@ def do(payload, config, plugin_config, inputs):
         
         metrics, dimensions = get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id)
         segments = get_segments(service_account_name)
-        
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
     
 
