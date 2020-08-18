@@ -18,7 +18,7 @@ specified in the connector.json file.
 
 Note: the name of the class itself is not relevant.
 """
-class MyConnector(Connector):
+class GoogleAnalyticsConnector(Connector):
 
     def __init__(self, config, plugin_config):
         """
