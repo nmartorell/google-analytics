@@ -61,7 +61,7 @@ class MyConnector(Connector):
         start_date_utc = pytz.utc.localize(datetime.strptime(self.config.get("start_date"), "%Y-%m-%dT%H:%M:%S.%fZ"))
         end_date_utc = pytz.utc.localize(datetime.strptime(self.config.get("end_date"), "%Y-%m-%dT%H:%M:%S.%fZ"))
         
-        assert end_date_utc >= start_date_utc, "The selected \"End Date\" must be after \"Start Date\"."
+        assert end_date_utc >= start_date_utc, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
         
         # Retrieve day entered by user
         # Note: start and end times have been coerced into UTC from the local system timezone by DSS.
