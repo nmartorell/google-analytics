@@ -131,7 +131,7 @@ class GoogleAnalyticsConnector(Connector):
         
             # Parse response and return generator
             response = self.service.reports().batchGet(body=query_body).execute()
-            yield from ga_json.reporting_row_generator(response, self.metrics_and_goals, self.dimensions)
+            yield from ga_json.reporting_row_generator(response, self.metrics, self.dimensions)
             
             # Retrieve next record index, None is all records retrieved
             next_record_index = ga_json.get_next_index(response)
