@@ -47,10 +47,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Function to retrieve Account Summaries dict */
     $scope.getAccountSummaries = function(){
         
-        /* Prevent from running when $scope.config.service_account is null */
+        /* Prevent from running when $scope.config.service_account is null 
         if ($scope.config.service_account == null) {
             return;
         };
+        */
         
         /* Clear View Property multiselect fields */
         clearViewProperties();
