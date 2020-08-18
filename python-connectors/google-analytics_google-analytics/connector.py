@@ -46,7 +46,7 @@ class MyConnector(Connector):
         assert self.config["view"], "Please select a Query Target (including an Account, Web Property and View)." 
         
         # (3) Validate Query Parameters
-        assert (len(self.config.get("metrics", None)) >= 1) and (len(self.config.get("metrics", None)) <= 10)
+        assert (len(self.config["metrics"]) >= 1) and (len(self.config["metrics"]) <= 10)
         
     def get_read_schema(self):
         """
