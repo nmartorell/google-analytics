@@ -43,9 +43,9 @@ class MyConnector(Connector):
         self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, service_account_name) 
 
         # (2) Validate Query Targets
-        assert self.config.get("account", None), "Please select a Query Target (including an Account, Web Property and View)." 
-        assert self.config.get("web_property", None), "Please select a Query Target (including an Account, Web Property and View)." 
-        assert self.config.get("view", None), "Please select a Query Target (including an Account, Web Property and View)." 
+        assert self.config.get("account", None), "No Google Analytics \"Account\" has been selected; please select one." 
+        assert self.config.get("web_property", None), "No Google Analytics \"Web Property\" has been selected; please select one."
+        assert self.config.get("view", None), "No Google Analytics \"View\" has been selected; please select one." 
         
         # (3) Validate Query Parameters
         assert len(self.config["metrics"]) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
