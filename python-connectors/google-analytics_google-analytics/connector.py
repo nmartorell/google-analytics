@@ -7,6 +7,7 @@ from dataiku.connector import Connector
 from googleanalytics import ga_api
 from googleanalytics import ga_json
 
+from datetime import datetime
 import pytz
 
 """
@@ -57,10 +58,15 @@ class MyConnector(Connector):
         assert self.config.get("start_date", None), "No \"Start Date\" has been selected; please select one." 
         assert self.config.get("end_date", None), "No \"End Date\" has been selected; please select one."
         
-        print(type(self.config.get("start_date", None)))
-        asdf
+        start_date_utc = pytz.utc.localize(datetime.strptime(self.config.get("start_date"), "%Y-%m-%dT%H:%M:%S.%fZ"))
+        end_date_utc = pytz.utc.localize(datetime.strptime(self.config.get("end_date"), "%Y-%m-%dT%H:%M:%S.%fZ"))
         
-        # Set start and end dates to system timezone
+        assert end_date_utc >= start_date_utc, "The selected \"End Date\" must be after \"Start Date\"."
+        
+        # Retrieve day entered by user
+        # Note: start and end times have been coerced into UTC from the local system timezone by DSS.
+        #       In order to retrieve the date entered by the user, the start and end dates need to be reverted to the system timezone.
+        start_date_utc = self.config.get("start_date")
         
         # 
     
