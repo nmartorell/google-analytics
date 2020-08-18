@@ -321,7 +321,7 @@ def reporting_row_generator(response, metrics, dimensions):
     A generator that returns rows from the query as a dictionary, indexed by column name
     """
     
-    # Create dicts of {"id" : "name"} for metrics (fix this in the future, see note in function description)
+    # Create dicts of {"id" : "name"} for metrics and dimensions 
     metrics_and_goals_dict = dict([(metric["id"], metric["name"]) for metric in metrics])
     dimensions_dict = dict([(dim["id"], dim["name"]) for dim in dimensions])
     

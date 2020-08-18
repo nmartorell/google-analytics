@@ -133,7 +133,7 @@ class GoogleAnalyticsConnector(Connector):
             response = self.service.reports().batchGet(body=query_body).execute()
             yield from ga_json.reporting_row_generator(response, self.metrics, self.dimensions)
             
-            # Retrieve next record index, None is all records retrieved
+            # Retrieve next record index, None if all records retrieved
             next_record_index = ga_json.get_next_index(response)
             
             # Stop fetching records if records_limit is reached
