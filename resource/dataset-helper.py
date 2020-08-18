@@ -98,35 +98,3 @@ def get_segments(service_account_name):
     segments = [ {"value" : segment, "label" : segment["name"]} for segment in segments ]
     
     return segments
-    
-    
-### CUSTOM UI HELPER FUNCTIONS --> PUT IN OWN LIB!!! ##
-
-def get_authenticated_google_analytics_service(service_account_name):
-    """
-    Returns a list service account JSON API key from a preset name
-    
-    TODO: add some error checking when getting the service account from the JSON.
-    """
-    
-    # Retrieve plugin settings
-    client = dataiku.api_client()
-    plugin = client.get_plugin("google-analytics")
-    settings = plugin.get_settings()
-    
-    # Retrieve service account encrypted preset
-    for parameter_set in settings.settings["presets"]:
-        
-        if (parameter_set["type"] == "parameter-set-google-analytics-google-service-accounts") and (parameter_set["name"] == service_account_name):
-            service_account_credentials_encrypted = parameter_set["config"]["service_account_credentials"]
-    
-    # Decrypt service account key    
-    service_account_credentials_str = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
-                                                       shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
-    
-    service_account_credentials = ast.literal_eval(service_account_credentials_str)
-    
-    # Retrieve an authenticated Google Analytics API service
-    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials) 
-    
-    return service
