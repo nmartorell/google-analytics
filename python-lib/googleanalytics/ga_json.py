@@ -155,7 +155,7 @@ def parse_goals(response):
                             {"id":"ga:goalXXConversionRate", "name":"Goal XX Conversion Rate"},
                             {"id":"ga:goalXXAbandons", "name":"Goal XX Abandons"},
                             {"id":"ga:goalXXAbandonRate", "name":"Goal XX Abandons Rate"},
-                            {"id":"ga:searchGoalXXConversionRate", "name":"Search Goal XX Conversion Rate"}]
+                            {"id":"ga:searchGoalXXConversionRate", "name":"Search Goal XX Conversion Rate"}] # extracted from Metadata API
     
     # Initialize return variable
     goal_metrics = list()
@@ -175,9 +175,9 @@ def parse_goals(response):
             
             # Replace name and number of current goals into generics
             metric_id = id_generic.replace("XX", goal_num)
-            name_id = goal_name + " (" + name_generic.replace("XX", goal_num) + ")"
+            metric_name = goal_name + " (" + name_generic.replace("XX", goal_num) + ")"
             
-            goal_metrics.append({"id":metric_id, "name":name_id})
+            goal_metrics.append({"id":metric_id, "name":metric_name})
     
     return goal_metrics
 
