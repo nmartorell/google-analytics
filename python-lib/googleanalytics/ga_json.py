@@ -309,13 +309,12 @@ def reporting_query_builder(view, start_date, end_date, metrics, dimensions, seg
     
     return query_body
         
-def reporting_row_generator(response, metrics_and_goals, dimensions):
+def reporting_row_generator(response, metrics, dimensions):
     
     """
     Returns a generator of rows for the reponse of the "batchGet" API call:
     https://developers.google.com/analytics/devguides/reporting/core/v4/rest/v4/reports/batchGet
     
-    TODO: it would probably be better to have the metrics_and_goals and dimensions be dicts from the start, istead of a list of tuples (!)
     Note that there may be no dimensions in a response, and the dimensions input may be an empty list.
     
     Returns:
@@ -323,7 +322,7 @@ def reporting_row_generator(response, metrics_and_goals, dimensions):
     """
     
     # Create dicts of {"id" : "name"} for metrics (fix this in the future, see note in function description)
-    metrics_and_goals_dict = dict([(identifier, name) for name, identifier in metrics_and_goals])
+    metrics_and_goals_dict = dict([(metric["id"], metric["name"]) for metric in metrics])
     dimensions_dict = dict([(identifier, name) for name, identifier in dimensions])
     
     # Obtain identifiers of dimensions and metrics returned in response
