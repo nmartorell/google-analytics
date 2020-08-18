@@ -51,7 +51,7 @@ class GoogleAnalyticsConnector(Connector):
         assert self.view, "No Google Analytics \"View\" has been selected; please select one." 
         
         # (3) Query Parameters
-        self.metrics = self.config["metrics"] # multiselect parameters return an empty list if nothing is selected
+        self.metrics = self.config["metrics"] # multiselect parameters return an empty list if nothing is selected in UI
         self.dimensions = self.config["dimensions"]
         self.segments = self.config["segments"]
         
