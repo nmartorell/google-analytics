@@ -31,7 +31,6 @@ class GoogleAnalyticsConnector(Connector):
         Connector.__init__(self, config, plugin_config)  # pass the parameters to the base class
 
         # (1) Service Account
-        # Validation
         self.service_account = self.config.get("service_account", None)
         assert self.service_account, "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
