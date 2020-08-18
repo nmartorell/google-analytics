@@ -124,6 +124,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             enableDummyViewProperties(); 
             enableViewProperties();             
         }); 
+        
+        console.log($scope.config.account);
     };
     
     /* Initialization */
