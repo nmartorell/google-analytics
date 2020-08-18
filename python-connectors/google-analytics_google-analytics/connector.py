@@ -55,6 +55,11 @@ class MyConnector(Connector):
         assert self.config.get("start_date", None), "No \"Start Date\" has been selected; please select one." 
         assert self.config.get("end_date", None), "No \"End Date\" has been selected; please select one."
         
+        print(self.config.get("start_date", None))
+        asdf
+        
+        # Set start and end dates to system timezone
+        
         # 
     
     def get_read_schema(self):
