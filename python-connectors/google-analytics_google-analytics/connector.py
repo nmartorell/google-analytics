@@ -105,8 +105,31 @@ class MyConnector(Connector):
 
         The dataset schema and partitioning are given for information purpose.
         """
-        for i in xrange(1,10):
-            yield { "first_col" : str(i), "my_string" : "Yes" }
+        # Initialize starting index (must be string)
+        next_record_index = "0"
+        
+        # Fetch all available rows, or until the records_limit
+        while next_record_index:
+            
+            # Build query
+            query_body = ga_json.reporting_query_builder(self.view,
+                                                         self.start_date,
+                                                         self.end_date,
+                                                         self.metrics_and_goals,
+                                                         self.dimensions,
+                                                         self.segments,
+                                                         next_record_index)
+        
+            # Parse response and return generator
+            response = self.service.reports().batchGet(body=query_body).execute()
+            yield from ga_json.reporting_row_generator(response, self.metrics_and_goals, self.dimensions)
+            
+            # Retrieve next record index, None is all records retrieved
+            next_record_index = ga_json.get_next_index(response)
+            
+            # Stop fetching records if records_limit is reached
+            if next_record_index and (records_limit > 0) and (int(next_record_index) > records_limit):
+                break
 
 
     def get_writer(self, dataset_schema=None, dataset_partitioning=None,
