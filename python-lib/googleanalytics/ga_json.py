@@ -178,10 +178,7 @@ def parse_goals(response):
             metric_name = goal_name + " (" + name_generic.replace("XX", goal_num) + ")"
             
             goal_metrics.append({"id":metric_id, "name":metric_name})
-    
-    print(goal_metrics)
-    asdf
-    
+
     return goal_metrics
 
 
