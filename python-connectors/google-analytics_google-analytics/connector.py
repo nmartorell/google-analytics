@@ -27,22 +27,23 @@ class MyConnector(Connector):
         """
         Connector.__init__(self, config, plugin_config)  # pass the parameters to the base class
 
-        # (1) Get a service object for the Google Analytics Reporting API (V4)
-        # (1.1) API configuration
+        # (1) Get a service object for the Google Analytics Reporting API
+        # API configuration
         scope = ['https://www.googleapis.com/auth/analytics.readonly']
         api_name = 'analyticsreporting'
         api_version = 'v4'
     
-        # (1.2) Retrieve Service Account name
+        # Retrieve Service Account preset name
         try:
             service_account_name = self.config["service_account"]["name"]
         except KeyError as e:
             raise KeyError("No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator.") from e
     
-        # (1.3) Get Google Analytics service object
+        # Get service object
         self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, service_account_name) 
 
-        # (2) 
+        # (2) Ensure a View has been selected
+        assert self.config.get("view", None), "Please select a target Account, Web Property and View." 
         
     def get_read_schema(self):
         """
