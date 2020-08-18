@@ -66,6 +66,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.views = null;
             
         });
+        
+        
+        console.log($scope.config.account);
+        console.log($scope.config.web_property);
+        console.log($scope.config.view);
     };
 
     
@@ -85,6 +90,10 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Clear Views dropdown */
         $scope.views = null;
+        
+        console.log($scope.config.account);
+        console.log($scope.config.web_property);
+        console.log($scope.config.view);
     };
     
     /* Function to extract the Views associated to the selected Web Property */
@@ -100,6 +109,10 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Update Views dropdown */
         $scope.views = $scope.config.web_property.views;
+        
+        console.log($scope.config.account);
+        console.log($scope.config.web_property);
+        console.log($scope.config.view);
     };
     
     
