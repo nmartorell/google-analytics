@@ -245,7 +245,7 @@ def parse_columnsMetadata(response):
         
         # Pass if not in generic dimensions set
         if identifier not in generic_dimensions_ids:
-            pass
+            continue
         
         # Extract number of templates to produce
         min_index = int(column["attributes"]["minTemplateIndex"])
