@@ -31,14 +31,15 @@ class GoogleAnalyticsConnector(Connector):
         Connector.__init__(self, config, plugin_config)  # pass the parameters to the base class
 
         # (1) Service Account
-        assert self.config.get("service_account", None), "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
+        # Validation
+        self.service_account = self.config.get("service_account", None)
+        assert self.service_account, "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
-        # API configuration
+        # Get service object
         scope = ['https://www.googleapis.com/auth/analytics.readonly']
         api_name = 'analyticsreporting'
         api_version = 'v4'
         
-        # Get service object
         self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, self.config["service_account"]["name"]) 
 
         # (2) Query Targets
