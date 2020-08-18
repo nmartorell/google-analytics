@@ -6,15 +6,17 @@
    <div class="control-group">
        <label class="control-label">Google Service Account</label>
        <div class="controls">
-           <select ng-switch-when="SELECT"
-                   dku-bs-select
+           <select dku-bs-select
                    ng-model="config.service_account"
                    ng-options="p.name for p in presets"
-                   ng-change="getAccountSummaries()"> <!-- config.service_account is {name, usable} -->      
+                   ng-change="getAccountSummaries()"
+                   class="ng-pristine ng-untouched"> <!-- config.service_account is {name, usable} -->      
            </select>
        </div>    
    </div> 
-   
+
+    
+    
    <div class="control-group">
        <legend class="settings-section-title ng-binding">Query Target</legend>
    </div>
