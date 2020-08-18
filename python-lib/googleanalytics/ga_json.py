@@ -164,7 +164,7 @@ def parse_goals(response):
     for goal in goals:
         
         # Name and number of current goal
-        goal_num = goal["id"]
+        goal_num = goal["num"]
         goal_name = goal["name"]
         
         for generic_metric in goal_metrics_generic:
