@@ -243,7 +243,7 @@ def parse_columnsMetadata(response):
         name = column["attributes"]["uiName"]
         column_type = column["attributes"]["type"]
         
-        # Pass if not in generic dimensions list
+        # Pass if not in generic dimensions set
         if identifier not in generic_dimensions_ids:
             pass
         
