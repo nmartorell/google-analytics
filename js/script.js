@@ -133,7 +133,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         
         
-        $scope.getViewProperties(); 
+      
         $scope.listViews();
         $scope.listWebProperties();
         $scope.getAccountSummaries();
