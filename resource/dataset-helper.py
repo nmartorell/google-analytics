@@ -1,6 +1,4 @@
 import dataiku
-import subprocess
-import ast
 
 from googleanalytics import ga_api
 from googleanalytics import ga_json
