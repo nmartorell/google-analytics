@@ -27,15 +27,15 @@ class MyConnector(Connector):
         """
         Connector.__init__(self, config, plugin_config)  # pass the parameters to the base class
 
-        # (1) Get a service object for the Google Analytics Reporting API
+        # (1) Validate Service Account and get Service Object
+        # Validate service account
+        assert self.config.get("service_account", None), "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
+        
         # API configuration
         scope = ['https://www.googleapis.com/auth/analytics.readonly']
         api_name = 'analyticsreporting'
         api_version = 'v4'
-    
-        # Retrieve Service Account preset name
-        assert self.config.get("service_account", None), "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
-    
+        
         # Get service object
         service_account_name = self.config["service_account"]["name"]
         self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, service_account_name) 
@@ -48,6 +48,8 @@ class MyConnector(Connector):
         # (3) Validate Query Parameters
         assert len(self.config["metrics"]) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
         assert len(self.config["metrics"]) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
+    
+        # 
     
     def get_read_schema(self):
         """
