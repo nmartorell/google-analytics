@@ -46,7 +46,8 @@ class MyConnector(Connector):
         assert self.config.get("view", None), "Please select a Query Target (including an Account, Web Property and View)." 
         
         # (3) Validate Query Parameters
-        assert (len(self.config["metrics"]) >= 1) and (len(self.config["metrics"]) <= 10)
+        assert len(self.config["metrics"]) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
+        assert len(self.config["metrics"]) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
         
     def get_read_schema(self):
         """
