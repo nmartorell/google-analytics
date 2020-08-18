@@ -148,6 +148,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Call functions to populate UI in case it ... */
         
+        console.log($scope.config.service_account);
+        
         $scope.getAccountSummaries();
         $scope.listWebProperties();
         $scope.listViews();
