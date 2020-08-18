@@ -7,6 +7,8 @@ from dataiku.connector import Connector
 from googleanalytics import ga_api
 from googleanalytics import ga_json
 
+import pytz
+
 """
 A custom Python dataset is a subclass of Connector.
 
