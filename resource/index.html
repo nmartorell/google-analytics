@@ -8,7 +8,8 @@
            <select dku-bs-select
                    ng-model="config.service_account"
                    ng-options="p.name for p in presets"
-                   ng-change="getAccountSummaries()"> <!-- config.service_account is {name, usable} -->      
+                   ng-change="getAccountSummaries()"> <!-- config.service_account is {name, usable} -->
+               <option selected="selected">{config.service_account}</option>
            </select>
        </div>    
    </div> 
@@ -21,7 +22,7 @@
        <label class="control-label">Account</label>
        <div class="controls">
            <select dku-bs-select
-                   ng-model=1234
+                   ng-model="config.account"
                    ng-options="account.name for account in account_summaries"
                    ng-change="listWebProperties()"> 
            </select>
