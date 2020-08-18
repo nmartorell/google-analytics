@@ -191,8 +191,6 @@ def parse_columnsMetadata(response):
     https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
    
     Note that both METRICS and DIMENSIONS are defined as "columns".
-   
-    TODO: change how I deal with templated colums (custom metrics, dimensions, goals, etc.)
     
     Returns:
     Two lists of dicts {name, id} for all default Metrics and Dimensions available in Google Analytics.
@@ -216,8 +214,7 @@ def parse_columnsMetadata(response):
         if status == "DEPRECATED":
             pass
         elif templated:
-            pass # templated_columns are ignored for now
-            #templated_columns.append(column)
+            templated_columns.append(column)
         elif column_type == "METRIC":
             metrics.append({"name":name, "id":identifier})
         elif column_type == "DIMENSION":
@@ -225,15 +222,30 @@ def parse_columnsMetadata(response):
         else:
             raise ValueError("The Metadata API has returned something that's not a METRIC or a DIMENSION.") 
     
-
+    # Parse templated_columns
     
-    # Parse templated_columns (NOTE: IGNORED FOR NOW)
+    # Note: the templated columns include custom metrics, custom dimensions, generic goal metrics, and generic dimensions.
+    #       Custom metrics, custom dimensions, and goals are obtained via subsequent calls to the Management API.
+    #       Generic dimensions cannot be obtained via any other Google Analytics API, so are populated here with their generic names.
+    
+    generic_dimensions_ids = {"ga:customVarNameXX",
+                              "ga:customVarValueXX",
+                              "ga:contentGroupUniqueViewsXX",
+                              "ga:landingContentGroupXX",
+                              "ga:previousContentGroupXX",
+                              "ga:contentGroupXX",
+                              "ga:productCategoryLevelXX"}
+    
     for column in templated_columns:
-
+        
         # Unpack column data
         identifier = column["id"]
         name = column["attributes"]["uiName"]
         column_type = column["attributes"]["type"]
+        
+        # Pass if not in generic dimensions list
+        if identifier not in generic_dimensions_ids:
+            pass
         
         # Extract number of templates to produce
         min_index = int(column["attributes"]["minTemplateIndex"])
