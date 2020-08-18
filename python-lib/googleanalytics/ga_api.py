@@ -26,7 +26,7 @@ def get_authenticated_google_analytics_service(service_account_name):
     service_account_credentials = ast.literal_eval(service_account_credentials_str)
     
     # Retrieve an authenticated Google Analytics API service
-    service = ga_api.get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials) 
+    service = get_service(API_NAME, API_VERSION, SCOPE, service_account_credentials) 
     
     return service
 
