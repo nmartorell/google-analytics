@@ -126,6 +126,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         }); 
         
         console.log($scope.config.account);
+        console.log($scope.config.web_property);
+        console.log($scope.config.view);
     };
     
     /* Initialization */
