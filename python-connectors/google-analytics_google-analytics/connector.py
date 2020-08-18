@@ -39,8 +39,7 @@ class GoogleAnalyticsConnector(Connector):
         api_version = 'v4'
         
         # Get service object
-        service_account_name = self.config["service_account"]["name"]
-        self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, service_account_name) 
+        self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, self.config["service_account"]["name"]) 
 
         # (2) Query Targets
         assert self.config.get("account", None), "No Google Analytics \"Account\" has been selected; please select one." 
