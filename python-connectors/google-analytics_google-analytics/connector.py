@@ -65,14 +65,11 @@ class MyConnector(Connector):
         end_date = pytz.utc.localize(datetime.strptime(self.config.get("end_date"), "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
         
         assert end_date >= start_date, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
-        
-        print(start_date)
-        print(end_date)
-        asdf
-        
+
         # Format start and end dates as YYYY-MM-DD
+        self.config["start_date"] = start_date.strftime("%Y-%m-%d")
+        self.config["end_date"] = end_date.strftime("%Y-%m-%d")
         
-        # 
     
     def get_read_schema(self):
         """
