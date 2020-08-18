@@ -15,14 +15,14 @@ def do(payload, config, plugin_config, inputs):
     if payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
     
-    
     if payload["method"] == "get_account_summaries":
         
         # Unpack plugin config
         service_account_name = config["service_account"]["name"]
         
-        return get_account_summaries(service_account_name)
-    
+        account_summaries = get_account_summaries(service_account_name)
+        
+        return {"account_summaries" : account_summaries}
     
     if payload["method"] == "get_view_properties":
         
@@ -48,7 +48,7 @@ def get_account_summaries(service_account_name):
     # Parse response
     account_summaries = ga_json.parse_accountSummaries(response)
     
-    return {"account_summaries" : account_summaries}
+    return account_summaries
  
 
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
