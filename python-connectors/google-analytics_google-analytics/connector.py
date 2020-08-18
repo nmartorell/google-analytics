@@ -124,7 +124,7 @@ class GoogleAnalyticsConnector(Connector):
             query_body = ga_json.reporting_query_builder(self.view,
                                                          self.start_date,
                                                          self.end_date,
-                                                         self.metrics_and_goals,
+                                                         self.metrics,
                                                          self.dimensions,
                                                          self.segments,
                                                          next_record_index)
