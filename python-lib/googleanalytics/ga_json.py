@@ -138,11 +138,48 @@ def parse_goals(response):
     A list of dicts {name, id} for all Goals associated to the requested View.
     """
     
-    # Initialize return variable
+    # Parse response to extract goals
     goals = list()
+    for goal in response["items"]:
+        
+        num = goal["id"] 
+        name = goal["name"]
+        
+        goals.append({"name":name, "num":num})
     
+    # Goals are not directly passed as metrics to the Reporting API. Instead, the associated "goal metrics"
+    # need to be constructed from the goal names and numbers.
+    goal_metrics_generic = [{"id":"ga:goalXXStarts", "name":"Goal XX Starts"},
+                            {"id":"ga:goalXXCompletions", "name":"Goal XX Completions"},
+                            {"id":"ga:goalXXValue", "name":"Goal XX Value"},
+                            {"id":"ga:goalXXConversionRate", "name":"Goal XX Conversion Rate"},
+                            {"id":"ga:goalXXAbandons", "name":"Goal XX Abandons"},
+                            {"id":"ga:goalXXAbandonRate", "name":"Goal XX Abandons Rate"},
+                            {"id":"ga:searchGoalXXConversionRate", "name":"Search Goal XX Conversion Rate"}]
     
-    return goals
+    # Initialize return variable
+    goal_metrics = list()
+    
+    # Construct the non-generic goal metrics 
+    for goal in goals:
+        
+        # Name and number of current goal
+        goal_num = goal["id"]
+        goal_name = goal["name"]
+        
+        for generic_metric in goal_metrics_generic:
+            
+            # Generic name and id of current goal metric
+            id_generic = generic_metric["id"]
+            name_generic = generic_metric["name"]
+            
+            # Replace name and number of current goals into generics
+            metric_id = id_generic.replace("XX", goal_num)
+            name_id = goal_name + " (" + name_generic.replace("XX", goal_num) + ")"
+            
+            goal_metrics.append({"id":metric_id, "name":name_id})
+    
+    return goal_metrics
 
 
 ## FUNCTIONS FOR METADATA API ##
