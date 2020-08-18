@@ -173,6 +173,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         console.log($scope.config.web_property);
         console.log($scope.config.view);
         console.log("HERE");
+        
+        console.log($scope.presets)
     };
         
     init();
