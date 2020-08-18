@@ -42,7 +42,7 @@ def do(payload, config, plugin_config, inputs):
     
 def get_account_summaries(service_account_name):
     # Get authenticated Google Analytics API service using selected service account
-    service = get_authenticated_google_analytics_service(service_account_name)
+    service = get_authenticated_google_analytics_service(API_NAME, API_VERSION, SCOPE, service_account_name)
     
     # Retrieve AccountSummaries from Management API
     response = service.management().accountSummaries().list().execute()
@@ -56,7 +56,7 @@ def get_account_summaries(service_account_name):
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
 def get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id):   
     # Get authenticated Google Analytics API service using selected service account
-    service = get_authenticated_google_analytics_service(service_account_name)
+    service = get_authenticated_google_analytics_service(API_NAME, API_VERSION, SCOPE, service_account_name)
     
     # Default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
@@ -86,7 +86,7 @@ def get_metrics_and_dimensions(service_account_name, account_id, web_property_id
 
 def get_segments(service_account_name):
     # Get authenticated Google Analytics API service using selected service account
-    service = get_authenticated_google_analytics_service(service_account_name)
+    service = get_authenticated_google_analytics_service(API_NAME, API_VERSION, SCOPE, service_account_name)
     
     # Retrieve all available Segments from the Management API
     response = service.management().segments().list().execute()
