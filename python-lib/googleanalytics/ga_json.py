@@ -323,7 +323,7 @@ def reporting_row_generator(response, metrics, dimensions):
     
     # Create dicts of {"id" : "name"} for metrics (fix this in the future, see note in function description)
     metrics_and_goals_dict = dict([(metric["id"], metric["name"]) for metric in metrics])
-    dimensions_dict = dict([(identifier, name) for name, identifier in dimensions])
+    dimensions_dict = dict([(dim["id"], dim["name"]) for dim in dimensions])
     
     # Obtain identifiers of dimensions and metrics returned in response
     metric_ids = list()
