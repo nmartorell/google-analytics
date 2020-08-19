@@ -64,6 +64,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             /* Clear Web Property and Views dropdowns */
             $scope.web_properties = null;
             $scope.views = null;
+            
         });
     };
 
