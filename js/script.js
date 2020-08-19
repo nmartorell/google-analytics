@@ -91,11 +91,13 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Retrieve currently configured service accounts on DSS instance */
         let presets = [];
-        DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
+        var data = DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId)/*.success(function(data){
             presets = data.presets.filter(p => p.usable);
             console.log("presents within api call");
             console.log(presets);
-        }); 
+        }); */
+        console.log("here")
+        console.log(data)
         
         /* If $scope.config.presets already exists, update it, else set it. 
            Note that $scope.config.presets will only exist when the dataset settings tab is opened after it is created */
