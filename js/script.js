@@ -93,12 +93,14 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         let presets = [];
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
             presets = data.presets.filter(p => p.usable);
+            vconsole.log(presets)
+            
         }); 
         
         /* If $scope.config.presets already exists, update it, else set it. 
            Note that $scope.config.presets will only exist when the dataset settings tab is opened after it is created */
         if (typeof $scope.config.presets === 'undefined') {
-            $scope.config.presets = presets
+            $scope.config.presets = presets;
         } 
         else {
             
