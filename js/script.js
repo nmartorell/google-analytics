@@ -118,8 +118,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         });
     };
 
-                                                                                                          
-  
     init();    
 });
 
