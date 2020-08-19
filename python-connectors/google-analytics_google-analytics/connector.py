@@ -67,17 +67,20 @@ class GoogleAnalyticsConnector(Connector):
         assert start_date, "No \"Start Date\" has been selected; please select one." 
         assert end_date, "No \"End Date\" has been selected; please select one."
         
+        
+        
+        # THE FOLLOWING CODE DEALS WITH DATE TYPE HTML INPUTS
         # Note: start and end times are coerced into UTC from the local system timezone by DSS.
         #       In order to retrieve the date entered by the user, the start and end dates need to be reverted to the system timezone.
         
-        start_date = pytz.utc.localize(datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
-        end_date = pytz.utc.localize(datetime.strptime(end_date, "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
+        #start_date = pytz.utc.localize(datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
+        #end_date = pytz.utc.localize(datetime.strptime(end_date, "%Y-%m-%dT%H:%M:%S.%fZ")).astimezone()
         
-        assert end_date >= start_date, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
+        #assert end_date >= start_date, "The selected \"End Date\" must be after (or equal to) \"Start Date\"."
 
         # Format start and end dates to string with "YYYY-MM-DD" format
-        self.start_date = start_date.strftime("%Y-%m-%d")
-        self.end_date = end_date.strftime("%Y-%m-%d")
+        #self.start_date = start_date.strftime("%Y-%m-%d")
+        #self.end_date = end_date.strftime("%Y-%m-%d")
         
     
     def get_read_schema(self):
