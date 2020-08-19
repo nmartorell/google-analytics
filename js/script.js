@@ -122,12 +122,12 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             
             /* Refresh view properties fields */
             enableDummyViewProperties(); 
-            enableViewProperties();             
+            enableViewProperties();   
+            
+            console.log($scope.config.metrics_list)
+            console.log($scope.config.dimensions_list)
+            console.log($scope.config.segments_list)
         }); 
-        
-        console.log($scope.config.metrics_list)
-        console.log($scope.config.dimensions_list)
-        console.log($scope.config.segments_list)
     };
     
     /* Initialization */
