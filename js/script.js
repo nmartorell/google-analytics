@@ -3,23 +3,27 @@ var app = angular.module('googleAnalytics.dataset', []);
 
 app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {   
 
+    /* Helper function to clear View Properties */
+    var clearViewProperties() = function(){
+        $scope.config.metrics_list = null;
+        $scope.config.dimensions_list = null;
+        $scope.config.segments_list = null;
+    };
+    
+    
     /* Function to retrieve Account Summaries dict ADD BUTTON! */
     $scope.getAccountSummaries = function(){
                
         /* Clear Web Property, View and View Properties dropdowns */
         $scope.config.web_properties = null;
         $scope.config.views = null;
-        
-        $scope.config.metrics_list = null;
-        $scope.config.dimensions_list = null;
-        $scope.config.segments_list = null;
+        clearViewProperties()
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
             $scope.config.account_summaries = data['account_summaries'];
         });
     };
-
     
     /* Function to extract the Web Properties associated to the selected Account */
     $scope.listWebProperties = function(){
@@ -31,10 +35,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Clear View and View Properties dropdowns */
         $scope.config.views = null;
-        
-        $scope.config.metrics_list = null;
-        $scope.config.dimensions_list = null;
-        $scope.config.segments_list = null;
+        clearViewProperties()
         
         /* Update Web Properties dropdown */
         $scope.config.web_properties = $scope.config.account.web_properties;
@@ -49,9 +50,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
         
         /* Clear View Properties dropdowns */
-        $scope.config.metrics_list = null;
-        $scope.config.dimensions_list = null;
-        $scope.config.segments_list = null;  
+        clearViewProperties()  
         
         /* Update Views dropdown */
         $scope.config.views = $scope.config.web_property.views;
