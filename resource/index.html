@@ -95,7 +95,7 @@
     <div class="control-group">
         <label class="control-label">Segments</label>
         <div id='control' class="controls" >
-            <select dku-bs-select type="text"
+            <select multiselect-field type="text"
                  ng-if="segmentsReady"
                  ng-model="config.segments" 
                  ng-options="segment.label for segment in config.segments_list" multiple>
