@@ -7,9 +7,9 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.service_account"
-                   ng-options="p.name for p in config.presets"
-                   ng-change="getAccountSummaries()"> <!-- config.service_account is {name, usable} -->
+                   ng-options="p.name for p in config.presets"> <!-- config.service_account is {name, usable} -->
            </select>
+           <button ng-click="getAccountSummaries()" class="btn btn--primary link-like">Get Account Data</button>
        </div>    
    </div> 
 
