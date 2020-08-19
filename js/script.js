@@ -90,6 +90,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         });
         
         /* Retrieve currently configured service accounts */
+        $scope.presets = null;''
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
             $scope.presets = data.presets.filter(p => p.usable);
         }); 
