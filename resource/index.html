@@ -85,16 +85,11 @@
     <div class="control-group">
         <label class="control-label">Segments</label>
         <div id='control' class="controls" >
-            <select dku-bs-select type="text"
-                 ng-if="segmentsReady"
-                 ng-model="config.segments" 
-                 ng-options="segment.label for segment in config.segments_list" multiple>
+            <select dku-bs-select muliple
+                    type="text"
+                    ng-model="config.segments" 
+                    ng-options="segment.label for segment in config.segments_list">
             </select>
-            <div type="text"
-                 ng-if="dummySegmentsReady"
-                 ng-model="dummy.segments"
-                 multiselect-field>
-            </div>
             <div class="help-inline ng-binding ng-scope">
                max. 4 (optional)
             </div>
