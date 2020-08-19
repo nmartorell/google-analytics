@@ -89,47 +89,44 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             let projectKey = data.project_key;
         });
         
-        /* Retrieve currently configured service accounts on DSS instance */
-        let presets = [];
-        var data = DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId)/*.success(function(data){
+        var data = DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
+            
+            /* Retrieve currently configured service accounts on DSS instance */
             presets = data.presets.filter(p => p.usable);
-            console.log("presents within api call");
-            console.log(presets);
-        }); */
-        console.log("here")
-        console.log(data)
-        
-        /* If $scope.config.presets already exists, update it, else set it. 
-           Note that $scope.config.presets will only exist when the dataset settings tab is opened after it is created */
-        if (typeof $scope.config.presets === 'undefined') {
-            $scope.config.presets = presets;
-        } 
-        else {
             
-            /* Generate dict of previosuly used presets {name --> index} */
-            var previous_presets_lookup = {};
-            $scope.config.presets.forEach(function (preset, index) {
-                previous_presets_lookup[preset.name] = index;
-            });
+            /* If $scope.config.presets already exists, update it, else set it. 
+               Note that $scope.config.presets will only exist when the dataset settings tab is opened after it is created */
+            if (typeof $scope.config.presets === 'undefined') {
+                $scope.config.presets = presets;
+            } 
+            else {
             
-            console.log("previous preset names");
-            console.log(previous_presets_lookup);
-            console.log(presets)
+                /* Generate dict of previosuly used presets {name --> index} */
+                var previous_presets_lookup = {};
+                $scope.config.presets.forEach(function (preset, index) {
+                    previous_presets_lookup[preset.name] = index;
+                });
             
-            /* Loop over current presets, and replace by the object in $scope.config.presets 
-               This is done to ensure the $$hashKeys match with those stored in $scope.config.service_account (for the UI) */
-            presets.forEach(function (preset, index) {
-                if (preset.name in previous_presets_dict) {
-                    presets[index] = $scope.config.presets[previous_presets_lookup[preset.name]]
-                }
-            });
+                console.log("previous preset names");
+                console.log(previous_presets_lookup);
+                console.log(presets)
             
-            $scope.config.presets = presets
-        }      
+                /* Loop over current presets, and replace by the object in $scope.config.presets 
+                   This is done to ensure the $$hashKeys match with those stored in $scope.config.service_account (for the UI) */
+                presets.forEach(function (preset, index) {
+                    if (preset.name in previous_presets_dict) {
+                        presets[index] = $scope.config.presets[previous_presets_lookup[preset.name]]
+                    }
+                });
+            
+                $scope.config.presets = presets
+            }      
+        };
+     );
     };
-        
-    init();
-    
+                                                                                                          
+  
+    init();    
 });
 
 
