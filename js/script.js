@@ -90,15 +90,14 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         });
         
         /* Retrieve currently configured service accounts */
-        var presets = null
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
-            presets = data.presets.filter(p => p.usable);
+            $scope.presets = data.presets.filter(p => p.usable);
         }); 
         
         /* If $scope.config.presets already exists, update it, else set it 
            Note that $scope.config.presets will only exist when the dataset settings tab is opened after it is created */
         if (typeof $scope.config.presets === 'undefined') {
-            $scope.config.presets = presets
+            $scope.config.presets = $scope.presets
         } 
         else {
             
@@ -110,17 +109,17 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             
             console.log("previous preset names");
             console.log(previous_presets_dict);
-            console.log(presets)
+            console.log($scope.presets)
             
             /* Loop over current presets, and replace by the object in $scope.config.presets 
                This is done to ensure the $$hashKeys match with those stored in $scope.config.service_account (for the UI) */
-            presets.forEach(function (preset, index) {
+            $scope.presets.forEach(function (preset, index) {
                 if (preset.name in previous_presets_dict) {
-                    presets[index] = $scope.config.presets[previous_presets_dict[preset.name]]
+                    $scope.presets[index] = $scope.config.presets[previous_presets_dict[preset.name]]
                 }
             });
             
-            $scope.config.presets = presets
+            $scope.config.presets = $scope.presets
         }      
     };
         
