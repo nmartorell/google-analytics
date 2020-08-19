@@ -3,12 +3,7 @@ var app = angular.module('googleAnalytics.dataset', []);
 
 app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {   
 
-    /* Helper function to clear View Properties */
-    var clearViewProperties() = function(){
-        $scope.config.metrics_list = null;
-        $scope.config.dimensions_list = null;
-        $scope.config.segments_list = null;
-    };
+    
     
     
     /* Function to retrieve Account Summaries dict ADD BUTTON! */
