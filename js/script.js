@@ -107,23 +107,14 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
                     previous_presets_lookup[preset.name] = preset;
                 });
             
-                console.log("previous preset names");
-                console.log(previous_presets_lookup);
-                console.log(presets)
-            
                 /* Loop over current presets, and replace by the object in $scope.config.presets 
                    This is done to ensure the $$hashKeys match with those stored in $scope.config.service_account (for the UI) */
                 presets.forEach(function (preset, index) {
                     console.log(preset);
                     if (preset.name in previous_presets_lookup) {
-                        console.log("here1234");
                         presets[index] = previous_presets_lookup[preset.name]
                     }
                 });
-            
-                $scope.config.presets = presets;
-                console.log("scope presets");
-                console.log($scope.config.presets);
             }
         });
     };
