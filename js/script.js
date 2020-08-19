@@ -1,48 +1,7 @@
 var app = angular.module('googleAnalytics.dataset', []);
 
 
-app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {
-    
-    /* Helper functions to clear View Properties */
-    $scope.enableViewProperties = function(){
-        $scope.metricsReady=true;
-        $scope.dummyMetricsReady=false; 
-
-        $scope.dimensionsReady=true;
-        $scope.dummyDimensionsReady=false;
-        
-        $scope.segmentsReady=true;
-        $scope.dummySegmentsReady=false;
-    };
-    
-    $scope.enableDummyViewProperties = function(){
-        $scope.metricsReady=false;
-        $scope.dummyMetricsReady=true; 
-        
-        $scope.dimensionsReady=false;
-        $scope.dummyDimensionsReady=true;
-        
-        $scope.segmentsReady=false;
-        $scope.dummySegmentsReady=true;
-    };
-
-    $scope.clearViewPropertyVars = function(){
-        $scope.config.metrics_list = null;
-        $scope.config.dimensions_list = null;
-        $scope.config.segments_list = null;
-        
-        /* Assigned config variables not cleared automatically */
-        $scope.config.metrics = null;
-        $scope.config.dimensions = null;
-        $scope.config.segments = null; 
-    };
-    
-    $scope.clearViewProperties = function(){
-        $scope.enableDummyViewProperties();
-        $scope.clearViewPropertyVars();
-        $scope.enableViewProperties();
-    };
-    
+app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {   
 
     /* Function to retrieve Account Summaries dict */
     $scope.getAccountSummaries = function(){
