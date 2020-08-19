@@ -111,7 +111,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
 
         /* Clear View Property multiselect fields */
-        clearViewPropertyVars(); 
+        clearViewPropertyVars(); */ 
         
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
@@ -120,9 +120,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.dimensions_list = data['dimensions'];
             $scope.config.segments_list = data['segments'];
             
-            /* Refresh view properties fields 
+            /* Refresh view properties fields */
             enableDummyViewProperties(); 
-            enableViewProperties();   */
+            enableViewProperties();   
             
             console.log($scope.config.metrics_list)
             console.log($scope.config.dimensions_list)
