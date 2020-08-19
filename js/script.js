@@ -40,7 +40,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     $scope.clearViewProperties = function(){
         enableDummyViewProperties();
         clearViewPropertyVars();
-        enableDummyViewProperties();
+        enableViewProperties();
     };
     
 
@@ -53,7 +53,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
         
         /* Clear View Property multiselect fields */
-        clearViewProperties();
+        $scope.clearViewProperties();
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
