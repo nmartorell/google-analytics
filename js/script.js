@@ -27,7 +27,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
 
     var clearViewPropertyVars = function(){
-        $scope.config.metrics_List = null;
+        $scope.config.metrics_list = null;
         $scope.config.dimensions_list = null;
         $scope.config.segments_list = null;
         
@@ -96,7 +96,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
         
         /* Clear View Property multiselect fields */
-        clearViewProperties();
+        clearViewProperties(); 
         
         /* Update Views dropdown */
         $scope.config.views = $scope.config.web_property.views;
@@ -110,8 +110,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
 
-        /* Clear View Property multiselect fields */  
-        clearViewProperties();
+        /* Clear View Property multiselect fields */
+        clearViewProperties(); 
         
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
@@ -119,8 +119,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.metrics_list = data['metrics'];
             $scope.config.dimensions_list = data['dimensions'];
             $scope.config.segments_list = data['segments'];
-
-            console.log(data["metrics"])
             
             /* Refresh view properties fields */
             enableDummyViewProperties(); 
@@ -140,11 +138,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             let projectKey = data.project_key;
         });
         
-        /* TODO: add validation for failure 
+        /* TODO: add validation for failure */
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
             $scope.config.presets = data.presets.filter(p => p.usable);
         });
-        */
+        
         /* UI features enable/disable at start */
         enableViewProperties();   
         
