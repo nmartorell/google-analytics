@@ -51,9 +51,9 @@ class GoogleAnalyticsConnector(Connector):
         assert self.view, "No Google Analytics \"View\" has been selected; please select one." 
         
         # (3) Query Parameters
-        self.metrics = self.config["metrics"] # multiselect parameters return an empty list if nothing is selected in UI
-        self.dimensions = self.config["dimensions"]
-        self.segments = self.config["segments"]
+        self.metrics = self.config.get("metrics", None)
+        self.dimensions = self.get("dimensions", None)
+        self.segments = self.get("segments", None)
         
         assert len(self.metrics) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
         assert len(self.metrics) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
