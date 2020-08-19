@@ -94,6 +94,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             /* Retrieve currently configured, usable Service Accounts on DSS instance */
             var presets = data.presets.filter(p => p.usable);
             
+            /* debug */
             console.log("current plugin presets")
             console.log(presets)
             
