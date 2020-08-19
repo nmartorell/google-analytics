@@ -106,10 +106,10 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             var previous_presets_dict = {};
             $scope.config.presets.forEach(preset, index) {
                 previous_presets_dict[preset.name] = index
-            }
+            };
             
-            console.log("previous preset names")
-            console.log(previous_preset_names)
+            console.log("previous preset names");
+            console.log(previous_preset_names);
             
             /* Loop over current presets, and replace by the object in $scope.config.presets 
                This is done to ensure the $$hashKeys match with those stored in $scope.config.service_account (for the UI) */
@@ -120,7 +120,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             });
             
             $scope.config.presets = presets
-        }        
+        }      
     };
         
     init();
