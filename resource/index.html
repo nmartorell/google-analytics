@@ -33,7 +33,7 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.web_property"
-                   ng-options="web_property.name for web_property in web_properties"
+                   ng-options="web_property.name for web_property in config.web_properties"
                    ng-change="listViews()"> 
            </select>
        </div>    
@@ -44,7 +44,7 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.view"
-                   ng-options="view.name for view in views"
+                   ng-options="view.name for view in config.views"
                    ng-change="getViewProperties()"> 
            </select>
        </div>    
@@ -60,7 +60,7 @@
            <div type="text" 
                 ng-if= "metricsReady"
                 ng-model="config.metrics" 
-                multiselect-field options="metricsList">
+                multiselect-field options="config.metrics_list">
            </div>
            <div type="text" 
                 ng-if= "dummyMetricsReady"
@@ -79,7 +79,7 @@
            <div type="text"
                 ng-if="dimensionsReady"
                 ng-model="config.dimensions" 
-                multiselect-field options="dimensionsList">
+                multiselect-field options="config.dimensions_list">
            </div>
            <div type="text"
                 ng-if="dummyDimensionsReady"
@@ -98,7 +98,7 @@
             <div type="text"
                  ng-if="segmentsReady"
                  ng-model="config.segments" 
-                 multiselect-field options="segmentsList">
+                 multiselect-field options="config.segments_list">
             </div>
             <div type="text"
                  ng-if="dummySegmentsReady"
