@@ -120,7 +120,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
                 });
                 
                 $scope.config.presets = presets;
-            }
+            }            
         });
     };
 
