@@ -27,12 +27,12 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
 
     var clearViewPropertyVars = function(){
-        $scope.metricsList = null;
-        $scope.dimensionsList = null;
-        $scope.segmentsList = null;
+        $scope.config.metrics_List = null;
+        $scope.config.dimensions_list = null;
+        $scope.config.segments_list = null;
         
         /* Assigned config variables not cleared automatically */
-        $scope.config.metrics_and_goals = null;
+        $scope.config.metrics = null;
         $scope.config.dimensions = null;
         $scope.config.segments = null;
     };
