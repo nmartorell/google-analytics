@@ -52,8 +52,8 @@ class GoogleAnalyticsConnector(Connector):
         
         # (3) Query Parameters
         self.metrics = self.config.get("metrics", [])
-        self.dimensions = self.get("dimensions", [])
-        self.segments = self.get("segments", [])
+        self.dimensions = self.config.get("dimensions", [])
+        self.segments = self.config.get("segments", [])
         
         assert len(self.metrics) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
         assert len(self.metrics) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
