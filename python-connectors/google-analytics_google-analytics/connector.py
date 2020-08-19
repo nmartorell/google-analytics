@@ -55,10 +55,14 @@ class GoogleAnalyticsConnector(Connector):
         self.dimensions = self.get("dimensions", None)
         self.segments = self.get("segments", None)
         
-        assert len(self.metrics) >= 1, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
+        assert self.metrics, "No Google Analytics \"Metrics and Goals\" have been selected; please select at least one."
         assert len(self.metrics) <= 10, "More than 10 Google Analytics \"Metrics and Goals\" have been selected; please select a maximum of 10."
-        assert len(self.dimensions) <= 9, "More than 9 Google Analytics \"Dimensions\" have been selected; please select a maximum of 9."
-        assert len(self.segments) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
+        
+        if self.dimensions:
+            assert len(self.dimensions) <= 9, "More than 9 Google Analytics \"Dimensions\" have been selected; please select a maximum of 9."
+        
+        if self.segments:
+            assert len(self.segments) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
     
         # (4) Query Dates
         start_date = self.config.get("start_date", None)
