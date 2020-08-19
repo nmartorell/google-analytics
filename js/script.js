@@ -101,7 +101,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             console.log($scope.config.presets)
             
             console.log("selected presets")
-            console.log($scope.config.preset)
+            console.log($scope.config.service_account)
             
             
         });
