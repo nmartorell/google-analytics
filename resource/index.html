@@ -95,11 +95,11 @@
     <div class="control-group">
         <label class="control-label">Segments</label>
         <div id='control' class="controls" >
-            <div type="text"
+            <select type="text"
                  ng-if="segmentsReady"
                  ng-model="config.segments" 
                  multiselect-field ng-options="config.segments_list">
-            </div>
+            </select>
             <div type="text"
                  ng-if="dummySegmentsReady"
                  ng-model="dummy.segments"
