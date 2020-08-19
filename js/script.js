@@ -104,9 +104,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             
             /* Generate list of previosuly used presets */
             var previous_presets_dict = {};
-            $scope.config.presets.forEach(preset, index) {
+            $scope.config.presets.forEach(function (preset, index) {
                 previous_presets_dict[preset.name] = index;
-            };
+            });
             
             console.log("previous preset names");
             console.log(previous_preset_names);
