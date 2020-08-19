@@ -17,7 +17,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* Clear Web Property, View and View Properties dropdowns */
         $scope.config.web_properties = null;
         $scope.config.views = null;
-        clearViewProperties()
+        clearViewProperties();
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
@@ -35,7 +35,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Clear View and View Properties dropdowns */
         $scope.config.views = null;
-        clearViewProperties()
+        clearViewProperties();
         
         /* Update Web Properties dropdown */
         $scope.config.web_properties = $scope.config.account.web_properties;
@@ -50,7 +50,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
         
         /* Clear View Properties dropdowns */
-        clearViewProperties()  
+        clearViewProperties();  
         
         /* Update Views dropdown */
         $scope.config.views = $scope.config.web_property.views;
