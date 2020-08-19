@@ -150,7 +150,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         console.log($scope.config.metrics_list);
         console.log($scope.config.metrics);
         console.log($scope.config.presets);
-        console.log($scope.config.view);
+        console.log($scope.config.views);
         console.log($scope.config.view);
         
         
