@@ -80,7 +80,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Initialization */
     var init = function(){        
         
-        /* Populate the Google Service Account dropdown (TODO: edit for re-fresh of page?) */
+        /* Populate the Google Service Account dropdown */
         let pluginId = "google-analytics";
         let parameterSetId = "google-service-accounts";
         
@@ -89,12 +89,39 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             let projectKey = data.project_key;
         });
         
-        /* TODO: add validation for failure */
+        /* Retrieve currently configured service accounts */
+        var presets = null
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
-            $scope.config.presets = data.presets.filter(p => p.usable);
+            presets = data.presets.filter(p => p.usable);
         }); 
+        
+        /* If $scope.config.presets already exists, update it, else set it */
+        /* Note that $scope.config.presets will only exist when the dataset settings tab is opened after it is created */
+        if (typeof $scope.config.presets === 'undefined') {
+            $scope.config.presets = presets
+        } 
+        else {
+            
+            /* Generate list of previosuly used presets */
+            var previous_preset_names = [];
+            $scope.config.presets.forEach(preset, index) {
+                previous_preset_names.push(preset.name)
+            }
+            
+            /* Loop over presets, and replace by the object in $scope.config.presets so the $$hashKeys match (so UI is properly populated) */
+            presets.forEach(function (preset, index) {
+                if preset.name 
+            });
+        }        
     };
         
     init();
     
 });
+
+
+
+
+
+
+
