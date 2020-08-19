@@ -148,6 +148,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         enableViewProperties();   
         
         console.log($scope.config.metrics_list);
+        console.log($scope.config.metrics);
         console.log($scope.config.presets)
         
         
