@@ -11,8 +11,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
         
-        /* Clear View Property multiselect fields 
-        $scope.clearViewProperties(); */
+        /* Clear View, Web Property and  */
+        $scope.clearViewProperties(); 
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
