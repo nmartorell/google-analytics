@@ -81,7 +81,7 @@
                 ng-model="config.dimensions" 
                 multiselect-field options="config.dimensions_list">
            </div>
-           <div type="text"
+           <div dku-bs-select type="text"
                 ng-if="dummyDimensionsReady"
                 ng-model="dummy.dimensions"
                 multiselect-field>
@@ -98,7 +98,7 @@
             <select type="text"
                  ng-if="segmentsReady"
                  ng-model="config.segments" 
-                 multiselect-field ng-options="segment.label for segment in config.segments_list" multiple>
+                 ng-options="segment.label for segment in config.segments_list" multiple>
             </select>
             <div type="text"
                  ng-if="dummySegmentsReady"
