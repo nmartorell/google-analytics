@@ -97,6 +97,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             console.log("current plugin presets")
             console.log(presets)
             
+            console.log("old recipe presets")
+            console.log($scope.config.presets)
+            
             /* If $scope.config.presets already exists, update it, else set it. 
                Note that $scope.config.presets will only exist when the dataset settings tab is opened after it is created */
             if (typeof $scope.config.presets === 'undefined') {
