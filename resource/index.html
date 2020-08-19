@@ -57,11 +57,12 @@
    <div class="control-group">
        <label class="control-label">Metrics and Goals</label>
        <div id='control' class="controls" >
-           <div type="text" 
-                ng-if="metricsReady"
-                ng-model="config.metrics" 
-                multiselect-field options="config.metrics_list">
-           </div>
+           <select dku-bs-select
+                   type="text" 
+                   ng-if="metricsReady"
+                   ng-model="config.metrics" 
+                   ng-options="config.metrics_list">
+           </select>
            <div type="text" 
                 ng-if= "dummyMetricsReady"
                 ng-model="dummy.metrics"
