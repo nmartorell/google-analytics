@@ -53,7 +53,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
         
         /* Clear View Property multiselect fields */
-        clearViewProperties();
+        clearViewPropertyVars();
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
@@ -78,7 +78,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
         
         /* Clear View Property multiselect fields */
-        clearViewProperties();
+        clearViewPropertyVars();
         
         /* Update Web Properties dropdown */
         $scope.config.web_properties = $scope.config.account.web_properties;
@@ -96,7 +96,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
         
         /* Clear View Property multiselect fields */
-        clearViewProperties(); 
+        clearViewPropertyVars(); 
         
         /* Update Views dropdown */
         $scope.config.views = $scope.config.web_property.views;
@@ -111,7 +111,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
 
         /* Clear View Property multiselect fields */
-        clearViewProperties(); 
+        clearViewPropertyVars(); 
         
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
@@ -120,9 +120,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.dimensions_list = data['dimensions'];
             $scope.config.segments_list = data['segments'];
             
-            /* Refresh view properties fields */
+            /* Refresh view properties fields 
             enableDummyViewProperties(); 
-            enableViewProperties();   
+            enableViewProperties();   */
             
             console.log($scope.config.metrics_list)
             console.log($scope.config.dimensions_list)
