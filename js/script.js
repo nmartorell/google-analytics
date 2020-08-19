@@ -25,6 +25,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         });
     };
     
+    
     /* Function to extract the Web Properties associated to the selected Account */
     $scope.listWebProperties = function(){
         
@@ -40,6 +41,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* Update Web Properties dropdown */
         $scope.config.web_properties = $scope.config.account.web_properties;
     };
+    
     
     /* Function to extract the Views associated to the selected Web Property */
     $scope.listViews = function(){
@@ -72,6 +74,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.segments_list = data['segments'];
         }); 
     };
+    
     
     /* Initialization */
     var init = function(){        
