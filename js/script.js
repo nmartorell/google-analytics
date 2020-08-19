@@ -21,13 +21,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
-            
-            /* Update Accounts dropdown */
             $scope.config.account_summaries = data['account_summaries'];
-            
-            /* Clear Web Property and Views dropdowns */
-            $scope.config.web_properties = null;
-            $scope.config.views = null; 
         });
     };
 
