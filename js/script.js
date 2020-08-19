@@ -40,7 +40,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     var clearViewProperties = function(){
         enableDummyViewProperties();
         clearViewPropertyVars();
-        enableDummyViewProperties();
+        enableViewProperties();
     };
     
 
