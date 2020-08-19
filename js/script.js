@@ -109,7 +109,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             });
             
             console.log("previous preset names");
-            console.log(previous_preset_names);
+            console.log(previous_presets_dict);
             
             
             
