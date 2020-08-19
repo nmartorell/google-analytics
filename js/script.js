@@ -93,7 +93,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         let presets = [];
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
             presets = data.presets.filter(p => p.usable);
-            console.log("presents within api call")
+            console.log("presents within api call");
             console.log(presets);
         }); 
         
