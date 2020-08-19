@@ -128,6 +128,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
                     }
                 });
                 
+                /* debug */
                 console.log("final plugin presets list")
                 console.log(presets)
                 
