@@ -117,9 +117,10 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
             
             $scope.config.metrics_list = data['metrics'];
+            /*
             $scope.config.dimensions_list = data['dimensions'];
             $scope.config.segments_list = data['segments'];
-            
+            */
             console.log(data["metrics"])
             
             /* Refresh view properties fields */
@@ -143,7 +144,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* TODO: add validation for failure */
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
             $scope.config.presets = data.presets.filter(p => p.usable);
-            console.log($scope.config.presets);
         });
         
         /* UI features enable/disable at start */
