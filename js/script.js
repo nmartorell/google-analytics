@@ -62,8 +62,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.account_summaries = data['account_summaries'];
             
             /* Clear Web Property and Views dropdowns */
-            $scope.web_properties = null;
-            $scope.views = null;
+            $scope.config.web_properties = null;
+            $scope.config.views = null;
             
         });
     };
@@ -81,10 +81,10 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         clearViewProperties();
         
         /* Update Web Properties dropdown */
-        $scope.web_properties = $scope.config.account.web_properties;
+        $scope.config.web_properties = $scope.config.account.web_properties;
         
         /* Clear Views dropdown */
-        $scope.views = null;
+        $scope.config.views = null;
     };
     
     /* Function to extract the Views associated to the selected Web Property */
@@ -99,7 +99,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         clearViewProperties();
         
         /* Update Views dropdown */
-        $scope.views = $scope.config.web_property.views;
+        $scope.config.views = $scope.config.web_property.views;
     };
     
     
@@ -116,9 +116,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
             
-            $scope.metricsList = data['metrics'];
-            $scope.dimensionsList = data['dimensions'];
-            $scope.segmentsList = data['segments'];
+            $scope.config.metrics_list = data['metrics'];
+            $scope.config.dimensions_list = data['dimensions'];
+            $scope.config.segments_list = data['segments'];
             
             /* Refresh view properties fields */
             enableDummyViewProperties(); 
