@@ -57,16 +57,11 @@
    <div class="control-group">
        <label class="control-label">Metrics and Goals</label>
        <div id='control' class="controls" >
-           <select dku-bs-select
+           <select dku-bs-select multiple
                    type="text" 
                    ng-model="config.metrics" 
                    ng-options="metric.label for metric in config.metrics_list">
            </select>
-           <div type="text" 
-                ng-if= "dummyMetricsReady"
-                ng-model="dummy.metrics"
-                multiselect-field>
-           </div>
            <div class="help-inline ng-binding ng-scope">
                max. 10 (min. 1 mandatory)
            </div>
