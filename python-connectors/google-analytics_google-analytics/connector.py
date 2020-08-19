@@ -75,7 +75,7 @@ class GoogleAnalyticsConnector(Connector):
             raise ValueError("\"Start Date\" and \"End Date\" must be valid dates in YYYY-MM-DD format.") from e
         
         # Check dates make sense
-        if self.start_date > self.end_date:
+        if self.start_date >= self.end_date:
             raise ValueError("The selected \"End Date\" must be after \"Start Date\".")
         
         # THE FOLLOWING CODE DEALS WITH DATE TYPE HTML INPUTS
