@@ -76,8 +76,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
         
-        /* Clear View Property multiselect fields */
-        enableDummyViewProperties();
+        /* Clear View Property multiselect fields 
+        enableDummyViewProperties(); */
         
         /* Update Web Properties dropdown */
         $scope.config.web_properties = $scope.config.account.web_properties;
@@ -94,8 +94,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
         
-        /* Clear View Property multiselect fields */
-        enableViewProperties(); 
+        /* Clear View Property multiselect fields 
+        enableViewProperties(); */
         
         /* Update Views dropdown */
         $scope.config.views = $scope.config.web_property.views;
