@@ -85,7 +85,4 @@ def get_segments(service_account_name):
     # Parse response
     segments = ga_json.parse_segments(response)
     
-    # Construct choices dict
-    segments = [ {"value" : segment, "label" : segment["name"]} for segment in segments ]
-    
     return segments
