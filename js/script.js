@@ -102,6 +102,12 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         } 
         else {
             
+            /* Generate list of previosuly used presets */
+            var previous_presets_dict = {};
+            $scope.config.presets.forEach(preset, index) {
+                previous_presets_dict[preset.name] = index
+            };
+            
             
         }      
     };
