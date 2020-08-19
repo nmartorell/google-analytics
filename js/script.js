@@ -120,9 +120,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
                     }
                 });
             
-                $scope.config.presets = presets
-                console.log("scope presets")
-                console.log($scope.config.presets)
+                $scope.config.presets = presets;
+                console.log("scope presets");
+                console.log($scope.config.presets);
             }
         });
     };
