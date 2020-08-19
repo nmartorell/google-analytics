@@ -52,8 +52,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
         
-        /* Clear View Property multiselect fields */
-        $scope.clearViewProperties();
+        /* Clear View Property multiselect fields 
+        $scope.clearViewProperties(); */
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
@@ -110,7 +110,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
 
         /* Clear View Property multiselect fields */
-        $scope.enableDummyViewProperties(); 
+        $scope.enableDummyViewProperties();
+        $scope.clearViewPropertyVars();
         
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
