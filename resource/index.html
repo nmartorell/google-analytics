@@ -98,7 +98,7 @@
             <select type="text"
                  ng-if="segmentsReady"
                  ng-model="config.segments" 
-                 multiselect-field ng-options="segment.label for segment in config.segments_list">
+                 multiselect-field ng-options="segment.label for segment in config.segments_list" multiple>
             </select>
             <div type="text"
                  ng-if="dummySegmentsReady"
