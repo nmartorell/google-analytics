@@ -120,6 +120,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.dimensions_list = data['dimensions'];
             $scope.config.segments_list = data['segments'];
             
+            console.log(data["metrics"])
+            
             /* Refresh view properties fields */
             enableDummyViewProperties(); 
             enableViewProperties();             
