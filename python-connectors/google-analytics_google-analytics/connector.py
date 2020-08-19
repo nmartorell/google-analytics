@@ -61,13 +61,22 @@ class GoogleAnalyticsConnector(Connector):
         assert len(self.segments) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
     
         # (4) Query Dates
-        start_date = self.config.get("start_date", None)
-        end_date = self.config.get("end_date", None)
+        self.start_date = self.config.get("start_date", None)
+        self.end_date = self.config.get("end_date", None)
         
-        assert start_date, "No \"Start Date\" has been selected; please select one." 
-        assert end_date, "No \"End Date\" has been selected; please select one."
+        assert self.start_date, "No \"Start Date\" has been selected; please select one." 
+        assert self.end_date, "No \"End Date\" has been selected; please select one."
         
+        # Check input format is correct for dates
+        try:
+            datetime.strptime(self.start_date, '%Y-%m-%d')
+            datetime.strptime(self.end_date, '%Y-%m-%d')
+        except ValueError as e:
+            raise ValueError("\"Start Date\" and \"End Date\" must be valid dates in YYYY-MM-DD format.") from e
         
+        # Check dates make sense
+        if self.start_date > self.end_date:
+            raise ValueError("The selected \"End Date\" must be after \"Start Date\".")
         
         
         # THE FOLLOWING CODE DEALS WITH DATE TYPE HTML INPUTS
