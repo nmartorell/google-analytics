@@ -59,7 +59,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
             
             /* Update Accounts dropdown */
-            $scope.account_summaries = data['account_summaries'];
+            $scope.config.account_summaries = data['account_summaries'];
             
             /* Clear Web Property and Views dropdowns */
             $scope.web_properties = null;
