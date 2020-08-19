@@ -77,7 +77,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
         
         /* Clear View Property multiselect fields */ 
-        clearViewPropertyVars(); 
+        $scope.clearViewPropertyVars(); 
         
         /* Update Web Properties dropdown */
         $scope.config.web_properties = $scope.config.account.web_properties;
@@ -94,8 +94,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
         
-        /* Clear View Property multiselect fields 
-        enableViewProperties(); */
+        /* Clear View Property multiselect fields */
+        $scope.clearViewPropertyVars();  
         
         /* Update Views dropdown */
         $scope.config.views = $scope.config.web_property.views;
@@ -110,7 +110,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
 
         /* Clear View Property multiselect fields */
-        $scope.enableDummyViewProperties();
         $scope.clearViewPropertyVars();
         
         /* Compute new property values */
@@ -120,8 +119,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.dimensions_list = data['dimensions'];
             $scope.config.segments_list = data['segments'];
             
-            /* Refresh view properties fields */
-            $scope.enableViewProperties();
+            /* Refresh view properties fields 
+            $scope.enableViewProperties(); */
         }); 
     };
     
