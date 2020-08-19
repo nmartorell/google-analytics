@@ -60,7 +60,7 @@
            <div type="text" 
                 ng-if= "metricsReady"
                 ng-model="config.metrics" 
-                multiselect-field options="config.metrics_list">
+                multiselect-field options="metric as config.metrics_list track by metric.value.id">
            </div>
            <div type="text" 
                 ng-if= "dummyMetricsReady"
