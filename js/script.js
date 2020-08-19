@@ -110,8 +110,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
 
-        /* Clear View Property multiselect fields 
-        clearViewPropertyVars(); */ 
+        /* Clear View Property multiselect fields */
+        clearViewPropertyVars();  
         
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
