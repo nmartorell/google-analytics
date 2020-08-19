@@ -147,8 +147,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.presets = data.presets.filter(p => p.usable);
         });
         
-        /* UI features enable/disable at start */
-        enableViewProperties();        
+        /* UI features enable/disable at start 
+        enableViewProperties();        */
     };
         
     init();
