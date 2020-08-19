@@ -145,7 +145,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         });
         */
         /* UI features enable/disable at start */
-        enableViewProperties();       
+        enableViewProperties();   
+        
+        console.log($scope.config.metrics_list)
         
     };
         
