@@ -102,16 +102,22 @@
     
     <div class="control-group">
        <label class="control-label">Start Date</label>
-       <input type="date"
+       <input type="text"
               ng-model="config.start_date">
        </input>
+       <div class="help-inline ng-binding ng-scope">
+           Must be in format YYYY-DD-MM.
+       </div>
     </div> 
     
    <div class="control-group">
        <label class="control-label">End Date</label>
-       <input type="date"
+       <input type="text"
               ng-model="config.end_date">
        </input>
+       <div class="help-inline ng-binding ng-scope">
+           Must be in format YYYY-DD-MM.
+       </div>
    </div> 
 
    <div class="control-group">
