@@ -3,7 +3,7 @@ var app = angular.module('googleAnalytics.dataset', []);
 
 app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {   
 
-    /* Function to retrieve Account Summaries dict */
+    /* Function to retrieve Account Summaries dict ADD BUTTON! */
     $scope.getAccountSummaries = function(){
                
         /* Clear Web Property, View and View Properties dropdowns */
@@ -29,14 +29,15 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
         
-        /* Clear View Property multiselect fields */ 
-        $scope.clearViewPropertyVars(); 
+        /* Clear View and View Properties dropdowns */
+        $scope.config.views = null;
+        
+        $scope.config.metrics_list = null;
+        $scope.config.dimensions_list = null;
+        $scope.config.segments_list = null;
         
         /* Update Web Properties dropdown */
         $scope.config.web_properties = $scope.config.account.web_properties;
-        
-        /* Clear Views dropdown */
-        $scope.config.views = null;
     };
     
     /* Function to extract the Views associated to the selected Web Property */
@@ -47,8 +48,10 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             return;
         };
         
-        /* Clear View Property multiselect fields */
-        $scope.clearViewPropertyVars();  
+        /* Clear View Properties dropdowns */
+        $scope.config.metrics_list = null;
+        $scope.config.dimensions_list = null;
+        $scope.config.segments_list = null;  
         
         /* Update Views dropdown */
         $scope.config.views = $scope.config.web_property.views;
@@ -57,23 +60,17 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     /* Function to fetch View Properties */
     $scope.getViewProperties = function(){
+        
         /* Prevent from running when $scope.config.view is null */
         if ($scope.config.view == null) {
             return;
         };
-
-        /* Clear View Property multiselect fields */
-        $scope.clearViewPropertyVars();
         
         /* Compute new property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
-            
             $scope.config.metrics_list = data['metrics'];
             $scope.config.dimensions_list = data['dimensions'];
             $scope.config.segments_list = data['segments'];
-            
-            /* Refresh view properties fields 
-            $scope.enableViewProperties(); */
         }); 
     };
     
