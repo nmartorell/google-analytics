@@ -79,6 +79,10 @@ class GoogleAnalyticsConnector(Connector):
         self.start_date = start_date.strftime("%Y-%m-%d")
         self.end_date = end_date.strftime("%Y-%m-%d")
         
+        # Reassign formatted dates to plugin config (this is for re-display in UI)
+        self.config["start_date"] = self.start_date
+        self.config["end_date"] = self.end_date
+        
     
     def get_read_schema(self):
         """
