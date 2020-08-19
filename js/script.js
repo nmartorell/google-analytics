@@ -88,9 +88,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             let projectKey = data.project_key;
         });
         
-        /* TODO: add validation for failure */
+        /* TODO: add validation for failure 
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
-            $scope.config.presets = data.presets.filter(p => p.usable);
+            $scope.config.presets = data.presets.filter(p => p.usable); */
         }); 
     };
         
