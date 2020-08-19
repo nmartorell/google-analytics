@@ -103,8 +103,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             console.log("selected presets")
             console.log($scope.config.service_account)
             
-            $scope.config.presets = presets
-            
             /* If $scope.config.presets already exists, update it, else set it. 
                Note that $scope.config.presets will only exist when the dataset settings tab is opened after it is created */
             if (typeof $scope.config.presets === 'undefined') {
