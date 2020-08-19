@@ -108,6 +108,9 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
                 previous_preset_names.push(preset.name)
             }
             
+            console.log("previous preset names")
+            console.log(previous_preset_names)
+            
             /* Loop over presets, and replace by the object in $scope.config.presets so the $$hashKeys match (so UI is properly populated) */
             presets.forEach(function (preset, index) {
                 if preset.name 
