@@ -70,10 +70,7 @@ def get_metrics_and_dimensions(service_account_name, account_id, web_property_id
 
     # Construct return dicts
     metrics = default_metrics + custom_metrics + goals
-    metrics = [ {"value" : metric, "label" : metric["name"]} for metric in metrics ]
-
     dimensions = default_dimensions + custom_dimensions
-    dimensions = [ {"value" : dimension, "label" : dimension["name"]} for dimension in dimensions ]
     
     return metrics, dimensions
 
