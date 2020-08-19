@@ -90,9 +90,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         DataikuAPI.plugins.listAccessiblePresets(pluginId, projectKey, parameterSetId).success(function(data){
             $scope.config.presets = data.presets.filter(p => p.usable);
         }); 
-        
-        /* UI features enable/disable at start */
-        $scope.enableViewProperties();  
     };
         
     init();
