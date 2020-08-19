@@ -76,7 +76,7 @@ class GoogleAnalyticsConnector(Connector):
         
         # Check dates make sense
         if self.start_date >= self.end_date:
-            raise ValueError("The selected \"End Date\" must be after \"Start Date\".")
+            raise ValueError("The selected \"End Date\" must be after (or equal to) \"Start Date\".")
         
         # THE FOLLOWING CODE DEALS WITH DATE TYPE HTML INPUTS
         # Note: start and end times are coerced into UTC from the local system timezone by DSS.
