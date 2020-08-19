@@ -94,21 +94,12 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             /* Retrieve currently configured, usable Service Accounts on DSS instance */
             var presets = data.presets.filter(p => p.usable);
             
-            /* debug */
-            console.log("current plugin presets")
-            console.log(presets)
-            
-            console.log("old recipe presets")
-            console.log($scope.config.presets)
-            
-            console.log("selected presets")
-            console.log($scope.config.service_account)
-            
-            /* If $scope.config.presets already exists, update it, else set it. 
-               Note that $scope.config.presets will only exist when the dataset settings tab is opened after it is created */
+            /* If $scope.config.presets already exists, update it --> this will be the case when the dataset is initially created */
             if (typeof $scope.config.presets === 'undefined') {
                 $scope.config.presets = presets;
             } 
+            
+            /* When navigating to a the settings of a previously created dataset, may need to update the available Service Accounts */
             else {
             
                 /* Generate dict of previously used presets {name --> preset object} */
@@ -127,10 +118,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
                         presets[index] = previous_presets_lookup[preset.name]
                     }
                 });
-                
-                /* debug */
-                console.log("final plugin presets list")
-                console.log(presets)
                 
                 $scope.config.presets = presets;
             }
