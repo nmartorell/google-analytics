@@ -212,7 +212,7 @@ def parse_columnsMetadata(response):
         templated = column["attributes"].get("minTemplateIndex", None) 
 
         if status == "DEPRECATED":
-            pass
+            continue
         elif templated:
             templated_columns.append(column)
         elif column_type == "METRIC":
