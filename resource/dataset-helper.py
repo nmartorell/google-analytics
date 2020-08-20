@@ -72,7 +72,7 @@ def get_metrics_and_dimensions(service_account_name, account_id, web_property_id
     metrics = default_metrics + custom_metrics + goals
     dimensions = default_dimensions + custom_dimensions
     
-    # Sort return lists alphabetically (for better user-interface of dropdowns)
+    # Sort return lists alphabetically (for more user-interface of dropdowns)
     metrics_sorted = sorted(metrics, key=lambda metric: metric['name']) 
     dimensions_sorted = sorted(dimensions, key=lambda dimension: dimension['name']) 
     
@@ -89,4 +89,7 @@ def get_segments(service_account_name):
     # Parse response
     segments = ga_json.parse_segments(response)
     
-    return segments
+    # Sort segments (for more user-interface of dropdowns)
+    segments_sorted = sorted(segments, key=lambda segment: segment['name']) 
+    
+    return segments_sorted
