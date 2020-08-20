@@ -264,11 +264,7 @@ def parse_columnsMetadata(response):
             else:
                 raise ValueError("The Metadata API has returned something that's not a METRIC or a DIMENSION.")
     
-    # Finally, sort by metric and dimension name (this leads to better dropdowns in the UI)
-    metrics_sorted = sorted(metrics, key=lambda metric: metric['name']) 
-    dimensions_sorted = sorted(dimensions, key=lambda dimension: dimension['name']) 
-    
-    return metrics_sorted, dimensions_sorted
+    return metrics, dimensions
 
 
 ## FUNCTIONS FOR REPORTING API ##
