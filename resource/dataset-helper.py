@@ -74,7 +74,7 @@ def get_metrics_and_dimensions(service_account_name, account_id, web_property_id
     
     # Sort return lists alphabetically (for better user-interface of dropdowns)
     metrics_sorted = sorted(metrics, key=lambda metric: metric['name']) 
-    dimensions_sorted = sorted(metrics, key=lambda metric: metric['name']) 
+    dimensions_sorted = sorted(dimensions, key=lambda dimension: dimension['name']) 
     
     return metrics_sorted, dimensions_sorted
 
