@@ -68,9 +68,12 @@ def get_metrics_and_dimensions(service_account_name, account_id, web_property_id
     response = service.management().goals().list(accountId=account_id, webPropertyId=web_property_id, profileId=view_id).execute()
     goals = ga_json.parse_goals(response)
 
-    # Construct return dicts
+    # Construct return lists
     metrics = default_metrics + custom_metrics + goals
     dimensions = default_dimensions + custom_dimensions
+    
+    # Sort return lists alphabetically (for better user-interface of dropdowns)
+    
     
     return metrics, dimensions
 
