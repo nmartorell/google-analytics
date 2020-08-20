@@ -72,6 +72,10 @@ def get_metrics_and_dimensions(service_account_name, account_id, web_property_id
     metrics = default_metrics + custom_metrics + goals
     dimensions = default_dimensions + custom_dimensions
     
+    # Finally, sort by metric and dimension name (this leads to better dropdowns in the UI)
+    metrics = sorted(metrics, key=lambda metric: metric['name']) 
+    dimensions = sorted(dimensions, key=lambda dimension: dimension['name']) 
+    
     return metrics, dimensions
 
 
