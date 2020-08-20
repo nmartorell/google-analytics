@@ -85,7 +85,4 @@ def get_segments(service_account_name):
     # Parse response
     segments = ga_json.parse_segments(response)
     
-    # Sort segments (for more user-interface of dropdowns)
-    segments_sorted = sorted(segments, key=lambda segment: segment['name']) 
-    
-    return segments_sorted
+    return segments
