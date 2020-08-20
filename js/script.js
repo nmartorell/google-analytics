@@ -77,7 +77,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     
-    /* Initialization */
+    /* Initialization -- there has to be a better way to do this....!!! */
     var init = function(){        
         
         /* Populate the Google Service Account dropdown */
