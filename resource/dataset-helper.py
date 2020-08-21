@@ -43,7 +43,7 @@ def do(payload, config, plugin_config, inputs):
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
 
     else:
-        raise Exception("")
+        raise ValueError("I forgot to define a python helper function... whoops! This is a bug.") 
 
     
     
