@@ -47,6 +47,19 @@ def do(payload, config, plugin_config, inputs):
 
     
 def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
+    """
+    Check that the Plugin and Service Account Preset IDs set in the script.js initialization function actually exist.
+    
+    This function ensures that if somebody changes either ID in the future, that there is a legible error message.
+    """
+    
+    # Retrieve plugin
+    client = dataiku.api_client()
+    plugin = client.get_plugin(plugin_id)
+    
+    
+    
+    settings = plugin.get_settings()
     
         
     return None
