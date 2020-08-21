@@ -79,15 +79,14 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     
-    /* Initialization -- there has to be a better way to do this....!!! */
+    /* Initialization --> Populate the Google Service Account dropdown 
+                          There has to be a better way to do this....!!!!!!! */
     var init = function(){        
         
-        /* Populate the Google Service Account dropdown */
-        let pluginId = "google-analytics";
-        let parameterSetId = "google-service-accounts";
-        
-        let projectKey = ""
+        /* Get Plugin, Parameter and Project Keys */
         $scope.callPythonDo({method: "get_project_key"}).then(function(data){
+            let pluginId = "google-analytics";
+            let parameterSetId = "google-service-accounts";
             let projectKey = data.project_key;
         });
         
