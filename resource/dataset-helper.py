@@ -36,7 +36,11 @@ def do(payload, config, plugin_config, inputs):
         metrics, dimensions = get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id)
         segments = get_segments(service_account_name)
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
-    
+
+
+def validate_plugin_and_preset_ids():
+    return
+
     
 def get_account_summaries(service_account_name):
     # Get authenticated Google Analytics API service using selected service account
