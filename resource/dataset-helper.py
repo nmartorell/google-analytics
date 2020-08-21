@@ -53,15 +53,18 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     This function ensures that, in the unlikely event of either ID changing, that there is a legible error message.
     """
     
-    # Retrieve plugin
+    # Retrieve plugin settings
     client = dataiku.api_client()
-
+    
     try:
         plugin = client.get_plugin(plugin_id)
+        settings = plugin.get_settings()
     except:
-        raise ValueError("There is a mismatch between the plugin ID and the ID hardcoded in the initialization function of script.js.")
+        raise ValueError("There is a mismatch between the plugin ID and the ID hardcoded in the initialization function of script.js. \
+                          This is likely due to the plugin ID having been manually changed. Please update the value in the script.js.")
             
-    #settings = plugin.get_settings()
+    # Check the service account preset ID is correct
+    
     
         
     return None
