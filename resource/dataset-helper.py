@@ -60,16 +60,16 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
         plugin = client.get_plugin(plugin_id)
         settings = plugin.get_settings()
     except Exception as e:
-        raise ValueError("There is a mismatch between the plugin ID and the ID hardcoded in the initialization function of script.js. \
-                          This is likely due to the plugin ID having been manually changed. Please update the value in the script.js.") from e
+        raise ValueError("There is a mismatch between the plugin ID and the ID hardcoded in the initialization function of script.js." + \
+                          "This is likely due to the plugin ID having been manually changed. Please update the value in the script.js.") from e
             
     # Check the service account preset ID is correct
     parameter_set_type = "parameter-set-{0}-{1}".format(plugin_id, service_account_preset_id)
     parameter_set_list = [ param_set["type"] for param_set in settings.settings["presets"]]
     
     if parameter_set_type not in parameter_set_list:
-        raise ValueError("The Google Service Account parameter ID hardcoded in the script.js does not correspond to any parameters in the plugin. \
-                          This is likely due to the parameter ID having been manually changed. Please update the value in the script.js.")
+        raise ValueError("The Google Service Account parameter ID hardcoded in the script.js does not correspond to any parameters in the plugin." + \
+                          "This is likely due to the parameter ID having been manually changed. Please update the value in the script.js.")
 
     return None
 
