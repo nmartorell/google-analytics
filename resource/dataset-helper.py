@@ -125,7 +125,12 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
 
 def get_segments(service_account_name):
     # Get authenticated Google Analytics API service using selected service account
-    service = ga_api.get_authenticated_google_analytics_service(API_NAME, API_VERSION, SCOPE, service_account_name)
+    service = service = ga_api.get_authenticated_google_analytics_service(API_NAME, 
+                                                                          API_VERSION, 
+                                                                          SCOPE, 
+                                                                          plugin_id, 
+                                                                          service_account_preset_id, 
+                                                                          service_account_name)
     
     # Retrieve all available Segments from the Management API
     response = service.management().segments().list().execute()
