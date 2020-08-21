@@ -122,8 +122,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
                 
                 $scope.config.service_accounts_list = presets;
             }            
-        }).failure(function(data){
-            console.log("HERE")
         });
     };
 
