@@ -60,7 +60,7 @@ class GoogleAnalyticsConnector(Connector):
         assert len(self.dimensions) <= 9, "More than 9 Google Analytics \"Dimensions\" have been selected; please select a maximum of 9."
         assert len(self.segments) <= 4, "More than 4 Google Analytics \"Segments\" have been selected; please select a maximum of 4."
     
-        # A ga:segments dimension is required if segments are defined (see: https://developers.google.com/analytics/devguides/reporting/core/v4/basics#segments)
+        # ga:segment dimension is required if segments are defined (see: https://developers.google.com/analytics/devguides/reporting/core/v4/basics#segments)
         if len(self.segments) > 0:
             self.dimensions.append({"name":"Segment", "id":"ga:segment"}) 
     
