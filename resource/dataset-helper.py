@@ -11,7 +11,8 @@ SCOPE = ['https://www.googleapis.com/auth/analytics.readonly']
 def do(payload, config, plugin_config, inputs):
     
     if payload["method"] == "validate_plugin_and_preset_ids":
-        asdf
+        validate_plugin_and_preset_ids()
+        return
     
     if payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
