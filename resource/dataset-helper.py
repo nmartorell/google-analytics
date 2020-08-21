@@ -56,6 +56,7 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     
     # Retrieve plugin
     client = dataiku.api_client()
+    asdf
     try:
         plugin = client.get_plugin(plugin_id)
     except Exception as e:
