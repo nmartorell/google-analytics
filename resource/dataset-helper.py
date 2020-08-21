@@ -33,7 +33,7 @@ def do(payload, config, plugin_config, inputs):
     
     elif payload["method"] == "get_view_properties":        
         metrics, dimensions = get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_account_name, account_id, web_property_id, view_id)
-        segments = get_segments(service_account_name)
+        segments = get_segments(plugin_id, service_account_preset_id, service_account_name)
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
 
     else:
@@ -123,7 +123,7 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
     return metrics, dimensions
 
 
-def get_segments(service_account_name):
+def get_segments(plugin_id, service_account_preset_id, service_account_name):
     # Get authenticated Google Analytics API service using selected service account
     service = service = ga_api.get_authenticated_google_analytics_service(API_NAME, 
                                                                           API_VERSION, 
