@@ -16,8 +16,8 @@ def do(payload, config, plugin_config, inputs):
         plugin_id = config["plugin_id"]
         service_account_preset_id = config["service_account_preset_id"]
         
-        validate_plugin_and_preset_ids(plugin_id, service_account_preset_id)
-        return {"validation" : None}
+        validation = validate_plugin_and_preset_ids(plugin_id, service_account_preset_id)
+        return {"validation" : validation}
     
     elif payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
@@ -71,7 +71,7 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
         raise ValueError("The Google Service Account parameter ID hardcoded in the script.js does not correspond to any parameters in the plugin." + \
                           "This is likely due to the parameter ID having been manually changed. Please update the value in the script.js.")
 
-    return None
+    return "OK"
 
     
 def get_account_summaries(service_account_name):
