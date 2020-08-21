@@ -14,9 +14,9 @@ def do(payload, config, plugin_config, inputs):
         
         # Unpack plugin config
         plugin_id = config["plugin_id"]
+        service_account_preset_id = config["service_account_preset_id"]
         
-        
-        validation = validate_plugin_and_preset_ids()
+        validation = validate_plugin_and_preset_ids(plugin_id, )
         return {"validation" : validation}
     
     if payload["method"] == "get_project_key":
