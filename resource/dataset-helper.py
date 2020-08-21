@@ -70,9 +70,7 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     if parameter_set_type not in parameter_set_list:
         raise ValueError("The Google Service Account parameter ID hardcoded in the script.js does not correspond to any parameters in the plugin. \
                           This is likely due to the parameter ID having been manually changed. Please update the value in the script.js.")
-            
-    
-        
+
     return None
 
     
