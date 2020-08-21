@@ -81,7 +81,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     /* Initialization --> Populate the Google Service Account dropdown 
                           There has to be a better way to do this....! */
-    var init = function(){        
+    var init = function(){
         
         /* Set Plugin and Parameter Set IDs */
         $scope.config.plugin_id = "google-analytics";
