@@ -10,9 +10,9 @@ SCOPE = ['https://www.googleapis.com/auth/analytics.readonly']
 
 def do(payload, config, plugin_config, inputs):
     
-    if payload["method"] == "get_ids":
-        plugin_id, parameter_set_id, project_key = get_ids()
-        return {"plugin_id":plugin_id, "parameter_set_id":parameter_set_id, "project_key":project_key}
+    if payload["method"] == "get_project_key":
+
+        return {"project_key":dataiku.default_project_key()}
     
     if payload["method"] == "get_account_summaries":
         
@@ -33,15 +33,6 @@ def do(payload, config, plugin_config, inputs):
         metrics, dimensions = get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id)
         segments = get_segments(service_account_name)
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
-    
-    
-def get_keys():
-    
-    plugin_id = "google-analytics"
-    parameter_set_id = "google-service-accounts"
-    project_key = dataiku.default_project_key()
-    
-    return plugin_id, parameter_set_id, project_key
     
     
 def get_account_summaries(service_account_name):
