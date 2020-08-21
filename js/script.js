@@ -95,28 +95,28 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             var presets = data.presets.filter(p => p.usable);
             
             /* If $scope.config.presets already exists, update it --> this will be the case when the dataset is initially created */
-            if (typeof $scope.config.presets === 'undefined') {
-                $scope.config.presets = presets;
+            if (typeof $scope.config.service_accounts_list === 'undefined') {
+                $scope.config.service_accounts_list = presets;
             } 
             
             /* When navigating to a the settings of a previously created dataset, may need to update the available Service Accounts */
             else {
             
                 /* Generate dict of previously used presets {name --> preset object} */
-                var previous_presets_lookup = {};
-                $scope.config.presets.forEach(function (preset, index) {
-                    previous_presets_lookup[preset.name] = preset;
+                var previous_service_accounts = {};
+                $scope.config.service_accounts_list.forEach(function (service_account, index) {
+                    previous_service_accounts[service_account.name] = service_account;
                 });
             
                 /* Loop over current presets, and replace by the object in $scope.config.presets 
                    This is done to ensure the $$hashKeys match with those stored in $scope.config.service_account */
-                presets.forEach(function (preset, index) {
-                    if (preset.name in previous_presets_lookup) {
-                        presets[index] = previous_presets_lookup[preset.name]
+                presets.forEach(function (service_account, index) {
+                    if (service_account.name in previous_service_accounts) {
+                        presets[index] = previous_service_accounts[service_account.name]
                     }
                 });
                 
-                $scope.config.presets = presets;
+                $scope.config.service_accounts_list = presets;
             }            
         });
     };
