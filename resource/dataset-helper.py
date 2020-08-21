@@ -12,7 +12,7 @@ def do(payload, config, plugin_config, inputs):
     
     if payload["method"] == "get_ids":
         plugin_id, parameter_set_id, project_key = get_ids()
-        return {"plugin_id":plugin_id, "parameter_set_id":parameter_set_id, "project_key":dataiku.default_project_key()}
+        return {"plugin_id":plugin_id, "parameter_set_id":parameter_set_id, "project_key":project_key}
     
     if payload["method"] == "get_account_summaries":
         
