@@ -9,7 +9,7 @@
                    ng-model="config.service_account"
                    ng-options="service_account.name for service_account in config.service_accounts_list"> <!-- config.service_account is {name, usable} -->
            </select>
-           <button ng-click="getAccountSummaries()" class="btn btn--primary link-like">Fetch Account Info</button>
+           <button ng-click="getAccounts()" class="btn btn--primary link-like">Fetch Account Info</button>
        </div>    
    </div> 
 
@@ -22,7 +22,7 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.account"
-                   ng-options="account.name for account in config.account_summaries"
+                   ng-options="account.name for account in config.accounts_list"
                    ng-change="listWebProperties()"> 
            </select>
        </div>    
