@@ -90,7 +90,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* Validate here */
         
         /* Project Key */
-        $scope.config.project_key=""
         $scope.callPythonDo({method: "get_project_key"}).then(function(data){
             $scope.config.project_key = data.project_key;
         });
