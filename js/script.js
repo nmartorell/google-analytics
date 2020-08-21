@@ -13,7 +13,12 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     /* Function to retrieve Account Summaries dict */
     $scope.getAccountSummaries = function(){
-               
+        
+        /* Prevent from running before a service account has been selecte */
+        if ($scope.config.service_account == null) {
+            return;
+        };
+        
         /* Clear Account, Web Property, View and View Properties dropdowns */
         $scope.config.account_summaries_list = null;
         $scope.config.web_properties_list = null;
