@@ -11,6 +11,11 @@ SCOPE = ['https://www.googleapis.com/auth/analytics.readonly']
 def do(payload, config, plugin_config, inputs):
     
     if payload["method"] == "validate_plugin_and_preset_ids":
+        
+        # Unpack plugin config
+        plugin_id = config["plugin_id"]
+        
+        
         validation = validate_plugin_and_preset_ids()
         return {"validation" : validation}
     
