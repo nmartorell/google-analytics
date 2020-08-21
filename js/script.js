@@ -119,7 +119,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             
             /* Set / Update Service Accounts List */
             $scope.config.service_accounts_list = presets;
-            
         });
     };
 
