@@ -1,4 +1,5 @@
 import dataiku
+from dataikuapi.utils import DataikuException
 
 from googleanalytics import ga_api
 from googleanalytics import ga_json
