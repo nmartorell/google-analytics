@@ -85,7 +85,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Set and Validate Plugin and Parameter Set IDs */
         let plugin_id = "google-analytics";
-        let service_account_preset_id = "google-service-account";
+        let service_account_preset_id = "google-service-accounts";
         
         /* Validate here */
         
