@@ -87,7 +87,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.config.plugin_id = "google-analytics";
         $scope.config.service_account_preset_id = "google-service-accounts";
         
-        /* Validate here */
+        $scope.callPythonDo({method: "validate_plugin_and_preset_ids"})
         
         /* Project Key */
         $scope.callPythonDo({method: "get_project_key"}).then(function(data){
