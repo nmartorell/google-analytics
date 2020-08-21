@@ -28,11 +28,11 @@ def do(payload, config, plugin_config, inputs):
         return {"project_key" : dataiku.default_project_key()}
     
     elif payload["method"] == "get_account_summaries":        
-        account_summaries = get_account_summaries(service_account_name)
+        account_summaries = get_account_summaries(plugin_id, service_account_preset_id, service_account_name)
         return {"account_summaries" : account_summaries}
     
     elif payload["method"] == "get_view_properties":        
-        metrics, dimensions = get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id)
+        metrics, dimensions = get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_account_name, account_id, web_property_id, view_id)
         segments = get_segments(service_account_name)
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
 
@@ -68,9 +68,14 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     return "OK"
 
     
-def get_account_summaries(service_account_name):
+def get_account_summaries(plugin_id, service_account_preset_id, service_account_name):
     # Get authenticated Google Analytics API service using selected service account
-    service = ga_api.get_authenticated_google_analytics_service(API_NAME, API_VERSION, SCOPE, service_account_name)
+    service = ga_api.get_authenticated_google_analytics_service(API_NAME, 
+                                                                API_VERSION, 
+                                                                SCOPE, 
+                                                                plugin_id, 
+                                                                service_account_preset_id, 
+                                                                service_account_name)
     
     # Retrieve AccountSummaries from Management API
     response = service.management().accountSummaries().list().execute()
@@ -82,9 +87,14 @@ def get_account_summaries(service_account_name):
  
 
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
-def get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id):   
+def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_account_name, account_id, web_property_id, view_id):   
     # Get authenticated Google Analytics API service using selected service account
-    service = ga_api.get_authenticated_google_analytics_service(API_NAME, API_VERSION, SCOPE, service_account_name)
+    service = service = ga_api.get_authenticated_google_analytics_service(API_NAME, 
+                                                                          API_VERSION, 
+                                                                          SCOPE, 
+                                                                          plugin_id, 
+                                                                          service_account_preset_id, 
+                                                                          service_account_name)
     
     # Default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
