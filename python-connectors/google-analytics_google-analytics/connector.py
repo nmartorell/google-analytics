@@ -34,12 +34,9 @@ class GoogleAnalyticsConnector(Connector):
         self.service_account = self.config.get("service_account", None)
         assert self.service_account, "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
-        # TODO: missing asserts (?)
-        print(self.config)
-        asdf
-        
-        self.plugin_id = self.config.plugin_id
-        self.service_account_preset_id = self.config.service_account_preset_id
+        # TODO: missing asserts (!)
+        self.plugin_id = self.config["plugin_id"]
+        self.service_account_preset_id = self.config["service_account_preset_id"]
         
         # Get service object
         scope = ['https://www.googleapis.com/auth/analytics.readonly']
