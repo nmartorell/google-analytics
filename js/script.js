@@ -83,7 +83,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
                           There has to be a better way to do this....!!!!!!! */
     var init = function(){        
         
-        /* Set and Validate Plugin and Parameter Set IDs */
+        /* Set Plugin and Parameter Set IDs */
         $scope.config.plugin_id = "google-analyticss";
         $scope.config.service_account_preset_id = "google-service-accounts";
         
