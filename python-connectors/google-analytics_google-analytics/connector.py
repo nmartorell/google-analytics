@@ -35,6 +35,9 @@ class GoogleAnalyticsConnector(Connector):
         assert self.service_account, "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
         # TODO: missing asserts (?)
+        print(self.config)
+        asdf
+        
         self.plugin_id = self.config.plugin_id
         self.service_account_preset_id = self.config.service_account_preset_id
         
