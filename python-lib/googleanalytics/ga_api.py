@@ -14,13 +14,16 @@ def get_authenticated_google_analytics_service(api_name, api_version, scope, plu
     
     # Retrieve plugin settings
     client = dataiku.api_client()
-    plugin = client.get_plugin("google-analytics")
+    plugin = client.get_plugin(plugin_id)
     settings = plugin.get_settings()
+    
+    # Contruct parameter set type from parameter set and plugin IDs
+    service_account_preset_type = "parameter-set-{0}-{1}".format(plugin_id, service_account_preset_id)
     
     # Retrieve service account encrypted preset
     for parameter_set in settings.settings["presets"]:
         
-        if (parameter_set["type"] == "parameter-set-google-analytics-google-service-accounts") and (parameter_set["name"] == service_account_name):
+        if (parameter_set["type"] == service_account_preset_type) and (parameter_set["name"] == service_account_name):
             service_account_credentials_encrypted = parameter_set["config"]["service_account_credentials"]
     
     # Decrypt service account key    
