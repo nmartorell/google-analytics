@@ -15,7 +15,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     $scope.getAccountSummaries = function(){
                
         /* Clear Account, Web Property, View and View Properties dropdowns */
-        $scope.config.account_summaries = null;
+        $scope.config.account_summaries_list = null;
         $scope.config.web_properties = null;
         $scope.config.views = null;
         clearViewProperties();
