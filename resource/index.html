@@ -33,7 +33,7 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.web_property"
-                   ng-options="web_property.name for web_property in config.web_properties"
+                   ng-options="web_property.name for web_property in config.web_properties_list"
                    ng-change="listViews()"> 
            </select>
        </div>    
@@ -44,7 +44,7 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.view"
-                   ng-options="view.name for view in config.views"
+                   ng-options="view.name for view in config.views_list"
                    ng-change="getViewProperties()"> 
            </select>
        </div>    
