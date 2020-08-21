@@ -22,7 +22,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
-            $scope.config.account_summaries = data['account_summaries'];
+            $scope.config.account_summaries_list = data['account_summaries'];
         });
     };
     
