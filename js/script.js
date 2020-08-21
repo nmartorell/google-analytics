@@ -36,11 +36,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         };
         
         /* Clear View and View Properties dropdowns */
-        $scope.config.views = null;
+        $scope.config.views_list = null;
         clearViewProperties();
         
         /* Update Web Properties dropdown */
-        $scope.config.web_properties = $scope.config.account.web_properties;
+        $scope.config.web_properties_list = $scope.config.account.web_properties;
     };
     
     
@@ -56,7 +56,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         clearViewProperties();  
         
         /* Update Views dropdown */
-        $scope.config.views = $scope.config.web_property.views;
+        $scope.config.views_list = $scope.config.web_property.views;
     };
     
     
