@@ -31,14 +31,7 @@ def do(payload, config, plugin_config, inputs):
         account_summaries = get_account_summaries(service_account_name)
         return {"account_summaries" : account_summaries}
     
-    elif payload["method"] == "get_view_properties":
-        
-        # Unpack plugin config
-        service_account_name = config["service_account"]["name"]
-        account_id = config["account"]["id"]
-        web_property_id = config["web_property"]["id"]
-        view_id = config["view"]["id"]
-        
+    elif payload["method"] == "get_view_properties":        
         metrics, dimensions = get_metrics_and_dimensions(service_account_name, account_id, web_property_id, view_id)
         segments = get_segments(service_account_name)
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
