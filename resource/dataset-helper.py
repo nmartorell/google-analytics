@@ -16,8 +16,8 @@ def do(payload, config, plugin_config, inputs):
         plugin_id = config["plugin_id"]
         service_account_preset_id = config["service_account_preset_id"]
         
-        validation = validate_plugin_and_preset_ids(plugin_id, service_account_preset_id)
-        return {"validation" : validation}
+        validate_plugin_and_preset_ids(plugin_id, service_account_preset_id)
+        return {"validation" : None}
     
     elif payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
