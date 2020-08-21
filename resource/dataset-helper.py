@@ -19,10 +19,10 @@ def do(payload, config, plugin_config, inputs):
         validation = validate_plugin_and_preset_ids(plugin_id, service_account_preset_id)
         return {"validation" : validation}
     
-    if payload["method"] == "get_project_key":
+    elif payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
     
-    if payload["method"] == "get_account_summaries":
+    elif payload["method"] == "get_account_summaries":
         
         # Unpack plugin config
         service_account_name = config["service_account"]["name"]
@@ -30,7 +30,7 @@ def do(payload, config, plugin_config, inputs):
         account_summaries = get_account_summaries(service_account_name)
         return {"account_summaries" : account_summaries}
     
-    if payload["method"] == "get_view_properties":
+    elif payload["method"] == "get_view_properties":
         
         # Unpack plugin config
         service_account_name = config["service_account"]["name"]
@@ -42,8 +42,14 @@ def do(payload, config, plugin_config, inputs):
         segments = get_segments(service_account_name)
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
 
+    else:
+        raise Exception("")
 
+    
+    
 def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
+    
+        
     return None
 
     
