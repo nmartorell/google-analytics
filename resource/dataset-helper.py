@@ -59,9 +59,9 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     try:
         plugin = client.get_plugin(plugin_id)
         settings = plugin.get_settings()
-    except:
+    except Exception as e:
         raise ValueError("There is a mismatch between the plugin ID and the ID hardcoded in the initialization function of script.js. \
-                          This is likely due to the plugin ID having been manually changed. Please update the value in the script.js.")
+                          This is likely due to the plugin ID having been manually changed. Please update the value in the script.js.") from e
             
     # Check the service account preset ID is correct
     
