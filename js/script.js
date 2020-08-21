@@ -84,19 +84,18 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     var init = function(){        
         
         /* Set and Validate Plugin and Parameter Set IDs */
-        let plugin_id = "google-analytics";
-        let service_account_preset_id = "google-service-accounts";
+        $scope.config.plugin_id = "google-analytics";
+        $scope.config.service_account_preset_id = "google-service-accounts";
         
         /* Validate here */
         
         /* Project Key */
-        let project_key = ""
         $scope.callPythonDo({method: "get_project_key"}).then(function(data){
-            project_key = data.project_key;
+            $scope.config.project_key = data.project_key;
         });
         
         /* Retrieve Service Account presets, and populate $scope.config.service_accounts_list */ 
-        DataikuAPI.plugins.listAccessiblePresets(plugin_id, project_key, service_account_preset_id).success(function(data){
+        DataikuAPI.plugins.listAccessiblePresets($scope.config.plugin_id, $scope.config.project_key, $scope.config.service_account_preset_id).success(function(data){
             
             /* Retrieve currently configured, usable Service Accounts on DSS instance */
             var presets = data.presets.filter(p => p.usable);
