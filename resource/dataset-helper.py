@@ -58,7 +58,7 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     client = dataiku.api_client()
     try:
         plugin = client.get_plugin(plugin_id)
-    except DataikuException as e:
+    except Exception as e:
         raise DataikuException("There is a mismatch between the plugin ID and the ID hardcoded in the initialization function of script.js.")
             
     settings = plugin.get_settings()
