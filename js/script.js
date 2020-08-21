@@ -83,12 +83,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
                           There has to be a better way to do this....!!!!!!! */
     var init = function(){        
         
-        let pluginId = data.plugin_id;
-        let parameterSetId = data.;
+        let pluginId = "google-analytics";
+        let parameterSetId = "google-service-accounts";
         
         /* Get Plugin, Parameter and Project Keys */
         $scope.callPythonDo({method: "get_project_key"}).then(function(data){
-            
             let projectKey = data.project_key;
         });
         
