@@ -11,26 +11,23 @@ SCOPE = ['https://www.googleapis.com/auth/analytics.readonly']
 def do(payload, config, plugin_config, inputs):
     
     # Unpack plugin config
+    plugin_id = config.get("plugin_id", "")
+    service_account_preset_id = config.get("service_account_preset_id", "")
     
+    service_account_name = config.get("service_account", dict()).get("name", "")
     
+    account_id = config.get("account", dict()).get("id", "")
+    web_property_id = config.get("web_property", dict()).get("id", "")
+    view_id = config.get("view", dict()).get("id", "")
     
-    if payload["method"] == "validate_plugin_and_preset_ids":
-        
-        # Unpack plugin config
-        plugin_id = config["plugin_id"]
-        service_account_preset_id = config["service_account_preset_id"]
-        
+    if payload["method"] == "validate_plugin_and_preset_ids":        
         validation = validate_plugin_and_preset_ids(plugin_id, service_account_preset_id)
         return {"validation" : validation}
     
     elif payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
     
-    elif payload["method"] == "get_account_summaries":
-        
-        # Unpack plugin config
-        service_account_name = config["service_account"]["name"]
-        
+    elif payload["method"] == "get_account_summaries":        
         account_summaries = get_account_summaries(service_account_name)
         return {"account_summaries" : account_summaries}
     
