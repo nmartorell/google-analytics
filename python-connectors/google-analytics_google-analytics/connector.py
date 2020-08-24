@@ -134,6 +134,9 @@ class GoogleAnalyticsConnector(Connector):
 
         The dataset schema and partitioning are given for information purpose.
         """
+        # Retreieve an authenticated Google Analytics API service
+        self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, self.plugin_id, self.service_account_preset_id, self.service_account["name"]) 
+        
         # Initialize starting index (must be string)
         next_record_index = "0"
         
