@@ -106,7 +106,7 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
     custom_dimensions = googleanalytics.json.parse_customDimensions(response)
     
     # Retrieve Goals from Management API (Goals are a type of Metric)
-    response = service.management().goals().list(accountId=account_id, webPropertyId=web_property_id, profileId=view_id).execute()
+    response = googleanalytics.api.get_goals(service, account_id, web_property_id, view_id)
     goals = googleanalytics.json.parse_goals(response)
 
     # Construct return lists
