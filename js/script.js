@@ -93,8 +93,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     
-    /* Initialization --> Populate the Google Service Account dropdown 
-                          There has to be a better way to do this....! */
+    /* Initialization */
     var init = function(){
         
         /* Set Plugin and Parameter Set IDs */
@@ -107,7 +106,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.project_key = data.project_key;
         });
         
-        /* Retrieve Service Account presets, and populate $scope.config.service_accounts_list */ 
+        /* Retrieve Service Account presets, and populate $scope.config.service_accounts_list -- THERE MUST BE A BETTER WAY TO DO THIS....!!! */ 
         DataikuAPI.plugins.listAccessiblePresets($scope.config.plugin_id, $scope.config.project_key, $scope.config.service_account_preset_id).success(function(data){
             
             /* Retrieve currently configured, usable Service Accounts on DSS instance */
