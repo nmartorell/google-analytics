@@ -1,7 +1,5 @@
 import dataiku
-
-from googleanalytics import ga_api
-from googleanalytics import ga_json
+import googleanalytics
 
 # Parameters for Google Analytics V3 API (Metadata and Managements APIs)
 API_NAME = 'analytics'
