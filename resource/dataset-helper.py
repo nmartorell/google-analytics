@@ -89,12 +89,12 @@ def get_account_summaries(plugin_id, service_account_preset_id, service_account_
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
 def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_account_name, account_id, web_property_id, view_id):   
     # Get authenticated Google Analytics API service using selected service account
-    service = service = ga_api.get_authenticated_google_analytics_service(API_NAME, 
-                                                                          API_VERSION, 
-                                                                          SCOPE, 
-                                                                          plugin_id, 
-                                                                          service_account_preset_id, 
-                                                                          service_account_name)
+    service = ga_api.get_authenticated_google_analytics_service(API_NAME, 
+                                                                API_VERSION, 
+                                                                SCOPE, 
+                                                                plugin_id, 
+                                                                service_account_preset_id, 
+                                                                service_account_name)
     
     # Default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
