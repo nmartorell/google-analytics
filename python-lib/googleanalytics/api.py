@@ -43,3 +43,16 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
                         "See stacktrace for further details, and contact your DSS Administrator.") from e
     
     return service
+
+
+def get_account_summaries(service):
+    """
+    Queries for account summaries
+
+    """
+    
+    return None
+    
+    
+    
+    
