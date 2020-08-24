@@ -59,9 +59,11 @@ def get_account_summaries(service):
     """
     
     try:
-        
+        response = service.management().accountSummaries().list().execute()
+    except Exception as e:
+        raise Exception("") from e
     
-    return None
+    return response
     
     
     
