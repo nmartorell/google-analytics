@@ -55,29 +55,6 @@ def parse_account_summaries(response):
     return account_summaries
 
 
-def parse_segments(response):
-    """
-    Parses the response of the Segments "list" API call:
-    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/segments/list
-    
-    Returns:
-    A list of dicts {name, id} for all Segments available to the authenticated user.
-    """
-    
-    # Initialize return variable
-    segments = list()
-    
-    # Parse response
-    for segment in response["items"]:
-        
-        identifier = segment["segmentId"]
-        name = segment["name"]
-        
-        segments.append({"name":name, "id":identifier})
-        
-    return segments
-
-
 def parse_custom_metrics(response):
     """
     Parses the response of the Custom Metrics "list" API call:
@@ -175,6 +152,29 @@ def parse_goals(response):
             goal_metrics.append({"id":metric_id, "name":metric_name})
 
     return goal_metrics
+
+
+def parse_segments(response):
+    """
+    Parses the response of the Segments "list" API call:
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/segments/list
+    
+    Returns:
+    A list of dicts {name, id} for all Segments available to the authenticated user.
+    """
+    
+    # Initialize return variable
+    segments = list()
+    
+    # Parse response
+    for segment in response["items"]:
+        
+        identifier = segment["segmentId"]
+        name = segment["name"]
+        
+        segments.append({"name":name, "id":identifier})
+        
+    return segments
 
 
 ## FUNCTIONS FOR METADATA API ##
