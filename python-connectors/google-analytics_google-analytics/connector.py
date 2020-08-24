@@ -38,7 +38,7 @@ class GoogleAnalyticsConnector(Connector):
         self.plugin_id = self.config["plugin_id"]
         self.service_account_preset_id = self.config["service_account_preset_id"]
         
-        # Get service object
+        # Parameters for Google Analytics V4 API (Reporting API)
         scope = ['https://www.googleapis.com/auth/analytics.readonly']
         api_name = 'analyticsreporting'
         api_version = 'v4'
