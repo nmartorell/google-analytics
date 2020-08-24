@@ -303,7 +303,6 @@ def reporting_query_builder(view, start_date, end_date, metrics, dimensions, seg
     return query_body
         
 def reporting_row_generator(response, metrics, dimensions):
-    
     """
     Returns a generator of rows for the reponse of the "batchGet" API call:
     https://developers.google.com/analytics/devguides/reporting/core/v4/rest/v4/reports/batchGet
