@@ -67,12 +67,12 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     
 def get_account_summaries(plugin_id, service_account_preset_id, service_account_name):
     # Get authenticated Google Analytics API service using selected service account
-    service = ga_api.get_authenticated_google_analytics_service(API_NAME, 
-                                                                API_VERSION, 
-                                                                SCOPE, 
-                                                                plugin_id, 
-                                                                service_account_preset_id, 
-                                                                service_account_name)
+    service = googleanalytics.api.get_authenticated_service(API_NAME, 
+                                                            API_VERSION, 
+                                                            SCOPE, 
+                                                            plugin_id, 
+                                                            service_account_preset_id, 
+                                                            service_account_name)
     
     # Retrieve AccountSummaries from Management API
     response = service.management().accountSummaries().list().execute()
@@ -86,12 +86,12 @@ def get_account_summaries(plugin_id, service_account_preset_id, service_account_
 # Calls Google Analytics API to obtain all metrics and goals associated with the selected View
 def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_account_name, account_id, web_property_id, view_id):   
     # Get authenticated Google Analytics API service using selected service account
-    service = ga_api.get_authenticated_google_analytics_service(API_NAME, 
-                                                                API_VERSION, 
-                                                                SCOPE, 
-                                                                plugin_id, 
-                                                                service_account_preset_id, 
-                                                                service_account_name)
+    service = googleanalytics.api.get_authenticated_service(API_NAME, 
+                                                            API_VERSION, 
+                                                            SCOPE, 
+                                                            plugin_id, 
+                                                            service_account_preset_id, 
+                                                            service_account_name)
     
     # Default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
@@ -122,12 +122,12 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
 
 def get_segments(plugin_id, service_account_preset_id, service_account_name):
     # Get authenticated Google Analytics API service using selected service account
-    service = service = ga_api.get_authenticated_google_analytics_service(API_NAME, 
-                                                                          API_VERSION, 
-                                                                          SCOPE, 
-                                                                          plugin_id, 
-                                                                          service_account_preset_id, 
-                                                                          service_account_name)
+    service = googleanalytics.api.get_authenticated_service(API_NAME, 
+                                                            API_VERSION, 
+                                                            SCOPE, 
+                                                            plugin_id, 
+                                                            service_account_preset_id, 
+                                                            service_account_name)
     
     # Retrieve all available Segments from the Management API
     response = service.management().segments().list().execute()
