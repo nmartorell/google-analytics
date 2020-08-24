@@ -130,7 +130,7 @@ def get_segments(plugin_id, service_account_preset_id, service_account_name):
                                                             service_account_name)
     
     # Retrieve all available Segments from the Management API
-    response = service.management().segments().list().execute()
+    response = googleanalytics.api.get_segments(service)
     
     # Parse response
     segments = googleanalytics.json.parse_segments(response)
