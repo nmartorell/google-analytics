@@ -139,7 +139,7 @@ def get_goals(service, account_id, web_property_id, view_id):
 def get_segments(service):
     """
     Queries for Segments via the Management "list" API call:
-    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/goals/list
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/segments/list
     
     Returns:
     The raw JSON response from the API call.
