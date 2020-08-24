@@ -105,7 +105,6 @@ def parse_customMetrics(response):
 
 
 def parse_customDimensions(response):
-    
     """
     Parses the response of the Custom Dimensions "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customDimensions/list
