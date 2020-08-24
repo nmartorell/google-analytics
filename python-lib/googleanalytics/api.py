@@ -38,7 +38,10 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
     service_account_credentials_json = ast.literal_eval(service_account_credentials_str)
     
     # Retrieve an authenticated Google Analytics API service
-    credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_credentials_json, scope)
-    service = build(api_name, api_version, credentials=credentials)
+    try:
+        credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_credentials_json, scope)
+        service = build(api_name, api_version, credentials=credentials)
+    except Exception as e:
+        raise Exception("Failed to retreive Authenticated Google Analytics API Service. Most likely due to ")
     
     return service
