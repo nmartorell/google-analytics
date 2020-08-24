@@ -68,19 +68,19 @@ def get_account_summaries(service):
 
 def get_default_metrics_and_dimensions(service):
     """
-    Queries for the  of the columns "list" API call:
+    Queries for default columns via the Metadata "list" API call:
     https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
    
     Note that both METRICS and DIMENSIONS are defined as "columns".
     
     Returns:
-    Two lists of dicts {name, id} for all default Metrics and Dimensions available in Google Analytics.
+    The raw JSON response from the API call.
     """
     
     try:
         response = service.metadata().columns().list(reportType='ga').execute()
     except Exception as e:
-        raise Exception("Failed to query for Account Summaries. See the stacktrace for further details.") from e
+        raise Exception("Failed to query for Columns from Metadata API. See the stacktrace for further details.") from e
     
     return response
     
