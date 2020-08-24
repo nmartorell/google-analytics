@@ -174,7 +174,7 @@ def get_segments(service):
 
 ## FUNCTIONS FOR REPORTING API ##
 
-def get_report(service, query):
+def get_report(service, query_body):
     """
     Queries for Segments via the Management "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/segments/list
@@ -183,8 +183,10 @@ def get_report(service, query):
     The raw JSON response from the API call.
     """
     
-    
-    
+    try:
+        response = service.reports().batchGet(body=query_body).execute()
+    except Exception as e:
+        raise Exception("Failed to query for the requested Google Analytics data. See the stacktrace for further details.") from e
     
 
 
