@@ -131,8 +131,6 @@ def get_segments(plugin_id, service_account_preset_id, service_account_name):
     
     # Retrieve all available Segments from the Management API
     response = googleanalytics.api.get_segments(service)
-    
-    # Parse response
     segments = googleanalytics.json.parse_segments(response)
     
     # Sort by segmments by name (this leads to better dropdowns in the UI)
