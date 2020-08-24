@@ -7,7 +7,8 @@
        <div class="controls">
            <select dku-bs-select
                    ng-model="config.service_account"
-                   ng-options="service_account.name for service_account in config.service_accounts_list">
+                   ng-options="service_account.name for service_account in config.service_accounts_list"
+                   ng-change="clearQueryTargetsAndViewPropoperties()">
            </select>
            <button ng-click="getAccountSummaries()" class="btn btn--primary link-like">Fetch Query Targets</button>
        </div>    
