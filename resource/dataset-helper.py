@@ -77,6 +77,7 @@ def get_account_summaries(plugin_id, service_account_preset_id, service_account_
     # Retrieve AccountSummaries from Management API
     print("TYPE:")
     print(type(service))
+    print("END TYPE")
     asd
     response = service.management().accountSummaries().list().execute()
     
