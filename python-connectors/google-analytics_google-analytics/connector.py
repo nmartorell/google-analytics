@@ -7,7 +7,7 @@ from dataiku.connector import Connector
 import googleanalytics
 
 from datetime import datetime
-import pytz
+#import pytz
 
 """
 A custom Python dataset is a subclass of Connector.
