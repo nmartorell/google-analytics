@@ -148,20 +148,20 @@ class GoogleAnalyticsConnector(Connector):
         while next_record_index:
             
             # Build query
-            query_body = ga_json.reporting_query_builder(self.view,
-                                                         self.start_date,
-                                                         self.end_date,
-                                                         self.metrics,
-                                                         self.dimensions,
-                                                         self.segments,
-                                                         next_record_index)
+            query_body = googleanalytics.json.reporting_query_builder(self.view,
+                                                                      self.start_date,
+                                                                      self.end_date,
+                                                                      self.metrics,
+                                                                      self.dimensions,
+                                                                      self.segments,
+                                                                      next_record_index)
         
             # Parse response and return generator
             response = service.reports().batchGet(body=query_body).execute()
-            yield from ga_json.reporting_row_generator(response, self.metrics, self.dimensions)
+            yield from googleanalytics.json.reporting_row_generator(response, self.metrics, self.dimensions)
             
             # Retrieve next record index, None if all records retrieved
-            next_record_index = ga_json.get_next_index(response)
+            next_record_index = googleanalytics.json.get_next_index(response)
             
             # Stop fetching records if records_limit is reached
             if next_record_index and (records_limit > 0) and (int(next_record_index) > records_limit):
