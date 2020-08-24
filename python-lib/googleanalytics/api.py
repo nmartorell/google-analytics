@@ -64,6 +64,23 @@ def get_account_summaries(service):
         raise Exception("Failed to query for Account Summaries. See the stacktrace for further details.") from e
     
     return response
+
+
+def get_account_summaries(service):
+    """
+    Queries for the Account Summaries "list" API call:
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/accountSummaries/list
+
+    Returns:
+    The raw JSON response from the API call.
+    """
+    
+    try:
+        response = service.management().accountSummaries().list().execute()
+    except Exception as e:
+        raise Exception("Failed to query for Account Summaries. See the stacktrace for further details.") from e
+    
+    return response
     
     
     
