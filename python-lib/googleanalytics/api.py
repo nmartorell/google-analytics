@@ -18,7 +18,7 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
     # Contruct parameter set type from parameter set and plugin IDs
     service_account_preset_type = "parameter-set-{0}-{1}".format(plugin_id, service_account_preset_id)
     
-    # Retrieve service account encrypted preset
+    # Retrieve encrypted service account preset
     service_account_credentials_encrypted = None
     for parameter_set in settings.settings["presets"]:
         
@@ -29,17 +29,16 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
         raise Exception("Service Account Preset not found, most likely due to it having been deleted. Select a different Service Account under the dataset settings, " + \
                         "or contact yout DSS Administrator if none are available.")
     
-    # Decrypt service account key    
-    service_account_credentials_str = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
-                                                       shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
-    
-    service_account_credentials_json = ast.literal_eval(service_account_credentials_str)
-    
-    # Retrieve an authenticated Google Analytics API service
-    try:
+    # Decrypt preset and retrieve Google Analytics Service
+    try: 
+        service_account_credentials_str = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
+                                                           shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
+        
+        service_account_credentials_json = ast.literal_eval(service_account_credentials_str)
         credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_credentials_json, scope)
         service = build(api_name, api_version, credentials=credentials)
-    except Exception as e:
+    
+    except Exception:
         raise Exception("Failed to retreive Authenticated Google Analytics API Service. Check the stacktrace for further details.")
     
     return service
