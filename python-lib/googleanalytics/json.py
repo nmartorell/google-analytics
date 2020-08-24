@@ -1,6 +1,6 @@
 ## FUNCTIONS FOR MANAGEMENT API ##
 
-def parse_accountSummaries(response):
+def parse_account_summaries(response):
     """
     Parses the response of the Account Summaries "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/accountSummaries/list
@@ -78,7 +78,7 @@ def parse_segments(response):
     return segments
 
 
-def parse_customMetrics(response):
+def parse_custom_metrics(response):
     """
     Parses the response of the Custom Metrics "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customMetrics/list
@@ -101,7 +101,7 @@ def parse_customMetrics(response):
     return custom_metrics
 
 
-def parse_customDimensions(response):
+def parse_custom_dimensions(response):
     """
     Parses the response of the Custom Dimensions "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customDimensions/list
@@ -179,7 +179,7 @@ def parse_goals(response):
 
 ## FUNCTIONS FOR METADATA API ##
 
-def parse_columnsMetadata(response): 
+def parse_columns_metadata(response): 
     """
     Parses the response of the columns "list" API call:
     https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
