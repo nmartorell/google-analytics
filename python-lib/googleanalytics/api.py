@@ -7,7 +7,13 @@ from googleapiclient.discovery import build
 
 def get_authenticated_service(api_name, api_version, scope, plugin_id, service_account_preset_id, service_account_name):
     """
-    Returns a list service account JSON API key from a preset name
+    This function retrieves the encrypted Service Account secret, decrypts it, and uses it to retrieve an authenticated
+    Google Analytics service object.
+    
+    Note: this may not be the best way to do this. I'm more than open to alternative suggestions :)
+    
+    Returns:
+    An authenticated Google Analytics service object.
     """
     
     # Retrieve plugin settings
@@ -47,8 +53,11 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
 
 def get_account_summaries(service):
     """
-    Queries for account summaries
+    Queries for the Account Summaries "list" API call:
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/accountSummaries/list
 
+    Returns:
+    The raw JSON response from the API call.
     """
     
     return None
