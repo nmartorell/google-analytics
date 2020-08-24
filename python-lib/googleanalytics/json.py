@@ -1,7 +1,6 @@
 ## FUNCTIONS FOR MANAGEMENT API ##
 
 def parse_accountSummaries(response):
-    
     """
     Parses the response of the Account Summaries "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/accountSummaries/list
