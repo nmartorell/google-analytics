@@ -30,12 +30,10 @@ def get_authenticated_google_analytics_service(api_name, api_version, scope, plu
     service_account_credentials_str = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
                                                        shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
     
-    service_account_credentials = ast.literal_eval(service_account_credentials_str)
+    service_account_credentials_json = ast.literal_eval(service_account_credentials_str)
     
     # Retrieve an authenticated Google Analytics API service
-    credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_keyfile_dict, scope)
-
-    # Build the service object.
+    credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_credentials_json, scope)
     service = build(api_name, api_version, credentials=credentials)
     
     return service
