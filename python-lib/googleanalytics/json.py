@@ -57,7 +57,6 @@ def parse_accountSummaries(response):
 
 
 def parse_segments(response):
-    
     """
     Parses the response of the Segments "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/segments/list
