@@ -129,7 +129,6 @@ def parse_customDimensions(response):
 
 
 def parse_goals(response):
-    
     """
     Parses the response of the View Goals "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/goals/list
