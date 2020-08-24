@@ -100,6 +100,23 @@ def get_custom_metrics(service, account_id, web_property_id):
         raise Exception("Failed to query for Custom Metrics from Management API. See the stacktrace for further details.") from e
     
     return response
+
+
+def get_custom_dimensions(service, account_id, web_property_id):
+    """
+    Queries for Custom Metrics via the Management "list" API call:
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customMetrics/list
+    
+    Returns:
+    The raw JSON response from the API call.
+    """
+    
+    try:
+        response = service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
+    except Exception as e:
+        raise Exception("Failed to query for Custom Metrics from Management API. See the stacktrace for further details.") from e
+    
+    return response
     
     
     
