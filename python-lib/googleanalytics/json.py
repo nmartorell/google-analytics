@@ -264,7 +264,6 @@ def parse_columnsMetadata(response):
 ## FUNCTIONS FOR REPORTING API ##
 
 def reporting_query_builder(view, start_date, end_date, metrics, dimensions, segments, next_record_index):
-    
     """
     Creates the query body for the "batchGet" API call:
     https://developers.google.com/analytics/devguides/reporting/core/v4/rest/v4/reports/batchGet
