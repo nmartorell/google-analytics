@@ -13,7 +13,6 @@ def do(payload, config, plugin_config, inputs):
     # Unpack config
     plugin_id = config.get("plugin_id", "")
     service_account_preset_id = config.get("service_account_preset_id", "")
-    
     service_account_name = config.get("service_account", dict()).get("name", "")
     
     account_id = config.get("account", dict()).get("id", "")
