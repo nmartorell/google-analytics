@@ -67,7 +67,7 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     
 def get_account_summaries(plugin_id, service_account_preset_id, service_account_name):
     """
-    Get the ...
+    Retrieve Account, Web Property and View information accessible to the authenticated Google Service account. 
     """
     
     # Get authenticated Google Analytics API service using selected service account
@@ -87,8 +87,11 @@ def get_account_summaries(plugin_id, service_account_preset_id, service_account_
     return account_summaries
  
 
-# Calls Google Analytics API to obtain all metrics and goals associated with the selected View
 def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_account_name, account_id, web_property_id, view_id):   
+    """
+    Retrieve all Metrics and Dimensions associated to the selected Web Property and View.
+    """
+    
     # Get authenticated Google Analytics API service using selected service account
     service = googleanalytics.api.get_authenticated_service(API_NAME, 
                                                             API_VERSION, 
@@ -125,6 +128,10 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
 
 
 def get_segments(plugin_id, service_account_preset_id, service_account_name):
+    """
+    Retrieve the Segments associated to the authenticated Google Service account.
+    """
+    
     # Get authenticated Google Analytics API service using selected service account
     service = googleanalytics.api.get_authenticated_service(API_NAME, 
                                                             API_VERSION, 
