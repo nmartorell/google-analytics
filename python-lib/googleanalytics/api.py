@@ -61,7 +61,7 @@ def get_account_summaries(service):
     try:
         response = service.management().accountSummaries().list().execute()
     except Exception as e:
-        raise Exception("Failed to query for Account Summaries. See the stacktrace for further details.") from e
+        raise Exception("Failed to query for Account Summaries from Google Analytics Management API. See the stacktrace for further details.") from e
     
     return response
 
@@ -80,7 +80,7 @@ def get_default_metrics_and_dimensions(service):
     try:
         response = service.metadata().columns().list(reportType='ga').execute()
     except Exception as e:
-        raise Exception("Failed to query for Columns from Metadata API. See the stacktrace for further details.") from e
+        raise Exception("Failed to query for Columns from Google Analytics Metadata API. See the stacktrace for further details.") from e
     
     return response
 
@@ -97,7 +97,7 @@ def get_custom_metrics(service, account_id, web_property_id):
     try:
         response = service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
     except Exception as e:
-        raise Exception("Failed to query for Custom Metrics from Management API. See the stacktrace for further details.") from e
+        raise Exception("Failed to query for Custom Metrics from Google Analytics Management API. See the stacktrace for further details.") from e
     
     return response
 
@@ -114,7 +114,7 @@ def get_custom_dimensions(service, account_id, web_property_id):
     try:
         response = service.management().customDimensions().list(accountId=account_id, webPropertyId=web_property_id,).execute()
     except Exception as e:
-        raise Exception("Failed to query for Custom Dimensions from Management API. See the stacktrace for further details.") from e
+        raise Exception("Failed to query for Custom Dimensions from Google Analytics Management API. See the stacktrace for further details.") from e
     
     return response
 
@@ -131,7 +131,7 @@ def get_goals(service, account_id, web_property_id, view_id):
     try:
         response = service.management().goals().list(accountId=account_id, webPropertyId=web_property_id, profileId=view_id).execute()
     except Exception as e:
-        raise Exception("Failed to query for Goals from Management API. See the stacktrace for further details.") from e
+        raise Exception("Failed to query for Goals from Google Analytics Management API. See the stacktrace for further details.") from e
     
     return response
 
@@ -148,7 +148,7 @@ def get_segments(service):
     try:
         response = service.management().segments().list().execute()
     except Exception as e:
-        raise Exception("Failed to query for Segments from Management API. See the stacktrace for further details.") from e
+        raise Exception("Failed to query for Segments from Google Analytics Management API. See the stacktrace for further details.") from e
     
     return response
     
