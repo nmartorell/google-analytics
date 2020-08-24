@@ -10,14 +10,14 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         $scope.config.segments_list = null;
     };
     
+    
     /* Function to clear View properties and Query Targets */
     $scope.clearAll() = function() {
         $scope.config.account_summaries_list = null;
         $scope.config.web_properties_list = null;
         $scope.config.views_list = null;
         $scope.clearViewProperties();
-    }
-    
+    };
     
     
     /* Function to retrieve Account Summaries dict */
