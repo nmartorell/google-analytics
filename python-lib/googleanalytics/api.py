@@ -97,7 +97,7 @@ def get_custom_metrics(service, account_id, web_property_id):
     try:
         response = service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
     except Exception as e:
-        raise Exception("Failed to query for Columns from Metadata API. See the stacktrace for further details.") from e
+        raise Exception("Failed to query for Custom Metrics from Management API. See the stacktrace for further details.") from e
     
     return response
     
