@@ -44,8 +44,6 @@ class GoogleAnalyticsConnector(Connector):
         self.scope = ['https://www.googleapis.com/auth/analytics.readonly']
         self.api_name = 'analyticsreporting'
         self.api_version = 'v4'
-        
-        self.service = ga_api.get_authenticated_google_analytics_service(api_name, api_version, scope, self.plugin_id, self.service_account_preset_id, self.service_account["name"]) 
 
         # (2) Query Targets
         self.account = self.config.get("account", None)
