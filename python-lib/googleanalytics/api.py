@@ -85,7 +85,17 @@ def get_default_metrics_and_dimensions(service):
     return response
 
 
-def get_custom_metrics():
+def get_custom_metrics(service, account_id, web_property_id):
+    """
+    Queries for Custom metrics via the Management "list" API call:
+    https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
+    
+    Returns:
+    The raw JSON response from the API call.
+    """
+    
+    service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
+    
     return None
     
     
