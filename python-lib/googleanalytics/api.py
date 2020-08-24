@@ -28,8 +28,8 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
             service_account_credentials_encrypted = parameter_set["config"]["service_account_credentials"]
     
     if not service_account_credentials_encrypted:
-        raise Exception("Service Account Preset not found, most likely due to it having been deleted. Select a different Service Account under the dataset settings; " + \
-                        "if none are available, please contact yout DSS Administrator.")
+        raise Exception("Service Account Preset not found, most likely due to it having been deleted. Select a different Service Account under the dataset settings, " + \
+                        "or contact yout DSS Administrator if none are available.")
     
     # Decrypt service account key    
     service_account_credentials_str = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
