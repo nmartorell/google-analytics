@@ -33,21 +33,9 @@ def get_authenticated_google_analytics_service(api_name, api_version, scope, plu
     service_account_credentials = ast.literal_eval(service_account_credentials_str)
     
     # Retrieve an authenticated Google Analytics API service
-    service = get_service(api_name, api_version, scope, service_account_credentials) 
-    
-    return service
-
-def get_service(api_name, api_version, scope, service_account_keyfile_dict):
-    
-    """
-    Initializes a Google API using a Service Account json key
-
-    Returns:
-    An authorized Google API service object.
-    """
     credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_keyfile_dict, scope)
 
     # Build the service object.
-    analytics = build(api_name, api_version, credentials=credentials)
-
-    return analytics
+    service = build(api_name, api_version, credentials=credentials)
+    
+    return service
