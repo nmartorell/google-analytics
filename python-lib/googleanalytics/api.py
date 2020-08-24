@@ -187,8 +187,8 @@ def get_report(service, query_body):
         response = service.reports().batchGet(body=query_body).execute()
     except Exception as e:
         raise Exception("Failed to query for the requested Google Analytics data. See the stacktrace for further details.") from e
-    
-
+        
+    return response
 
 
 
