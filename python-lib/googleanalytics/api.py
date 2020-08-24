@@ -49,7 +49,7 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
     return service
 
 
-## FUNCTIONS FOR MANAGEMENT AND METADATA API ##
+## FUNCTIONS FOR MANAGEMENT AND METADATA APIs ##
 
 def get_account_summaries(service):
     """
