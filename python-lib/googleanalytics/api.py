@@ -189,7 +189,3 @@ def get_report(service, query_body):
         raise Exception("Failed to query for the requested Google Analytics data. See the stacktrace for further details.") from e
         
     return response
-
-
-
-
