@@ -3,13 +3,20 @@ var app = angular.module('googleAnalytics.dataset', []);
 
 app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) {   
 
-    /* Helper function to clear View Properties */
+    /* Function to clear View Properties */
     $scope.clearViewProperties = function(){
         $scope.config.metrics_list = null;
         $scope.config.dimensions_list = null;
         $scope.config.segments_list = null;
     };
     
+    /* Function to clear View properties and Query Targets */
+    $scope.clearAll() = function() {
+        $scope.config.account_summaries_list = null;
+        $scope.config.web_properties_list = null;
+        $scope.config.views_list = null;
+        $scope.clearViewProperties();
+    }
     
     
     
@@ -22,10 +29,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         }; 
         
         /* Clear Account, Web Property, View and View Properties dropdowns */
-        $scope.config.account_summaries_list = null;
-        $scope.config.web_properties_list = null;
-        $scope.config.views_list = null;
-        $scope.clearViewProperties();
+        $scope.clearAll()
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
