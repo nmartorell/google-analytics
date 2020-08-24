@@ -1,4 +1,4 @@
-## FUNCTIONS FOR MANAGEMENT API ##
+## FUNCTIONS FOR MANAGEMENT AND METADATA APIs ##
 
 def parse_account_summaries(response):
     """
