@@ -8,8 +8,6 @@ from googleapiclient.discovery import build
 def get_authenticated_service(api_name, api_version, scope, plugin_id, service_account_preset_id, service_account_name):
     """
     Returns a list service account JSON API key from a preset name
-    
-    TODO: add some error checking when getting the service account from the JSON.
     """
     
     # Retrieve plugin settings
