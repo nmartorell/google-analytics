@@ -10,8 +10,6 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
     This function retrieves the encrypted Service Account secret, decrypts it, and uses it to retrieve an authenticated
     Google Analytics service object.
     
-    Note: this may not be the best way to do this. I'm more than open to alternative suggestions :)
-    
     Returns:
     An authenticated Google Analytics service object.
     """
@@ -59,6 +57,9 @@ def get_account_summaries(service):
     Returns:
     The raw JSON response from the API call.
     """
+    
+    try:
+        
     
     return None
     
