@@ -46,7 +46,7 @@
            <select dku-bs-select
                    ng-model="config.view"
                    ng-options="view.name for view in config.views_list"
-                   ng-change="getViewProperties()"> 
+                   ng-change="clearViewProperties()"> 
            </select>
            <button ng-click="getViewProperties()" class="btn btn--primary link-like">Fetch View Properties</button>
        </div>    
