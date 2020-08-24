@@ -66,6 +66,10 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
 
     
 def get_account_summaries(plugin_id, service_account_preset_id, service_account_name):
+    """
+    Get the 
+    """
+    
     # Get authenticated Google Analytics API service using selected service account
     service = googleanalytics.api.get_authenticated_service(API_NAME, 
                                                             API_VERSION, 
