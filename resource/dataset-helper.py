@@ -75,11 +75,7 @@ def get_account_summaries(plugin_id, service_account_preset_id, service_account_
                                                             service_account_name)
     
     # Retrieve AccountSummaries from Management API
-    print("TYPE:")
-    print(type(service))
-    print("END TYPE")
-    asd
-    response = service.management().accountSummaries().list().execute()
+    response = googleanalytics.api.get_account_summaries(service)
     
     # Parse response
     account_summaries = googleanalytics.json.parse_accountSummaries(response)
