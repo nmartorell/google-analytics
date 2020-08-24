@@ -61,7 +61,7 @@ def get_account_summaries(service):
     try:
         response = service.management().accountSummaries().list().execute()
     except Exception as e:
-        raise Exception("") from e
+        raise Exception("Failed to query for Account Summaries. See the stacktrace for further details.") from e
     
     return response
     
