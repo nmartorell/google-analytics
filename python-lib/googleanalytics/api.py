@@ -39,6 +39,7 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
         service = build(api_name, api_version, credentials=credentials)
     
     except:
-        raise Exception("Failed to retreive Authenticated Google Analytics API Service. Check the stacktrace for further details.")
+        raise Exception("Failed to retreive Authenticated Google Analytics API Service. Caused by an invalid Serivce Account Secret key. " + \
+                        "Please contact your DSS Administrator.")
     
     return service
