@@ -57,7 +57,7 @@ def parse_account_summaries(response):
 
 def parse_columns_metadata(response): 
     """
-    Parses the response of the columns "list" API call:
+    Parses the response of the default Columns via the Metadata "list" API call:
     https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
    
     Note that both METRICS and DIMENSIONS are defined as "columns".
