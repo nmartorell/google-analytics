@@ -34,9 +34,11 @@ class GoogleAnalyticsConnector(Connector):
         self.service_account_name = self.config.get("service_account", dict()).get("name", None)
         assert self.service_account_name, "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
-        # TODO: missing asserts (!)
-        self.plugin_id = self.config["plugin_id"]
-        self.service_account_preset_id = self.config["service_account_preset_id"]
+        self.plugin_id = self.config.get("plugin_id", None)
+        self.service_account_preset_id = self.config.get("service_account_preset_id", None)
+        
+        assert self.plugin_id, "No Plugin ID has been found, it should have been added in the script.js initialization routine. This is a bug."
+        assert self.service_account_preset_id, "No Service Account Preset ID has been found, it should have been added in the script.js initialization routine. This is a bug."
         
         # Parameters for Google Analytics V4 API (Reporting API)
         self.scope = ['https://www.googleapis.com/auth/analytics.readonly']
