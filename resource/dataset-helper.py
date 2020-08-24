@@ -78,7 +78,7 @@ def get_account_summaries(plugin_id, service_account_preset_id, service_account_
     response = service.management().accountSummaries().list().execute()
     
     # Parse response
-    account_summaries = ga_json.parse_accountSummaries(response)
+    account_summaries = googleanalytics.json.parse_accountSummaries(response)
     
     return account_summaries
  
@@ -95,19 +95,19 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
     
     # Default Metrics and Dimensions from Metadata API
     response = service.metadata().columns().list(reportType='ga').execute()
-    default_metrics, default_dimensions = ga_json.parse_columnsMetadata(response)
+    default_metrics, default_dimensions = googleanalytics.json.parse_columnsMetadata(response)
     
     # Retrieve Custom Metrics from Management API
     response = service.management().customMetrics().list(accountId=account_id, webPropertyId=web_property_id,).execute()
-    custom_metrics = ga_json.parse_customMetrics(response)
+    custom_metrics = googleanalytics.json.parse_customMetrics(response)
     
     # Retrieve Custom Dimensions from Management API
     response = service.management().customDimensions().list(accountId=account_id, webPropertyId=web_property_id,).execute()
-    custom_dimensions = ga_json.parse_customDimensions(response)
+    custom_dimensions = googleanalytics.json.parse_customDimensions(response)
     
     # Retrieve Goals from Management API (Goals are a type of Metric)
     response = service.management().goals().list(accountId=account_id, webPropertyId=web_property_id, profileId=view_id).execute()
-    goals = ga_json.parse_goals(response)
+    goals = googleanalytics.json.parse_goals(response)
 
     # Construct return lists
     metrics = default_metrics + custom_metrics + goals
@@ -133,7 +133,7 @@ def get_segments(plugin_id, service_account_preset_id, service_account_name):
     response = service.management().segments().list().execute()
     
     # Parse response
-    segments = ga_json.parse_segments(response)
+    segments = googleanalytics.json.parse_segments(response)
     
     # Sort by segmments by name (this leads to better dropdowns in the UI)
     segments = sorted(segments, key=lambda segment: segment['name'])
