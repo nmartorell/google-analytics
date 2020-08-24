@@ -68,11 +68,13 @@ def get_account_summaries(service):
 
 def get_default_metrics_and_dimensions(service):
     """
-    Queries for the Account Summaries "list" API call:
-    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/accountSummaries/list
-
+    Queries for the  of the columns "list" API call:
+    https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
+   
+    Note that both METRICS and DIMENSIONS are defined as "columns".
+    
     Returns:
-    The raw JSON response from the API call.
+    Two lists of dicts {name, id} for all default Metrics and Dimensions available in Google Analytics.
     """
     
     try:
