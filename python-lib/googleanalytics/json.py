@@ -184,8 +184,7 @@ def parse_goals(response):
 
 ## FUNCTIONS FOR METADATA API ##
 
-def parse_columnsMetadata(response):
-    
+def parse_columnsMetadata(response): 
     """
     Parses the response of the columns "list" API call:
     https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
