@@ -81,7 +81,6 @@ def parse_segments(response):
 
 
 def parse_customMetrics(response):
-    
     """
     Parses the response of the Custom Metrics "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customMetrics/list
