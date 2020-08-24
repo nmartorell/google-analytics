@@ -39,7 +39,7 @@ def get_authenticated_service(api_name, api_version, scope, plugin_id, service_a
         credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_credentials_json, scope)
         service = build(api_name, api_version, credentials=credentials)    
     except Exception as e:
-        raise Exception("Failed to retreive authenticated Google Analytics API Service. Caused by an invalid Serivce Account Secret key. " + \
-                        "See stacktrace for more details, and contact your DSS Administrator.") from e
+        raise Exception("Failed to retreive authenticated Google Analytics API Service. Caused by an invalid Serivce Account Secret. " + \
+                        "See stacktrace for further details, and contact your DSS Administrator.") from e
     
     return service
