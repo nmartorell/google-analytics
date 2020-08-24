@@ -129,7 +129,7 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
 
 def get_segments(plugin_id, service_account_preset_id, service_account_name):
     """
-    Retrieve the Segments associated to the authenticated Google Service account.
+    Retrieve the Segments accessible to the authenticated Google Service account.
     """
     
     # Get authenticated Google Analytics API service using selected service account
