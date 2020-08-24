@@ -105,7 +105,7 @@ def get_custom_metrics(service, account_id, web_property_id):
 def get_custom_dimensions(service, account_id, web_property_id):
     """
     Queries for Custom Dimensions via the Management "list" API call:
-    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customMetrics/list
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customDimensions/list
     
     Returns:
     The raw JSON response from the API call.
