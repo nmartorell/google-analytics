@@ -1,2 +1,2 @@
-import api
-import json
+from . import api
+from . import json
