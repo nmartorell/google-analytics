@@ -76,13 +76,13 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Function to fetch View Properties */
     $scope.getViewProperties = function(){
         
-        /* Clear View Properties dropdowns */
-        $scope.clearViewProperties(); 
-        
         /* Prevent from running when $scope.config.view is null */
         if ($scope.config.view == null) {
             return;
         };
+        
+        /* Clear View Properties dropdowns */
+        $scope.clearViewProperties(); 
         
         /* Compute new View Property values */
         $scope.callPythonDo({method: "get_view_properties"}).then(function(data){
