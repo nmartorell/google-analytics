@@ -136,7 +136,7 @@ def get_goals(service, account_id, web_property_id, view_id):
     return response
 
 
-def get_segments(service, account_id, web_property_id, view_id):
+def get_segments(service):
     """
     Queries for Goals via the Management "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/goals/list
@@ -146,9 +146,9 @@ def get_segments(service, account_id, web_property_id, view_id):
     """
     
     try:
-        response = service.management().goals().list(accountId=account_id, webPropertyId=web_property_id, profileId=view_id).execute()
+        response = service.management().segments().list().execute()
     except Exception as e:
-        raise Exception("Failed to query for Goals from Management API. See the stacktrace for further details.") from e
+        raise Exception("Failed to query for Segments from Management API. See the stacktrace for further details.") from e
     
     return response
     
