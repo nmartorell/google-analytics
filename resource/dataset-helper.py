@@ -78,7 +78,7 @@ def get_account_summaries(plugin_id, service_account_preset_id, service_account_
     response = googleanalytics.api.get_account_summaries(service)
     
     # Parse response
-    account_summaries = googleanalytics.json.parse_accountSummaries(response)
+    account_summaries = googleanalytics.json.parse_account_summaries(response)
     
     return account_summaries
  
@@ -95,7 +95,7 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
     
     # Default Metrics and Dimensions from Metadata API
     response = googleanalytics.api.get_default_metrics_and_dimensions(service)
-    default_metrics, default_dimensions = googleanalytics.json.parse_columnsMetadata(response)
+    default_metrics, default_dimensions = googleanalytics.json.parse_columns_metadata(response)
     
     # Retrieve Custom Metrics from Management API
     response = googleanalytics.api.get_custom_metrics(service, account_id, web_property_id)
