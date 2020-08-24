@@ -138,7 +138,7 @@ def get_goals(service, account_id, web_property_id, view_id):
 
 def get_segments(service):
     """
-    Queries for Goals via the Management "list" API call:
+    Queries for Segments via the Management "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/goals/list
     
     Returns:
