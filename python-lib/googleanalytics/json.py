@@ -55,6 +55,88 @@ def parse_account_summaries(response):
     return account_summaries
 
 
+def parse_columns_metadata(response): 
+    """
+    Parses the response of the columns "list" API call:
+    https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
+   
+    Note that both METRICS and DIMENSIONS are defined as "columns".
+    
+    Returns:
+    Two lists of dicts {name, id} for all default Metrics and Dimensions available in Google Analytics.
+    """
+    
+    # Initialize return variables 
+    metrics = list()
+    dimensions = list()
+    templated_columns = list()
+    
+    # Parse json
+    for column in response["items"]:
+        
+        identifier = column["id"]
+        name = column["attributes"]["uiName"]
+        column_type = column["attributes"]["type"]
+        status = column["attributes"]["status"]
+        
+        templated = column["attributes"].get("minTemplateIndex", None) 
+
+        if status == "DEPRECATED":
+            continue
+        elif templated:
+            templated_columns.append(column)
+        elif column_type == "METRIC":
+            metrics.append({"name":name, "id":identifier})
+        elif column_type == "DIMENSION":
+            dimensions.append({"name":name, "id":identifier})
+        else:
+            raise ValueError("The Metadata API has returned something that's not a METRIC or a DIMENSION.") 
+    
+    # Parse templated_columns
+    
+    # Note: the templated columns include custom metrics, custom dimensions, generic goal metrics, and generic dimensions.
+    #       Custom metrics, custom dimensions, and goals are obtained via subsequent calls to the Management API.
+    #       Generic dimensions cannot be obtained via any other Google Analytics API, so are populated here with their generic names.
+    
+    generic_dimensions_ids = {"ga:customVarNameXX",
+                              "ga:customVarValueXX",
+                              "ga:contentGroupUniqueViewsXX",
+                              "ga:landingContentGroupXX",
+                              "ga:previousContentGroupXX",
+                              "ga:contentGroupXX",
+                              "ga:productCategoryLevelXX"}
+    
+    for column in templated_columns:
+        
+        # Unpack column data
+        identifier = column["id"]
+        name = column["attributes"]["uiName"]
+        column_type = column["attributes"]["type"]
+        
+        # Pass if not in generic dimensions set
+        if identifier not in generic_dimensions_ids:
+            continue
+        
+        # Extract number of templates to produce
+        min_index = int(column["attributes"]["minTemplateIndex"])
+        max_index = int(column["attributes"]["maxTemplateIndex"])
+        
+        for i in range(min_index, max_index+1):
+            # Edit the column name and identifier to replace the "XX" for the template number
+            name_i = name.replace("XX", str(i))
+            identifier_i = identifier.replace("XX", str(i))
+            
+            # Add the column to metrics or dimensions
+            if column_type == "METRIC":
+                metrics.append({"name":name_i, "id":identifier_i})
+            elif column_type == "DIMENSION":
+                dimensions.append({"name":name_i, "id":identifier_i})
+            else:
+                raise ValueError("The Metadata API has returned something that's not a METRIC or a DIMENSION.")
+    
+    return metrics, dimensions
+
+
 def parse_custom_metrics(response):
     """
     Parses the response of the Custom Metrics "list" API call:
@@ -175,90 +257,6 @@ def parse_segments(response):
         segments.append({"name":name, "id":identifier})
         
     return segments
-
-
-## FUNCTIONS FOR METADATA API ##
-
-def parse_columns_metadata(response): 
-    """
-    Parses the response of the columns "list" API call:
-    https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
-   
-    Note that both METRICS and DIMENSIONS are defined as "columns".
-    
-    Returns:
-    Two lists of dicts {name, id} for all default Metrics and Dimensions available in Google Analytics.
-    """
-    
-    # Initialize return variables 
-    metrics = list()
-    dimensions = list()
-    templated_columns = list()
-    
-    # Parse json
-    for column in response["items"]:
-        
-        identifier = column["id"]
-        name = column["attributes"]["uiName"]
-        column_type = column["attributes"]["type"]
-        status = column["attributes"]["status"]
-        
-        templated = column["attributes"].get("minTemplateIndex", None) 
-
-        if status == "DEPRECATED":
-            continue
-        elif templated:
-            templated_columns.append(column)
-        elif column_type == "METRIC":
-            metrics.append({"name":name, "id":identifier})
-        elif column_type == "DIMENSION":
-            dimensions.append({"name":name, "id":identifier})
-        else:
-            raise ValueError("The Metadata API has returned something that's not a METRIC or a DIMENSION.") 
-    
-    # Parse templated_columns
-    
-    # Note: the templated columns include custom metrics, custom dimensions, generic goal metrics, and generic dimensions.
-    #       Custom metrics, custom dimensions, and goals are obtained via subsequent calls to the Management API.
-    #       Generic dimensions cannot be obtained via any other Google Analytics API, so are populated here with their generic names.
-    
-    generic_dimensions_ids = {"ga:customVarNameXX",
-                              "ga:customVarValueXX",
-                              "ga:contentGroupUniqueViewsXX",
-                              "ga:landingContentGroupXX",
-                              "ga:previousContentGroupXX",
-                              "ga:contentGroupXX",
-                              "ga:productCategoryLevelXX"}
-    
-    for column in templated_columns:
-        
-        # Unpack column data
-        identifier = column["id"]
-        name = column["attributes"]["uiName"]
-        column_type = column["attributes"]["type"]
-        
-        # Pass if not in generic dimensions set
-        if identifier not in generic_dimensions_ids:
-            continue
-        
-        # Extract number of templates to produce
-        min_index = int(column["attributes"]["minTemplateIndex"])
-        max_index = int(column["attributes"]["maxTemplateIndex"])
-        
-        for i in range(min_index, max_index+1):
-            # Edit the column name and identifier to replace the "XX" for the template number
-            name_i = name.replace("XX", str(i))
-            identifier_i = identifier.replace("XX", str(i))
-            
-            # Add the column to metrics or dimensions
-            if column_type == "METRIC":
-                metrics.append({"name":name_i, "id":identifier_i})
-            elif column_type == "DIMENSION":
-                dimensions.append({"name":name_i, "id":identifier_i})
-            else:
-                raise ValueError("The Metadata API has returned something that's not a METRIC or a DIMENSION.")
-    
-    return metrics, dimensions
 
 
 ## FUNCTIONS FOR REPORTING API ##
