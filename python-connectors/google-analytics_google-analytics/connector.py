@@ -156,8 +156,8 @@ class GoogleAnalyticsConnector(Connector):
                                                                       self.segments,
                                                                       next_record_index)
         
-            # Parse response and return generator
-            response = service.reports().batchGet(body=query_body).execute()
+            # Query for response and return generator
+            response = googleanalytics.api.get_report(service, query_body)
             yield from googleanalytics.json.reporting_row_generator(response, self.metrics, self.dimensions)
             
             # Retrieve next record index, None if all records retrieved
