@@ -3,7 +3,7 @@ import dataiku
 from googleanalytics import ga_api
 from googleanalytics import ga_json
 
-# Google Analytics API definition (???)
+# Parameters for Google Analytics V3 API (Metadata and Managements APIs)
 API_NAME = 'analytics'
 API_VERSION = 'v3'
 SCOPE = ['https://www.googleapis.com/auth/analytics.readonly']
