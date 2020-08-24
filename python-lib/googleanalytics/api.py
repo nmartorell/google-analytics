@@ -68,7 +68,7 @@ def get_account_summaries(service):
 
 def get_default_metrics_and_dimensions(service):
     """
-    Queries for default columns via the Metadata "list" API call:
+    Queries for default Columns via the Metadata "list" API call:
     https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
    
     Note that both METRICS and DIMENSIONS are defined as "columns".
@@ -87,7 +87,7 @@ def get_default_metrics_and_dimensions(service):
 
 def get_custom_metrics(service, account_id, web_property_id):
     """
-    Queries for Custom metrics via the Management "list" API call:
+    Queries for Custom Metrics via the Management "list" API call:
     https://developers.google.com/analytics/devguides/reporting/metadata/v3/reference/metadata/columns/list
     
     Returns:
