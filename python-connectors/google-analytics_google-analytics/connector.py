@@ -4,8 +4,7 @@
 from six.moves import xrange
 from dataiku.connector import Connector
 
-from googleanalytics import ga_api
-from googleanalytics import ga_json
+import googleanalytics
 
 from datetime import datetime
 import pytz
