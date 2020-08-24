@@ -83,7 +83,10 @@ def get_default_metrics_and_dimensions(service):
         raise Exception("Failed to query for Columns from Metadata API. See the stacktrace for further details.") from e
     
     return response
-    
+
+
+def get_custom_metrics():
+    return None
     
     
     
