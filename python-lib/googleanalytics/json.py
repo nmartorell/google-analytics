@@ -266,8 +266,6 @@ def reporting_query_builder(view, start_date, end_date, metrics, dimensions, seg
     Creates the query body for the "batchGet" API call:
     https://developers.google.com/analytics/devguides/reporting/core/v4/rest/v4/reports/batchGet
     
-    TODO: document format of function inputs!
-    
     Returns:
     A properly formatted query body json (python dict).
     """
