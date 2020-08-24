@@ -121,8 +121,8 @@ def get_custom_dimensions(service, account_id, web_property_id):
 
 def get_goals(service, account_id, web_property_id, view_id):
     """
-    Queries for Custom Dimensions via the Management "list" API call:
-    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customDimensions/list
+    Queries for Goals via the Management "list" API call:
+    https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/goals/list
     
     Returns:
     The raw JSON response from the API call.
