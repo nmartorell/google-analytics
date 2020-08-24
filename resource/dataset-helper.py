@@ -94,7 +94,7 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
                                                             service_account_name)
     
     # Default Metrics and Dimensions from Metadata API
-    response = get_default_metrics_and_dimensions(service)
+    response = googleanalytics.api.get_default_metrics_and_dimensions(service)
     default_metrics, default_dimensions = googleanalytics.json.parse_columnsMetadata(response)
     
     # Retrieve Custom Metrics from Management API
