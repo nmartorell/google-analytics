@@ -140,7 +140,7 @@ class GoogleAnalyticsConnector(Connector):
                                                                     self.scope, 
                                                                     self.plugin_id, 
                                                                     self.service_account_preset_id, 
-                                                                    self.service_account["name"]) 
+                                                                    self.service_account_name) 
         
         # Initialize starting index (must be string)
         next_record_index = "0"
