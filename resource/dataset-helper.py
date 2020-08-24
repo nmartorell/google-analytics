@@ -19,6 +19,7 @@ def do(payload, config, plugin_config, inputs):
     web_property_id = config.get("web_property", dict()).get("id", "")
     view_id = config.get("view", dict()).get("id", "")
     
+    # Select appropriate method based on payload
     if payload["method"] == "validate_plugin_and_preset_ids":        
         validation = validate_plugin_and_preset_ids(plugin_id, service_account_preset_id)
         return {"validation" : validation}
