@@ -176,7 +176,7 @@ def get_segments(service):
 
 def get_report(service, query_body):
     """
-    Queries for Segments via the Management "list" API call:
+    Query for Google Analytics data via the Reporting "list" API call:
     https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/segments/list
     
     Returns:
