@@ -40,7 +40,7 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     return service_account_credentials
    
 
-def get_authenticated_service(api_name, api_version, scope, plugin_id, service_account_preset_id, service_account_name):
+def get_authenticated_service(api_name, api_version, scope, service_account_credentials):
     """
     This function retrieves an authenticated Google Analytics service object.
     
