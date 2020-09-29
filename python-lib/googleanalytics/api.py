@@ -42,35 +42,11 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
 
 def get_authenticated_service(api_name, api_version, scope, plugin_id, service_account_preset_id, service_account_name):
     """
-    This function retrieves the encrypted Service Account secret, decrypts it, and uses it to retrieve an authenticated
-    Google Analytics service object.
+    This function retrieves an authenticated Google Analytics service object.
     
     Returns:
     An authenticated Google Analytics service object.
     """
-    
-    # Retrieve plugin settings
-    client = dataiku.api_client()
-    plugin = client.get_plugin(plugin_id)
-    settings = plugin.get_settings()
-    
-    # Contruct parameter set type from parameter set and plugin IDs
-    service_account_preset_type = "parameter-set-{0}-{1}".format(plugin_id, service_account_preset_id)
-    
-    # Retrieve encrypted service account preset
-    service_account_credentials_encrypted = None
-    for parameter_set in settings.settings["presets"]:
-        
-        if (parameter_set["type"] == service_account_preset_type) and (parameter_set["name"] == service_account_name):
-            service_account_credentials_encrypted = parameter_set["config"]["service_account_credentials"]
-    
-    if not service_account_credentials_encrypted:
-        raise Exception("Service Account Preset not found, most likely due to it having been deleted. Select a different Service Account under the dataset settings, " + \
-                        "or contact yout DSS Administrator if none are available.")
-    
-    # Decrypt preset account key
-    service_account_credentials_str = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
-                                                       shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
     
     # Retreieve Google Analytics service
     try:
