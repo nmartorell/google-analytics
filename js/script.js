@@ -20,8 +20,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     };
     
     
-    /* Function to retrieve Account Summaries dict */
-    $scope.getAccountSummaries = function(){
+    /* Function to retrieve Preset Credentials and Account Summaries dict */
+    $scope.getCredentialsAndAccountSummaries = function(){
         
         /* Prevent from running before a service account has been selected */
         if ($scope.config.service_account == null) {
@@ -30,6 +30,11 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         
         /* Clear Account, Web Property, View and View Properties dropdowns */
         $scope.clearAll()
+        
+        /* Retreieve Preset Credetials */
+        $scope.callPythonDo({method: "get_preset_credentials"}).then(function(data){
+            $scope.config.preset_credentials = data['preset_credentials'];
+        });
         
         /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
