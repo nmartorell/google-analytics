@@ -25,6 +25,10 @@ def do(payload, config, plugin_config, inputs):
     elif payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
     
+    elif payload["method"] == "get_preset_credentials":
+        
+        return 
+    
     elif payload["method"] == "get_account_summaries":        
         account_summaries = get_account_summaries(plugin_id, service_account_preset_id, service_account_name)
         return {"account_summaries" : account_summaries}
