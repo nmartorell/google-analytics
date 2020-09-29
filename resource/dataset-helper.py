@@ -60,8 +60,8 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
                          "This is likely due to the plugin ID having been manually changed. Please update the value in the script.js.") from e
             
     # Check the service account preset ID is correct
-    parameter_set_type = "parameter-set-{0}-{1}".format(plugin_id, service_account_preset_id)
-    parameter_set_list = [ param_set["type"] for param_set in settings.settings["presets"]]
+    parameter_set_type = service_account_preset_id
+    parameter_set_list = [ param_set["id"] for param_set in settings.settings["accessibleParameterSetDescs"]]
     
     if parameter_set_type not in parameter_set_list:
         raise ValueError("The Google Service Account parameter ID hardcoded in the script.js does not correspond to any parameters in the plugin." + \
