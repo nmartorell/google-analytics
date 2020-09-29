@@ -13,6 +13,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     /* Function to clear View Properties and Query Targets */
     $scope.clearAll = function() {
+        $scope.config.service_account_credentials = null;
         $scope.config.account_summaries_list = null;
         $scope.config.web_properties_list = null;
         $scope.config.views_list = null;
