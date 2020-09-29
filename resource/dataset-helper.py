@@ -10,8 +10,10 @@ def do(payload, config, plugin_config, inputs):
     
     # Unpack config
     plugin_id = config.get("plugin_id", "")
+    
     service_account_preset_id = config.get("service_account_preset_id", "")
     service_account_name = config.get("service_account", dict()).get("name", "")
+    service_account_credentials = config.get("service_account_credentials", "")
     
     account_id = config.get("account", dict()).get("id", "")
     web_property_id = config.get("web_property", dict()).get("id", "")
@@ -25,7 +27,7 @@ def do(payload, config, plugin_config, inputs):
     elif payload["method"] == "get_project_key":
         return {"project_key" : dataiku.default_project_key()}
     
-    elif payload["method"] == "get_preset_credentials":
+    elif payload["method"] == "get_service_account_credentials":
         
         return 
     
