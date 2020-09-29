@@ -34,10 +34,10 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
                         "or contact yout DSS Administrator if none are available.")
     
     # Decrypt preset account key
-    service_account_credentials_str = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
-                                                       shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
+    service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
+                                                    shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
     
-    return service_account_credentials_str
+    return service_account_credentials
    
 
 def get_authenticated_service(api_name, api_version, scope, plugin_id, service_account_preset_id, service_account_name):
