@@ -140,9 +140,7 @@ class GoogleAnalyticsConnector(Connector):
         service = googleanalytics.api.get_authenticated_service(self.api_name, 
                                                                 self.api_version, 
                                                                 self.scope, 
-                                                                self.plugin_id, 
-                                                                self.service_account_preset_id, 
-                                                                self.service_account_name)
+                                                                self.service_account_credentials)
         
         # Initialize starting index (must be string)
         next_record_index = "0"
