@@ -31,7 +31,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* Clear Account, Web Property, View and View Properties dropdowns */
         $scope.clearAll()
         
-        /* Retreieve Service Account Credentials */
+        /* Retrieve Service Account Credentials */
         $scope.callPythonDo({method: "get_service_account_credentials"}).then(function(data){
             $scope.config.service_account_credentials = data['service_account_credentials'];
             
