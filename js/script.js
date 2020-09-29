@@ -34,12 +34,16 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
         /* Retreieve Service Account Credentials */
         $scope.callPythonDo({method: "get_service_account_credentials"}).then(function(data){
             $scope.config.service_account_credentials = data['service_account_credentials'];
-        });
-        
-        /* Call Google Analytics API to retrieve Account Summaries */
+            
+            
+            /* Call Google Analytics API to retrieve Account Summaries */
         $scope.callPythonDo({method: "get_account_summaries"}).then(function(data){
             $scope.config.account_summaries_list = data['account_summaries'];
+            });
+            
         });
+        
+        
     };
     
     
