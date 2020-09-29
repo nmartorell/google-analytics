@@ -30,14 +30,17 @@ class GoogleAnalyticsConnector(Connector):
         Connector.__init__(self, config, plugin_config)  # pass the parameters to the base class
 
         # (1) Parameters for Google Analytics API service
-        self.service_account_name = self.config.get("service_account", dict()).get("name", None)
-        assert self.service_account_name, "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
+        self.service_account_credentials = self.config.get("service_account_credentials", "")
+        assert self.service_account_credentials,  "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
-        self.plugin_id = self.config.get("plugin_id", None)
-        self.service_account_preset_id = self.config.get("service_account_preset_id", None)
+        #self.service_account_name = self.config.get("service_account", dict()).get("name", None)
+        #assert self.service_account_name, "No Google Analytics Service Account has been selected. If none are available, please contact your DSS Administrator."
         
-        assert self.plugin_id, "No Plugin ID has been found, it should have been added in the script.js initialization routine. This is a bug."
-        assert self.service_account_preset_id, "No Service Account Preset ID has been found, it should have been added in the script.js initialization routine. This is a bug."
+        #self.plugin_id = self.config.get("plugin_id", None)
+        #self.service_account_preset_id = self.config.get("service_account_preset_id", None)
+        
+        #assert self.plugin_id, "No Plugin ID has been found, it should have been added in the script.js initialization routine. This is a bug."
+        #assert self.service_account_preset_id, "No Service Account Preset ID has been found, it should have been added in the script.js initialization routine. This is a bug."               
         
         # Parameters for Google Analytics V4 API (Reporting API)
         self.scope = ['https://www.googleapis.com/auth/analytics.readonly']
