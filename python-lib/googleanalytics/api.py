@@ -48,6 +48,9 @@ def get_authenticated_service(api_name, api_version, scope, service_account_cred
     An authenticated Google Analytics service object.
     """
     
+    print("HERE")
+    print(service_account_credentials)
+    
     # Retreieve Google Analytics service
     try:
         service_account_credentials_json = ast.literal_eval(service_account_credentials)
