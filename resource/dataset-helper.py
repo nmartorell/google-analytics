@@ -31,12 +31,12 @@ def do(payload, config, plugin_config, inputs):
         return {"service_account_credentials" : service_account_credentials}
     
     elif payload["method"] == "get_account_summaries":        
-        account_summaries = get_account_summaries(plugin_id, service_account_preset_id, service_account_name)
+        account_summaries = get_account_summaries(service_account_credentials)
         return {"account_summaries" : account_summaries}
     
     elif payload["method"] == "get_view_properties":        
-        metrics, dimensions = get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_account_name, account_id, web_property_id, view_id)
-        segments = get_segments(plugin_id, service_account_preset_id, service_account_name)
+        metrics, dimensions = get_metrics_and_dimensions(service_account_credentials, account_id, web_property_id, view_id)
+        segments = get_segments(service_account_credentials)
         return {"metrics" : metrics, "dimensions" : dimensions, "segments" : segments}
 
     else:
@@ -78,7 +78,7 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     return googleanalytics.api.get_service_account_credentials(plugin_id, service_account_preset_id, service_account_name)
 
     
-def get_account_summaries(plugin_id, service_account_preset_id, service_account_name):
+def get_account_summaries(service_account_credentials):
     """
     Retrieve Account, Web Property and View information accessible to the authenticated Google Service account. 
     """
@@ -87,9 +87,7 @@ def get_account_summaries(plugin_id, service_account_preset_id, service_account_
     service = googleanalytics.api.get_authenticated_service(API_NAME, 
                                                             API_VERSION, 
                                                             SCOPE, 
-                                                            plugin_id, 
-                                                            service_account_preset_id, 
-                                                            service_account_name)
+                                                            service_account_credentials)
     
     # Retrieve AccountSummaries from Management API
     response = googleanalytics.api.get_account_summaries(service)
@@ -100,7 +98,7 @@ def get_account_summaries(plugin_id, service_account_preset_id, service_account_
     return account_summaries
  
 
-def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_account_name, account_id, web_property_id, view_id):   
+def get_metrics_and_dimensions(service_account_credentials, account_id, web_property_id, view_id):   
     """
     Retrieve all Metrics and Dimensions associated to the selected Web Property and View.
     """
@@ -109,9 +107,7 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
     service = googleanalytics.api.get_authenticated_service(API_NAME, 
                                                             API_VERSION, 
                                                             SCOPE, 
-                                                            plugin_id, 
-                                                            service_account_preset_id, 
-                                                            service_account_name)
+                                                            service_account_credentials)
     
     # Default Metrics and Dimensions from Metadata API
     response = googleanalytics.api.get_default_metrics_and_dimensions(service)
@@ -140,7 +136,7 @@ def get_metrics_and_dimensions(plugin_id, service_account_preset_id, service_acc
     return metrics, dimensions
 
 
-def get_segments(plugin_id, service_account_preset_id, service_account_name):
+def get_segments(service_account_credentials):
     """
     Retrieve the Segments accessible to the authenticated Google Service account.
     """
@@ -149,9 +145,7 @@ def get_segments(plugin_id, service_account_preset_id, service_account_name):
     service = googleanalytics.api.get_authenticated_service(API_NAME, 
                                                             API_VERSION, 
                                                             SCOPE, 
-                                                            plugin_id, 
-                                                            service_account_preset_id, 
-                                                            service_account_name)
+                                                            service_account_credentials)
     
     # Retrieve all available Segments from the Management API
     response = googleanalytics.api.get_segments(service)
