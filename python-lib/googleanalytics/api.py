@@ -5,6 +5,8 @@ import ast
 from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 
+import json
+
 
 def get_service_account_credentials(plugin_id, service_account_preset_id, service_account_name):
     """
@@ -50,7 +52,8 @@ def get_authenticated_service(api_name, api_version, scope, service_account_cred
     
     # Retreieve Google Analytics service
     try:
-        service_account_credentials_json = ast.literal_eval(service_account_credentials)
+        service_account_credentials_json = json.loads(service_account_credentials)
+        #service_account_credentials_json = ast.literal_eval(service_account_credentials)
         credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_credentials_json, scope)
         service = build(api_name, api_version, credentials=credentials)    
     except Exception as e:
