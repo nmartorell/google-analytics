@@ -29,11 +29,10 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     for parameter_set in settings.settings["presets"]:
         
         if (parameter_set["type"] == service_account_preset_type) and (parameter_set["name"] == service_account_name):
-            service_account_credentials_encrypted = parameter_set["config"]["service_account_credentials"]
+            service_account_credentials_encrypted = parameter_set["config"].get("service_account_credentials", None)
     
     if not service_account_credentials_encrypted:
-        raise Exception("Service Account Preset not found, most likely due to it having been deleted. Select a different Service Account under the dataset settings, " + \
-                        "or contact yout DSS Administrator if none are available.")
+        raise Exception("No Service Account credentials have been entered for this preset, please contact your DSS Administrator.")
     
     # Decrypt preset account key
     service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
