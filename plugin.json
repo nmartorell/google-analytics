@@ -25,5 +25,17 @@
         "url": "",
 
         "licenseInfo": "Apache Software License"
-    }
+    },
+    
+    "params" : [
+        {
+            "name": "global_service_account_credentials",
+            "label": "Service Account JSON Key",
+            "type": "PASSWORD",
+            "description": "Generated on Google for use in DSS, please refer to plugin documentation to set this up.",
+            "mandatory": true
+        }
+    ]
+    
+    
 }
