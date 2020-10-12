@@ -10,6 +10,7 @@ def do(payload, config, plugin_config, inputs):
     
     print("config: ", config)
     print("plugin_config: ", plugin_config)
+    asdf
     
     # Unpack config
     plugin_id = config.get("plugin_id", "")
