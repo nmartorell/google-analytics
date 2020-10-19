@@ -47,6 +47,8 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     """
     Check that the Plugin and Service Account Preset IDs set in the script.js initialization function actually exist.
     This function ensures that, in the unlikely event of either ID changing, there is a legible error message.
+    
+    NOTE: This function has been removed as non-admin users are unable to query for plugin settings.
     """
     
     # Retrieve plugin settings
