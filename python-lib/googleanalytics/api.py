@@ -37,7 +37,6 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
         credentials_service_account_preset_id = credentials_key_list[2]
         credentials_service_account_name = credentials_key_list[3]
         
-        
         if (credentials_plugin_id == plugin_id) and (credentials_service_account_preset_id == service_account_preset_id) and (credentials_service_account_name == service_account_name):
             service_account_credentials_encrypted = credentials_dict["password"]
             
