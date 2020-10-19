@@ -40,26 +40,8 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
         if (credentials_plugin_id == plugin_id) and (credentials_service_account_preset_id == service_account_preset_id) and (credentials_service_account_name == service_account_name):
             service_account_credentials_encrypted = credentials_dict["password"]
             
-            
-        
-    
-    # Retrieve plugin settings
-    client = dataiku.api_client()
-    plugin = client.get_plugin(plugin_id)
-    settings = plugin.get_settings()
-    
-    # Contruct parameter set type from parameter set and plugin IDs
-    service_account_preset_type = "parameter-set-{0}-{1}".format(plugin_id, service_account_preset_id)
-    
-    # Retrieve encrypted service account preset
-    service_account_credentials_encrypted = None
-    for parameter_set in settings.settings["presets"]:
-        
-        if (parameter_set["type"] == service_account_preset_type) and (parameter_set["name"] == service_account_name):
-            service_account_credentials_encrypted = parameter_set["config"].get("service_account_credentials", None)
-    
-    if not service_account_credentials_encrypted:
-        raise Exception("No Service Account credentials have been entered for this preset, please contact your DSS Administrator.")
+        if not service_account_credentials_encrypted:
+            raise Exception("No per-user Service Account credentials have been entered for this Google Analytics account.")
     
     # Decrypt preset account key
     service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
