@@ -30,6 +30,7 @@ def do(payload, config, plugin_config, inputs):
         
         print(config)
         print(plugin_config)
+        print(inputs)
         asdf
         
         service_account_credentials = get_service_account_credentials(plugin_id, service_account_preset_id, service_account_name)
