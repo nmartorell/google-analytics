@@ -26,7 +26,7 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     for credentials_key, credentials_dict in per_user_credentials.items():
         
         # Unpack credentials key
-        credentials_key_list = ast.literal_eval(credentials_key.split(','))
+        credentials_key_list = ast.literal_eval(credentials_key)
         
         # Pass on any connection per-user credentials
         if len(credentials_key_list) != 5:
