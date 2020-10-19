@@ -10,9 +10,12 @@
         {
             "name": "service_account_credentials",
             "label": "Service Account JSON Key",
-            "type": "PASSWORD",
+            "type": "CREDENTIAL_REQUEST",
             "description": "Generated on Google for use in DSS, please refer to plugin documentation to set this up.",
-            "mandatory": true
+            "mandatory": true,
+            "credentialRequestSettings": {
+                "type": "SINGLE_FIELD"
+             }
         }
     ]
 }
