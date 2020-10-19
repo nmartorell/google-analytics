@@ -16,6 +16,15 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     Decrypted Service Account secret
     """
     
+    # Retrieve per-user credentials
+    client = dataiku.api_client()
+    user = client.get_own_user()
+    settings = own_user.get_settings().settings
+    per_user_credentials = settings["credentials"]
+    
+    # Extract the encrypted credentials for the selected service_account_name
+        
+    
     # Retrieve plugin settings
     client = dataiku.api_client()
     plugin = client.get_plugin(plugin_id)
