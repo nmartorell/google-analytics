@@ -47,9 +47,6 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
                                                     shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
     
-    print(service_account_credentials)
-    asdf
-    
     return service_account_credentials
    
 
