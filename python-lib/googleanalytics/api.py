@@ -26,11 +26,10 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     service_account_credentials_encrypted = None
     for credentials_key, credentials_dict in per_user_credentials.items():
         
-        # Unpack credentials key
-        credentials_key_list = ast.literal_eval(credentials_key)
-        
-        # Pass on any connection per-user credentials
-        if len(credentials_key_list) != 5:
+        # Unpack credentials key (pass on any connection per-user credentials)
+        try:
+            credentials_key_list = ast.literal_eval(credentials_key)
+        except:
             continue
             
         # Validate that the credentials key matches the user selection
