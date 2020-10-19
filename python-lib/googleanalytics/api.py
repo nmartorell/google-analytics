@@ -23,7 +23,7 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     per_user_credentials = settings["credentials"]
     
     # Extract the encrypted credentials for the selected service_account_name
-    for credentials_key, credentials_dict in per_user_credentials:
+    for credentials_key, credentials_dict in per_user_credentials.items():
         
         # Unpack credentials key
         credentials_key_list = ast.literal_eval(credentials_key.split(','))
