@@ -118,9 +118,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             /* Retrieve currently configured, usable Service Accounts on DSS instance */
             var presets = data.presets.filter(p => p.usable);
             
-            console.log("AVAILABLE PRESETS: ")
-            console.log(presets)
-            
             /* If service_accounts_list already exists, replace "preset" entries with objects with same name  */
             if (typeof $scope.config.service_accounts_list != 'undefined') {
                         
