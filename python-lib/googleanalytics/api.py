@@ -7,7 +7,6 @@ from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 
 
-
 def get_service_account_credentials(plugin_id, service_account_preset_id, service_account_name):
     """
     This function retrieves the encrypted Service Account secret, and decrypts it.
@@ -26,7 +25,7 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     service_account_credentials_encrypted = None
     for credentials_key, credentials_dict in per_user_credentials.items():
         
-        # Unpack credentials key (pass on any connection per-user credentials)
+        # Unpack credentials key (continue on any connection per-user credentials)
         try:
             credentials_key_list = ast.literal_eval(credentials_key)
         except:
