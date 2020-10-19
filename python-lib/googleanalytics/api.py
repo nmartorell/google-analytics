@@ -1,6 +1,6 @@
 import dataiku
 import subprocess
-#import ast
+import ast
 import json
 
 from oauth2client.service_account import ServiceAccountCredentials
@@ -23,6 +23,24 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     per_user_credentials = settings["credentials"]
     
     # Extract the encrypted credentials for the selected service_account_name
+    for credentials_key, credentials_dict in per_user_credentials:
+        
+        # Unpack credentials key
+        credentials_key_list = ast.literal_eval(credentials_key.split(','))
+        
+        # Pass on any connection per-user credentials
+        if len(credentials_key_list) != 5:
+            continue
+            
+        # Validate that the credentials key matches the user selection
+        credentials_plugin_id = credentials_key_list[1]
+        credentials_service_account_preset_id = credentials_key_list[2]
+        credentials_service_account_name = credentials_key_list[3]
+        
+        print(credentials_plugin_id)   
+        print(credentials_service_account_preset_id)
+        print(credentials_service_account_name)
+        asdf
         
     
     # Retrieve plugin settings
