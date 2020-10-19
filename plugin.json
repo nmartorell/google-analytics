@@ -16,7 +16,7 @@
         "author": "Ned Martorell (Dataiku)",
 
         // icon: must be one of the FontAwesome 3.2.1 icons, complete list here at https://fontawesome.com/v3.2.1/icons/
-        "icon": "icon-hospital",
+        "icon": "icon-bar-chart",
 
         // List of tags for filtering the list of plugins
         "tags": [], //for example: ["Machine Learning", "NLP"]
