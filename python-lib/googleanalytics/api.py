@@ -23,6 +23,7 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
     per_user_credentials = settings["credentials"]
     
     # Extract the encrypted credentials for the selected service_account_name
+    service_account_credentials_encrypted = None
     for credentials_key, credentials_dict in per_user_credentials.items():
         
         # Unpack credentials key
@@ -37,11 +38,12 @@ def get_service_account_credentials(plugin_id, service_account_preset_id, servic
         credentials_service_account_preset_id = credentials_key_list[2]
         credentials_service_account_name = credentials_key_list[3]
         
+        
         if (credentials_plugin_id == plugin_id) and (credentials_service_account_preset_id == service_account_preset_id) and (credentials_service_account_name == service_account_name):
             service_account_credentials_encrypted = credentials_dict["password"]
             
-        if not service_account_credentials_encrypted:
-            raise Exception("No per-user Service Account credentials have been entered for this Google Analytics account.")
+    if not service_account_credentials_encrypted:
+        raise Exception("No per-user Service Account credentials have been entered for this Google Analytics account.")
     
     # Decrypt preset account key
     service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
