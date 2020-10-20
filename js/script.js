@@ -112,32 +112,35 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
             $scope.config.project_key = data.project_key;
         });
         
-        /* Retrieve Service Account presets, and populate $scope.config.service_accounts_list -- THERE MUST BE A BETTER WAY TO DO THIS....!!! */ 
+                
+        
+        /* Retrieve Service Account presets, and populate $scope.config.service_accounts_list -- THERE MUST BE A BETTER WAY TO DO THIS....!!!  
         DataikuAPI.plugins.listAccessiblePresets($scope.config.plugin_id, $scope.config.project_key, $scope.config.service_account_preset_id).success(function(data){
             
-            /* Retrieve currently configured, usable Service Accounts on DSS instance */
+            /* Retrieve currently configured, usable Service Accounts on DSS instance 
             var presets = data.presets.filter(p => p.usable);
             
-            /* If service_accounts_list already exists, replace "preset" entries with objects with same name  */
+            /* If service_accounts_list already exists, replace "preset" entries with objects with same name  
             if (typeof $scope.config.service_accounts_list != 'undefined') {
                         
-                /* Generate dict of previously used presets {name --> preset object} */
+                /* Generate dict of previously used presets {name --> preset object} 
                 var previous_service_accounts = {};
                 $scope.config.service_accounts_list.forEach(function (service_account, index) {
                     previous_service_accounts[service_account.name] = service_account;
                 });
             
                 /* Loop over current presets, and replace by the object in $scope.config.presets 
-                   This is done to ensure the $$hashKeys match with those stored in $scope.config.service_account */
+                   This is done to ensure the $$hashKeys match with those stored in $scope.config.service_account 
                 presets.forEach(function (service_account, index) {
                     if (service_account.name in previous_service_accounts) {
                         presets[index] = previous_service_accounts[service_account.name]
                     }
                 });
-            }      
+            } 
             
-            /* Set / Update Service Accounts List */
+            /* Set / Update Service Accounts List 
             $scope.config.service_accounts_list = presets;
+            */            
         });
     };
 
