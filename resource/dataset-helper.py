@@ -43,12 +43,10 @@ def get_user_secrets():
     Retrieve a list of the available User Secret names of the logged in user. 
     """
     client = dataiku.api_client()
-    auth_info = client.get_auth_info()
-    user_name = auth_info["authIdentifier"]
+    auth_info = client.get_auth_info(with_secrets=True)
+    secrets = auth_info["secrets"]
     
-    user = client.get_user(user_name)
-    user_secrets = user.get_definition()["secrets"]
-    user_secret_names = [s["name"] for s in user_secrets]
+    user_secret_names = [s["key"] for s in user_secrets]
     
     return user_secret_names
 
