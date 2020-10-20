@@ -17,9 +17,9 @@ def do(payload, config, plugin_config, inputs):
     view_id = config.get("view", dict()).get("id", "")
     
     # Select appropriate method based on payload    
-    if payload["method"] == "get_user_secrets_list":
-        user_secrets_list = get_user_secrets_list()
-        return {"user_secrets_list" : user_secrets_list}
+    if payload["method"] == "get_user_secrets":
+        user_secrets = get_user_secrets_list()
+        return {"user_secrets" : user_secrets}
     
     elif payload["method"] == "get_service_account_credentials":
         service_account_credentials = get_service_account_credentials(user_secret)
