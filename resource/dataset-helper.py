@@ -18,15 +18,8 @@ def do(payload, config, plugin_config, inputs):
     web_property_id = config.get("web_property", dict()).get("id", "")
     view_id = config.get("view", dict()).get("id", "")
     
-    # Select appropriate method based on payload
-    if payload["method"] == "validate_plugin_and_preset_ids":        
-        validation = validate_plugin_and_preset_ids(plugin_id, service_account_preset_id)
-        return {"validation" : validation}
-    
-    elif payload["method"] == "get_project_key":
-        return {"project_key" : dataiku.default_project_key()}
-    
-    elif payload["method"] == "get_service_account_credentials":
+    # Select appropriate method based on payload    
+    if payload["method"] == "get_service_account_credentials":
         service_account_credentials = get_service_account_credentials(plugin_id, service_account_preset_id, service_account_name)
         return {"service_account_credentials" : service_account_credentials}
     
