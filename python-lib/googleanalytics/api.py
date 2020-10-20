@@ -15,6 +15,7 @@ def get_service_account_credentials(user_secret):
     Decrypted Service Account secret
     """
     
+    # Unpack user secret
     service_account_credentials = user_secret["value"]
     
     # Decrypt preset account key if necessary
