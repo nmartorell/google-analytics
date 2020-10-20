@@ -3,7 +3,15 @@
 <form class="dku-form-horizontal">   
    
     <div class="control-group">
-       <button ng-click="getCredentialsAndAccountSummaries()" class="btn btn--primary link-like">Get Query Targets from Per-User Credentials</button>   
+        <label class="control-label">Available User Secrets</label>
+       <div class="controls">
+           <select dku-bs-select
+                   ng-model="config.view"
+                   ng-options="view.name for view in config.views_list"
+                   ng-change="clearViewProperties()"> 
+           </select>
+           <button ng-click="getCredentialsAndAccountSummaries()" class="btn btn--primary link-like">Get Query Targets</button>
+       </div>  
    </div>
     
    <div class="control-group">
