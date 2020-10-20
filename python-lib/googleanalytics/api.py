@@ -15,8 +15,19 @@ def get_service_account_credentials(user_secret):
     Decrypted Service Account secret
     """
     
-    # Unpack user secret
-    service_account_credentials = user_secret["value"]
+    # Retrieve user secrets
+    client = dataiku.api_client()
+    auth_info = client.get_auth_info()
+    user_name = auth_info["authIdentifier"]
+    
+    user = client.get_user(user_name)
+    user_secrets = user.get_definition()["secrets"]
+    
+    # Select credential from user secret selected by user
+    for secret in user_secrets:
+        if user_secret == secret["name"]:
+            service_account_credentials = secret["value"]
+            break
     
     # Decrypt preset account key if necessary
     try:
