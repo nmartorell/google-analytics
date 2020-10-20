@@ -25,13 +25,8 @@ def get_service_account_credentials(secret_name):
     
     # Extract the encrypted credentials for the selected service_account_name
     for secret in secrets:
-        
-        # unpack user secret
-        secret_name = secret["name"]
-        secret_value = secret["value"]
-        
-        if secret_name == "google-analytics":
-            service_account_credentials = secret_value
+        if secret_name == secret["name"]:
+            service_account_credentials = secret["value"]
             break
     
     # Decrypt preset account key if necessary
