@@ -9,6 +9,7 @@ SCOPE = ['https://www.googleapis.com/auth/analytics.readonly']
 def do(payload, config, plugin_config, inputs):
     
     # Unpack config
+    user_secret = config.get("user_secret", "")
     service_account_credentials = config.get("service_account_credentials", "")
     
     account_id = config.get("account", dict()).get("id", "")
@@ -17,7 +18,7 @@ def do(payload, config, plugin_config, inputs):
     
     # Select appropriate method based on payload    
     if payload["method"] == "get_service_account_credentials":
-        service_account_credentials = get_service_account_credentials()
+        service_account_credentials = get_service_account_credentials(user_secret)
         return {"service_account_credentials" : service_account_credentials}
     
     elif payload["method"] == "get_account_summaries":        
@@ -33,12 +34,12 @@ def do(payload, config, plugin_config, inputs):
         raise ValueError("I forgot to define a python helper function... whoops! This is a bug.") 
 
 
-def get_service_account_credentials():
+def get_service_account_credentials(user_secret):
     """
     Retrieve Service Account Credentials for selected Service Account. 
     """
     
-    return googleanalytics.api.get_service_account_credentials()
+    return googleanalytics.api.get_service_account_credentials(user_secret)
 
     
 def get_account_summaries(service_account_credentials):
