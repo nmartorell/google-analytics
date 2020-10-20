@@ -17,24 +17,14 @@ def get_service_account_credentials(user_secret):
     
     # Retrieve user secrets
     client = dataiku.api_client()
-    auth_info = client.get_auth_info()
-    user_name = auth_info["authIdentifier"]
-    
-    user = client.get_user(user_name)
-    user_secrets = user.get_definition()["secrets"]
-    
+    auth_info = client.get_auth_info(with_secrets=True)
+    user_secrets = auth_info["secrets"]
+
     # Select credential from user secret selected by user
     for secret in user_secrets:
-        if user_secret == secret["name"]:
+        if user_secret == secret["key"]:
             service_account_credentials = secret["value"]
             break
-    
-    # Decrypt preset account key if necessary
-    try:
-        json.loads(service_account_credentials) # this will fail if encrypted (or malformed, but we deal with that later)
-    except:    
-        service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials), 
-                                                       shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
     
     return service_account_credentials
    
