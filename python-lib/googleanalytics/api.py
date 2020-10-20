@@ -17,30 +17,26 @@ def get_service_account_credentials():
     
     # Retrieve per-user credentials
     client = dataiku.api_client()
-    user = client.get_own_user()
-    settings = user.get_settings().settings
-    per_user_credentials = settings["credentials"]
+    auth_info = client.get_auth_info()
+    user_name = auth_info["authIdentifier"]
+    
+    user = client.get_user(user_name)
+    secrets = user.get_definition()["secrets"]    
     
     # Extract the encrypted credentials for the selected service_account_name
     service_account_credentials_encrypted = None
-    for credentials_key, credentials_dict in per_user_credentials.items():
+    for secret in secrets:
         
-        # Unpack credentials key (continue on any connection per-user credentials)
-        try:
-            credentials_key_list = ast.literal_eval(credentials_key)
-        except:
-            continue
-            
-        # Validate that the credentials key matches the user selection
-        credentials_plugin_id = credentials_key_list[1]
-        credentials_service_account_preset_id = credentials_key_list[2]
-        credentials_service_account_name = credentials_key_list[3]
+        # unpack user secret
+        secret_name = secret["name"]
+        secret_value = secret["value"]
         
-        if (credentials_plugin_id == plugin_id) and (credentials_service_account_preset_id == service_account_preset_id) and (credentials_service_account_name == service_account_name):
-            service_account_credentials_encrypted = credentials_dict["password"]
+        if secret_name == "google-analytics":
+            service_account_credentials_encrypted = secret_value
+            break
             
     if not service_account_credentials_encrypted:
-        raise Exception("No per-user Service Account credentials have been entered for this Google Analytics account.")
+        raise Exception("No user secret has been entered with the 'google-analytics' key; please enter one.")
     
     # Decrypt preset account key
     service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
