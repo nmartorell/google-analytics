@@ -62,12 +62,12 @@ def validate_plugin_and_preset_ids(plugin_id, service_account_preset_id):
     return "OK"
 
 
-def get_service_account_credentials(plugin_id, service_account_preset_id, service_account_name):
+def get_service_account_credentials():
     """
     Retrieve Service Account Credentials for selected Service Account. 
     """
     
-    return googleanalytics.api.get_service_account_credentials(plugin_id, service_account_preset_id, service_account_name)
+    return googleanalytics.api.get_service_account_credentials()
 
     
 def get_account_summaries(service_account_credentials):
