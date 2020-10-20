@@ -42,9 +42,14 @@ def get_user_secrets_list():
     """
     Retrieve a list of the available User Secret names of the logged in user. 
     """
+    client = dataiku.api_client()
+    auth_info = client.get_auth_info()
+    user_name = auth_info["authIdentifier"]
     
+    user = client.get_user(user_name)
+    secrets = user.get_definition()["secrets"]
     
-    return ["google-analytics", "two", "three"]
+    return secrets
 
 
 def get_service_account_credentials(user_secret):
