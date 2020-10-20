@@ -37,6 +37,13 @@ def do(payload, config, plugin_config, inputs):
     else:
         raise ValueError("I forgot to define a python helper function... whoops! This is a bug.") 
 
+        
+def get_user_secrets_list():
+    """
+    Retrieve a list of the available User Secret names of the logged in user. 
+    """
+    return []
+
 
 def get_service_account_credentials(user_secret):
     """
