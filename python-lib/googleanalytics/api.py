@@ -7,7 +7,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 
 
-def get_service_account_credentials():
+def get_service_account_credentials(secret_name):
     """
     This function retrieves the selected user Secret, and decrypts it if necessary.
     
