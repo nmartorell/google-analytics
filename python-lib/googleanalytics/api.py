@@ -24,7 +24,6 @@ def get_service_account_credentials():
     secrets = user.get_definition()["secrets"]    
     
     # Extract the encrypted credentials for the selected service_account_name
-    service_account_credentials_encrypted = None
     for secret in secrets:
         
         # unpack user secret
@@ -32,15 +31,15 @@ def get_service_account_credentials():
         secret_value = secret["value"]
         
         if secret_name == "google-analytics":
-            service_account_credentials_encrypted = secret_value
+            service_account_credentials = secret_value
             break
-            
-    if not service_account_credentials_encrypted:
-        raise Exception("No user secret has been entered with the 'google-analytics' key; please enter one.")
     
-    # Decrypt preset account key
-    service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials_encrypted), 
-                                                    shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
+    # Decrypt preset account key if necessary
+    try:
+        json.loads(service_account_credentials)
+    except    
+        service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials), 
+                                                       shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
     
     return service_account_credentials
    
