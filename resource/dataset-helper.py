@@ -51,7 +51,7 @@ def get_user_secrets():
     
     user_secret_names = [s["name"] for s in user_secrets]
     
-    return user_secrets
+    return user_secret_names
 
 
 def get_service_account_credentials(user_secret):
