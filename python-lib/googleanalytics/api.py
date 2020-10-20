@@ -7,27 +7,13 @@ from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 
 
-def get_service_account_credentials(secret_name):
+def get_service_account_credentials(user_secret):
     """
-    This function retrieves the selected user Secret, and decrypts it if necessary.
+    Extract user secret value, and decrypts if necessary.
     
     Returns:
     Decrypted Service Account secret
     """
-    
-    # Retrieve per-user credentials
-    client = dataiku.api_client()
-    auth_info = client.get_auth_info()
-    user_name = auth_info["authIdentifier"]
-    
-    user = client.get_user(user_name)
-    secrets = user.get_definition()["secrets"]    
-    
-    # Extract the encrypted credentials for the selected service_account_name
-    for secret in secrets:
-        if secret_name == secret["name"]:
-            service_account_credentials = secret["value"]
-            break
     
     # Decrypt preset account key if necessary
     try:
