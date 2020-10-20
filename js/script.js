@@ -98,7 +98,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     var init = function(){  
         
         /* Generate list of Available User Secrets */
-        $scope.callPythonDo({method: "get_user_secrets_list"}).then(function(data){
+        $scope.callPythonDo({method: "get_user_secrets"}).then(function(data){
             $scope.config.user_secrets_list = data['user_secrets'];
         });
         
