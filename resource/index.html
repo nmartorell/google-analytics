@@ -6,8 +6,8 @@
         <label class="control-label">Available User Secrets</label>
        <div class="controls">
            <select dku-bs-select
-                   ng-model=""
-                   ng-options=""
+                   ng-model="config.user_secret"
+                   ng-options="user_secret in config.user_secrets_list"
                    ng-change="clearAll()">
            </select>
            <button ng-click="getCredentialsAndAccountSummaries()" class="btn btn--primary link-like">Get Query Targets</button>
