@@ -102,8 +102,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Initialization */
     var init = function(){
         
-        /*  */
-        $scope.getCredentialsAndAccountSummaries         
+        /* Get the saved used secret and populate the associated Accounts, Web Properties and Views */
+        $scope.getCredentialsAndAccountSummaries();         
         });
     };
 
