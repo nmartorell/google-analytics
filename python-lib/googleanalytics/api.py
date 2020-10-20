@@ -9,7 +9,7 @@ from googleapiclient.discovery import build
 
 def get_service_account_credentials():
     """
-    This function retrieves the encrypted Service Account secret, and decrypts it.
+    This function retrieves the selected user Secret, and decrypts it if necessary.
     
     Returns:
     Decrypted Service Account secret
