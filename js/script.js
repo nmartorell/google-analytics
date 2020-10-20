@@ -24,11 +24,6 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Function to retrieve Service Account Credentials and Account Summaries dict */
     $scope.getCredentialsAndAccountSummaries = function(){
         
-        /* Prevent from running before a service account has been selected */
-        if ($scope.config.service_account == null) {
-            return;
-        }; 
-        
         /* Clear Account, Web Property, View and View Properties dropdowns */
         $scope.clearAll()
         
@@ -100,11 +95,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     
     
     /* Initialization */
-    var init = function(){
-        
-        /* Get the saved used secret and populate the associated Accounts, Web Properties and Views */
-        $scope.getCredentialsAndAccountSummaries();         
-        });
+    var init = function(){  
+
     };
 
     init();    
