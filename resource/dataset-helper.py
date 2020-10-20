@@ -49,6 +49,8 @@ def get_user_secrets():
     user = client.get_user(user_name)
     user_secrets = user.get_definition()["secrets"]
     
+    user_secret_names = [s["name"] for s in user_secrets]
+    
     return user_secrets
 
 
