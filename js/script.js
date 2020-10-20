@@ -102,8 +102,8 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     /* Initialization */
     var init = function(){
         
-        /* stuff here /*
-                   
+        /*  */
+        $scope.getCredentialsAndAccountSummaries         
         });
     };
 
