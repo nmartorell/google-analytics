@@ -42,7 +42,7 @@ def get_user_secrets_list():
     """
     Retrieve a list of the available User Secret names of the logged in user. 
     """
-    return ["one", "two", "three"]
+    return ["google-analytics", "two", "three"]
 
 
 def get_service_account_credentials(user_secret):
