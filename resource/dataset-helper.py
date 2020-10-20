@@ -18,7 +18,7 @@ def do(payload, config, plugin_config, inputs):
     
     # Select appropriate method based on payload    
     if payload["method"] == "get_user_secrets":
-        user_secrets = get_user_secrets_list()
+        user_secrets = get_user_secrets()
         return {"user_secrets" : user_secrets}
     
     elif payload["method"] == "get_service_account_credentials":
@@ -47,9 +47,9 @@ def get_user_secrets():
     user_name = auth_info["authIdentifier"]
     
     user = client.get_user(user_name)
-    secrets = user.get_definition()["secrets"]
+    user_secrets = user.get_definition()["secrets"]
     
-    return secrets
+    return user_secrets
 
 
 def get_service_account_credentials(user_secret):
