@@ -22,6 +22,10 @@ def do(payload, config, plugin_config, inputs):
         return {"user_secrets" : user_secrets}
     
     elif payload["method"] == "get_service_account_credentials":
+        
+        print(user_secret)
+        asdf
+        
         service_account_credentials = get_service_account_credentials(user_secret)
         return {"service_account_credentials" : service_account_credentials}
     
