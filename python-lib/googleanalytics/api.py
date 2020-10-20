@@ -15,6 +15,8 @@ def get_service_account_credentials(user_secret):
     Decrypted Service Account secret
     """
     
+    service_account_credentials = user_secret["value"]
+    
     # Decrypt preset account key if necessary
     try:
         json.loads(service_account_credentials) # this will fail if encrypted (or malformed, but we deal with that later)
