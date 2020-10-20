@@ -25,7 +25,7 @@ app.controller('googleAnalyticsDatasetController', function($scope, DataikuAPI) 
     $scope.getCredentialsAndAccountSummaries = function(){
         
         /* Prevent from running before a service account has been selected */
-        if ($scope.config.service_account == null) {
+        if ($scope.config.user_secret == null) {
             return;
         }; 
         
