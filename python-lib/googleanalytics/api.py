@@ -36,8 +36,8 @@ def get_service_account_credentials():
     
     # Decrypt preset account key if necessary
     try:
-        json.loads(service_account_credentials)
-    except    
+        json.loads(service_account_credentials) # this will fail if encrypted
+    except:    
         service_account_credentials = subprocess.Popen("$DIP_HOME/bin/dku decrypt-password " + str(service_account_credentials), 
                                                        shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
     
