@@ -7,7 +7,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 
 
-def get_service_account_credentials(plugin_id, service_account_preset_id, service_account_name):
+def get_service_account_credentials():
     """
     This function retrieves the encrypted Service Account secret, and decrypts it.
     
