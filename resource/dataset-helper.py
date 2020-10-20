@@ -44,8 +44,8 @@ def get_user_secrets():
     """
     client = dataiku.api_client()
     auth_info = client.get_auth_info(with_secrets=True)
-    user_secrets = auth_info["secrets"]
     
+    user_secrets = auth_info["secrets"]
     user_secret_names = [s["key"] for s in user_secrets]
     
     return user_secret_names
