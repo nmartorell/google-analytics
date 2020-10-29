@@ -2,6 +2,7 @@ import dataiku
 import subprocess
 import ast
 import json
+import socket
 
 from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
@@ -36,6 +37,9 @@ def get_authenticated_service(api_name, api_version, scope, service_account_cred
     Returns:
     An authenticated Google Analytics service object.
     """
+    
+     # Set timeout to 10 minutes (as sometimes fails)
+    socket.setdefaulttimeout(600) 
     
     # Retreieve Google Analytics service
     try:
