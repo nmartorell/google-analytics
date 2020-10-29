@@ -7,6 +7,7 @@ from dataiku.connector import Connector
 import googleanalytics
 
 from datetime import datetime
+import socket
 #import pytz
 
 """
