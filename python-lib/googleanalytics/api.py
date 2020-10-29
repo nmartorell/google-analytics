@@ -187,6 +187,8 @@ def get_report(service, query_body):
     The raw JSON response from the API call.
     """
     
+    # TODO: add retries to the batch get if the timout increase doens't help (start with three.)
+     
     try:
         response = service.reports().batchGet(body=query_body).execute()
     except Exception as e:
