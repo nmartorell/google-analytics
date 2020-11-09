@@ -204,7 +204,7 @@ def get_report(service, query_body):
     for n in range(0, 5):
         try:
             if n==0:
-                raise HttpError
+                raise HttpError("abc", "cde")
             
             return service.reports().batchGet(body=query_body).execute()
         
