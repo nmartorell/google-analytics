@@ -203,11 +203,9 @@ def get_report(service, query_body):
     # Exponential backoff implementation
     for n in range(0, 5):
         try:
-            if n<2:
-                raise NameError
             return service.reports().batchGet(body=query_body).execute()
         
-        except NameError as e:
+        except HttpError as e:
             if n>=4:
                 raise Exception("Query retried 5 times but rejected but rejected by Google with HttpError. See the stacktrace for further details.") from e
             else:
