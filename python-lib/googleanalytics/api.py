@@ -207,7 +207,7 @@ def get_report(service, query_body):
         
         except HttpError as e:
             if n>=4:
-                raise Exception() from e
+                raise Exception("Query retried 5 times but rejected but rejected by Google with HttpError. See the stacktrace for further details.") from e
             else:
                 time.sleep((2 ** n) + random.random())
         
