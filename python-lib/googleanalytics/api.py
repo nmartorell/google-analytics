@@ -195,17 +195,21 @@ def get_report(service, query_body):
     The raw JSON response from the API call.
     """
      
-    try:
-        response = service.reports().batchGet(body=query_body).execute()
-    except Exception as e:
-        raise Exception("Failed to query for the requested Google Analytics data. See the stacktrace for further details.") from e
+    #try:
+    #    response = service.reports().batchGet(body=query_body).execute()
+    #except Exception as e:
+    #    raise Exception("Failed to query for the requested Google Analytics data. See the stacktrace for further details.") from e
+       
+    # Exponential backoff implementation
+    for n in range(0, 5):
+        try:
+            return service.reports().batchGet(body=query_body).execute()
         
-    return response
-
-
-
-
-
-
-
-
+        except HttpError as e:
+            if n==4:
+                raise Exception() from e
+            else:
+                time.sleep((2 ** n) + random.random())
+        
+        except Exception as e:
+            raise Exception("Failed to query for the requested Google Analytics data. See the stacktrace for further details.") from e
