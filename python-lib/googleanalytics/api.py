@@ -7,6 +7,7 @@ import socket
 from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 
+# for exponential backoff implementation
 import random
 import time
 from apiclient.errors import HttpError
