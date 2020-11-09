@@ -7,6 +7,10 @@ import socket
 from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 
+import random
+import time
+from apiclient.errors import HttpError
+
 
 def get_service_account_credentials(user_secret):
     """
@@ -183,11 +187,12 @@ def get_report(service, query_body):
     Query for Google Analytics data via the Reporting "batchGet" API call:
     https://developers.google.com/analytics/devguides/reporting/core/v4/rest/v4/reports/batchGet
     
+    Exponential backoff implemented from as described in:
+    https://developers.google.com/analytics/devguides/reporting/core/v3/errors#backoff
+    
     Returns:
     The raw JSON response from the API call.
     """
-    
-    # TODO: add retries to the batch get if the timout increase doens't help (start with three.)
      
     try:
         response = service.reports().batchGet(body=query_body).execute()
@@ -195,3 +200,11 @@ def get_report(service, query_body):
         raise Exception("Failed to query for the requested Google Analytics data. See the stacktrace for further details.") from e
         
     return response
+
+
+
+
+
+
+
+
