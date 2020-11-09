@@ -203,6 +203,9 @@ def get_report(service, query_body):
     # Exponential backoff implementation
     for n in range(0, 5):
         try:
+            if n==0:
+                raise HttpError
+            
             return service.reports().batchGet(body=query_body).execute()
         
         except HttpError as e:
