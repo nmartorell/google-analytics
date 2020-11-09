@@ -206,7 +206,7 @@ def get_report(service, query_body):
             return service.reports().batchGet(body=query_body).execute()
         
         except HttpError as e:
-            if n==4:
+            if n>=4:
                 raise Exception() from e
             else:
                 time.sleep((2 ** n) + random.random())
