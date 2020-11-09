@@ -43,7 +43,7 @@ def get_authenticated_service(api_name, api_version, scope, service_account_cred
     An authenticated Google Analytics service object.
     """
     
-     # Set timeout to 10 minutes (as sometimes fails)
+    # Set timeout to 10 minutes (as sometimes fails)
     socket.setdefaulttimeout(600) 
     
     # Retreieve Google Analytics service
